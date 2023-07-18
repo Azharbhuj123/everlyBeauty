@@ -1,0 +1,76 @@
+.authForm {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: min(395px, 90%);
+  background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
+  border-radius: 10%;
+  padding: 30px;
+}
+.authFormHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.authFormHeading img {
+  cursor: pointer;
+}
+.authFormHeading {
+  font-size: 18px;
+  font-family: 'Gilroy';
+}
+.authFormInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.authFormInputs input {
+  border: none;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 15px;
+  color: #a2a2a2;
+}
+.authFormForgot {
+  justify-content: flex-end;
+  text-align: right;
+  margin-top: 20px;
+}
+.authFormForgot p {
+  font-size: 12px;
+  font-family: 'Poppins';
+  font-weight: 700;
+  cursor: pointer;
+}
+.authFormText p {
+  text-align: center;
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+}
+.authFormIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.authFormIcons img {
+  cursor: pointer;
+}
+.authFormSignupText p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+.authFormSignupText p span {
+  text-transform: uppercase;
+}
+.authFormSignupText p a {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
