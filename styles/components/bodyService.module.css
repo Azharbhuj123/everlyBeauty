@@ -1,0 +1,79 @@
+.bodyServiceContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.bodyServiceWrapper {
+  width: 100%;
+  max-width: 80%;
+}
+.bodyServiceContent {
+  margin-top: 15em;
+  display: flex;
+  justify-content: space-between;
+}
+.bodyServiceContentLeft {
+  width: 50%;
+  display: flex;
+  gap: 40px;
+}
+.bodyServicecheckboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bodyServicelabels {
+  font-size: 16px;
+  font-family: 'Gilroy';
+  color: #dcaa9b;
+  gap: 5px;
+  display: flex;
+}
+.bodyServiceContentRight {
+  width: 50%;
+}
+.bodyServiceContentRightHeading h1 {
+  font-size: 52px;
+  font-weight: 700;
+  font-family: 'Gilroy';
+}
+.bodyServiceContentRightHeading h3 {
+  font-size: 28px;
+  color: #000;
+  font-family: 'Gilroy';
+  margin-top: 2em;
+}
+.bodyServiceContentRightHeading p {
+  margin-top: 1em;
+  font-size: 16;
+  font-family: 'Poppins';
+  color: #a2a2a2;
+  width: 75%;
+}
+
+/* Recipt */
+.bodyServiceContentRightTable {
+  display: flex;
+  flex-direction: column;
+}
+.bodyServiceContentRightTableRow {
+  display: flex;
+}
+.bodyServiceContentRightTableService {
+  width: 70%;
+}
+.bodyServiceContentRightTableServiceDetail{
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.bodyServiceContentRightTableDescription p {
+  color: #000000;
+  font-family: 'Gilroy';
+  font-size: 18px;
+}
+.bodyServiceContentRightTableDescriptionLine{
+  color: #D5D5D5;
+  font-weight: bold;
+  font-size: 20px;
+}

@@ -1,0 +1,82 @@
+.promiseContainer {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.promiseWrapper {
+  width: 100%;
+  max-width: 60%;
+}
+.promiseContent {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.promiseContentText {
+  margin-top: 4em;
+}
+.promiseContentText h1 {
+  font-size: 52px;
+  font-weight: 700;
+  font-family: 'Gilroy';
+}
+.promiseContentText p {
+  font-size: 16px;
+  color: #a2a2a2;
+  font-family: 'Poppins';
+  margin-top: 1em;
+}
+.promiseContentText p span {
+  color: #dcaa9b;
+}
+
+/* promise-card */
+.promiseCardContainer {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 4em;
+}
+.promiseCards {
+  display: flex;
+  justify-content: space-between;
+}
+.promiseCard {
+  cursor: pointer;
+  background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
+  border-radius: 50px;
+  padding: 30px;
+  width: 30%;
+  box-shadow: 15px 18px 32px rgba(225, 173, 157, .6);
+}
+.promiseCardContent {
+  display: flex;
+  flex-direction: column;
+}
+.promiseCardContentImage {
+  border-radius: 100px;
+}
+.promiseCardContentImage img {
+}
+.promiseCardContentText  {
+margin-top: 2em;
+}
+.promiseCardContentText h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: 'Gilroy';
+  letter-spacing: 0.2;
+}
+.promiseCardContentText p{
+ margin-top: 1em;
+ font-size: 16px;
+ font-family: 'Gilroy';
+ color: #fff;
+}
+.promiseCardContentArrow{
+ margin-top: 1em;
+}

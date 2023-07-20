@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '@/styles/auth/auth.module.css'
+import styles from '@/styles/components/auth/auth.module.css'
 import Image from 'next/image'
 import close from '../../../src/assets/images/circle-xmark.png'
 import facebook from '../../../src/assets/images/facbook.png'
@@ -48,9 +48,9 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
               <OTPInput
                 value={OTP}
                 onChange={(otpValue) => setOTP(otpValue)}
-                numInputs={6}
+                numInputs={4}
                 isInputNum
-                renderSeparator={<span style={{ width: '10px' }}></span>}
+                renderSeparator={<span style={{ width: '15px' }}></span>}
                 renderInput={(props) => <input {...props} />}
                 shouldAutoFocus={true}
                 inputStyle={{
