@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import styles from "@/styles/auth/auth.module.css";
+import styles from "@/styles/components/auth/auth.module.css";
 import Image from "next/image";
-import close from "../../../src/assets/images/circle-xmark.png";
-import facebook from "../../../src/assets/images/facbook.png";
-import google from "../../../src/assets/images/google.png";
+import close from "/public/assets/images/circle-xmark.png";
+import facebook from "/public/assets/images/facbook.png";
+import google from "/public/assets/images/google.png";
 import Button from "../buttons/Button";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import OTPInput from "react-otp-input";
-import { createAPIEndPoint } from "@/src/config/api";
-import { endPoints } from "@/src/config/endpoints";
 
 const Auth = ({ headingText, buttonText, isLoggedIn }) => {
   const [OTP, setOTP] = useState("");
@@ -64,7 +62,7 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
       <div className={styles.authForm}>
         <div className={styles.authFormHeading}>
           <h2>{headingText}</h2>
-          {/* <Image src={close} alt='' width={25} height={25} /> */}
+          <Image src={close} alt="" width={25} height={25} />
         </div>
         <div className={styles.authFormInputs}>
           {!isForgotPassword && !(pathname === "/reset-password") && (
@@ -87,9 +85,9 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
               <OTPInput
                 value={OTP}
                 onChange={(otpValue) => setOTP(otpValue)}
-                numInputs={6}
+                numInputs={4}
                 isInputNum
-                renderSeparator={<span style={{ width: "10px" }}></span>}
+                renderSeparator={<span style={{ width: "15px" }}></span>}
                 renderInput={(props) => <input {...props} />}
                 shouldAutoFocus={true}
                 inputStyle={{

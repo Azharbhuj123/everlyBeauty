@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Gilroy';
-  src: url('../src/assets/fonts/Gillroy/Gilroy-Regular.ttf');
+  src: url('../public/assets/fonts/Gillroy/Gilroy-Regular.ttf');
 }
 @font-face {
   font-family: 'poppins';
-  src: url('../src/assets/fonts/Poppins/Poppins-Regular.ttf');
+  src: url('../public/assets/fonts//Poppins/Poppins-Regular.ttf');
 }
 
 :root {
