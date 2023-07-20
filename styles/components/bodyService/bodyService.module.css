@@ -36,6 +36,7 @@
   font-size: 52px;
   font-weight: 700;
   font-family: 'Gilroy';
+  letter-spacing: 1px;
 }
 .bodyServiceContentRightHeading h3 {
   font-size: 28px;
@@ -55,14 +56,19 @@
 .bodyServiceContentRightTable {
   display: flex;
   flex-direction: column;
+  margin-top: 2em;
+  gap: 10px;
 }
 .bodyServiceContentRightTableRow {
   display: flex;
+  background-color: rgb(162, 162, 162, 0.1);
+  padding: 15px 45px;
+  border-radius: 20px;
 }
 .bodyServiceContentRightTableService {
   width: 70%;
 }
-.bodyServiceContentRightTableServiceDetail{
+.bodyServiceContentRightTableServiceDetail {
   width: 30%;
   display: flex;
   justify-content: space-between;
@@ -72,7 +78,35 @@
   font-family: 'Gilroy';
   font-size: 18px;
 }
-.bodyServiceContentRightTableDescriptionLine{
-  color: #D5D5D5;
-  font-weight: bold;
+.bodyServiceContentRightTableDescriptionLine {
+  color: #d5d5d5;
+  /* font-weight: bold; */
+  font-size: 20;
+  font-family: 'Gilroy';
+}
+.bodyServiceContentRightcalc {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+}
+.bodyServiceContentRightcalcRow {
+  display: flex;
+  border-bottom: 1px solid #d5d5d5;
+  padding: 15px 45px;
+}
+.bodyServiceContentRightcalcDetail {
+  width: 70%;
+}
+.bodyServiceContentRightcalcPrices {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.bodyServiceContentRightcalcDetailService {
+  color: #000000;
+  font-family: 'Gilroy';
+  font-size: 18px;
+}
+.bodyServiceContentRightTotal {
+  margin-top: 2em;
 }

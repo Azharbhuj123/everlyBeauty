@@ -6,6 +6,7 @@ import Layout from '@/src/components/Layout/Layout'
 import Banner from '@/src/components/bannerSeection/bannerSection'
 import PromisSection from '@/src/components/promiseSection/PromisSection'
 import BodyService from '@/src/components/bodyService/BodyService'
+import Testimonals from '@/src/components/testimonals/Testimonals'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function Home() {
         <Banner />
         <PromisSection />
         <BodyService />
+        <Testimonals />
       </Layout>
     </>
   )

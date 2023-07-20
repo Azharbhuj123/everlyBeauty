@@ -59,9 +59,8 @@ const Header = () => {
             </div>
             <div className={styles.headerButton}>
               <Link href='/book-now'>
-                <StyledButton backgroundColor='#fff' color='#000'>
-                  Book Now <Image src={arrow} width={15} height={15} />
-                </StyledButton>
+                <StyledButton backgroundColor='#fff' color='#000' text='Book Now' image={arrow}/>
+                  
               </Link>
             </div>
           </div>

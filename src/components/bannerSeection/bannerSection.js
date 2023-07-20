@@ -19,9 +19,8 @@ const Banner = () => {
                 </p>
               </div>
               <div className={styles.bannerContentLeftButton}>
-                <StyledButton backgroundColor='#DCAA9B' color='#fff'>
-                  Consultation <Image src={arrow} width={15} height={15} />
-                </StyledButton>
+                <StyledButton backgroundColor='#DCAA9B' color='#fff' text='Consultation' image={arrow}/>
+                   
               </div>
             </div>
             <div className={styles.bannerContentRight}>

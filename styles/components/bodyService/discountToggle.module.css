@@ -1,0 +1,38 @@
+.discountToggleContainer {
+  width: 100%;
+  display: flex;
+  margin-top: 6em;
+}
+.discountToggleWrapper {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.discountToggles {
+  width: 70%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  border-radius: 30px;
+  box-shadow: 1px 30px 50px 25px rgba(225, 173, 157, 0.2);
+}
+.discountTogglesCenterLine {
+  font-size: 20px;
+  color: #a2a2a2;
+  font-weight: bold;
+}
+.discountToggleLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.discountToggleLeftText {
+  font-size: 16px;
+  font-family: 'Gilroy';
+  color: #a2a2a2;
+}
+.bookNow {
+  width: 25%;
+}
