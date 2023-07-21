@@ -25,7 +25,7 @@ const Testimonals = () => {
               style={{ width: '100%', height: '400px' }}
               spaceBetween={50}
               slidesPerView={3}
-              loop={true} // Enable looped swiping
+              loop={true}
               autoplay={{
                delay: 2000,
                disableOnInteraction: false,

@@ -36,3 +36,25 @@
 .bookNow {
   width: 25%;
 }
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black color for the overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* Make sure the modal overlay is above other content */
+}
+
+/* Styles for the modal content */
+.modalContent {
+  background-color: #fff; /* White background for the modal */
+  padding: 20px;
+  max-width: 400px; /* Set the maximum width of the modal */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow to the modal */
+}
