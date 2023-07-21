@@ -44,9 +44,9 @@
   color: #000;
   font-family: 'Gilroy';
   letter-spacing: 1px;
+  margin-bottom: 1em;
 }
 .bodyServiceContentRightHeading p {
-  margin-top: 1em;
   font-size: 16;
   font-family: 'Poppins';
   color: #a2a2a2;
@@ -101,7 +101,7 @@
   display: flex;
   justify-content: space-between;
 }
-.bodyServiceContentRightcalcDetailService {
+.bodyServiceContentRightcalcDetailService p{
   color: #000000;
   font-family: 'Gilroy';
   font-size: 18px;
