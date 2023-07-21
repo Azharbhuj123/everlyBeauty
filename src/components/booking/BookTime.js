@@ -1,7 +1,7 @@
 import React from 'react'
 import StyledButton from '../buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
-import styles from '@/styles/components/bookTime.module.css'
+import styles from '@/styles/components/booking/bookTime.module.css'
 import MySession from '../mySession/MySession'
 import Button from '../buttons/Button'
 const BookTime = () => {
