@@ -1,5 +1,5 @@
 import Layout from '@/src/components/Layout/Layout'
-import BookTime from '@/src/components/bookTime/BookTime'
+import BookTime from '@/src/components/booking/BookTime'
 import React from 'react'
 
 const BookNow = () => {
