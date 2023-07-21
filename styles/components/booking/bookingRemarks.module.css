@@ -1,0 +1,48 @@
+.bookingRemarksSection{
+ width: 100%;
+ background-color: #fff;
+ border-radius: 80px;
+ padding: 40px;
+ margin: 4em 0;
+ height: 700px;
+}
+.bookingRemarkContent{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.bookingRemarkContentImage{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.bookingRemarkContentImage img{
+width: 75%;
+height: 100%;
+}
+.bookingRemarkContentThank h1{
+font-size: 52px;
+font-family: 'Gilroy';
+text-align: center;
+margin-top: 2em;
+}
+.bookingRemarkContentThank p{
+color: #A2A2A2;
+font-family: 'Poppins';
+font-size: 16;
+margin-top: 1em;
+text-align: center;
+}
+.bookingRemarkContentRegards p{
+font-family: 'Gilroy';
+font-size: 16;
+margin-top: 0em;
+}
+.bookingRemarkContentRegards {
+background-image: url('/assets/images/decorLine.svg');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+margin-top: 2em;
+}

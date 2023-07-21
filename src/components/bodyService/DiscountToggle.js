@@ -3,9 +3,13 @@ import styles from '@/styles/components/bodyService/discountToggle.module.css'
 import Switch from 'react-switch'
 import StyledButton from '../buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
+import Auth from '../auth/auth'
+import MySession from '../mySession/MySession'
+
 const DiscountToggle = () => {
   const [isChecked, setIsChecked] = useState(false)
   const [isCheckedTwo, setIsCheckedTwo] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleSwitchChange = (checked) => {
     setIsChecked(checked)
@@ -13,6 +17,14 @@ const DiscountToggle = () => {
 
   const handleSwitchChangeTwo = (checkedTwo) => {
     setIsCheckedTwo(checkedTwo)
+  }
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
   }
 
   return (
@@ -60,8 +72,16 @@ const DiscountToggle = () => {
               backgroundColor='#E1AD9D'
               text='Book Now'
               image={arrow}
+              onClick={handleModalOpen}
             />
           </div>
+          {isModalOpen && (
+            <div className={styles.modalOverlay}>
+              <div className={styles.modalContent}>
+                <Auth onClose={handleModalClose} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

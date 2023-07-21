@@ -11,7 +11,7 @@ const Button = ({ text, action, color = '#fff', backgroundColor = '#000' }) => {
     fontFamily: 'Gilroy',
     fontSize: '16px',
     border: '1px solid #000',
-    margin: '20px 0',
+    // margin: '20px 0',
     cursor: 'pointer',
     border: 'none',
     padding: '0px 25px',

@@ -3,6 +3,10 @@
   src: url('../public/assets/fonts/Gillroy/Gilroy-Regular.ttf');
 }
 @font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('../public/assets/fonts/Gillroy/Gilroy-Bold.ttf');
+}
+@font-face {
   font-family: 'poppins';
   src: url('../public/assets/fonts//Poppins/Poppins-Regular.ttf');
 }
@@ -125,4 +129,38 @@ input:checked ~ label {
     var(--swiper-pagination-bullet-size, 10px)
   ) !important;
   border-radius: var(--swiper-pagination-bullet-border-radius, 20px) !important;
+}
+
+/* Progress-Graph */
+
+.recharts-legend-item svg {
+  display: none !important;
+}
+.recharts-legend-item {
+  font-size: 24px;
+  font-family: 'Gilroy-Bold';
+  text-transform: uppercase;
+}
+
+/* Vertical-Stepper */
+.MuiStepLabel-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.MuiStepLabel-label p {
+  font-size: 16px;
+  font-family: 'Gilroy';
+  color: #000;
+}
+.MuiStepLabel-label span {
+  font-size: 16px;
+  font-family: 'Gilroy';
+  color: #000;
+}
+.Mui-active{
+  color: #E1AD9D !important;
+}
+.Mui-completed {
+  color: #E1AD9D !important;
 }

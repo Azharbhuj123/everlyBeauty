@@ -96,3 +96,36 @@ export const testimonalsCrdData = [
       'I had my best laser hair removal experience ever. The staff are so respectful.',
   },
 ]
+
+export const bookSessionCardData = [
+  {
+    image:'/assets/images/shave.svg',
+    title:'Shave',
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+  {
+    image:'/assets/images/sun.svg',
+    title:'No Sun Exposure',
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+  {
+    image:'/assets/images/waxing.svg',
+    title:'No Plucking or Waxing',
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+  {
+    image:'/assets/images/lotion.svg',
+    title:'No Lotion or Cream',
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+  {
+    image:'/assets/images/makeup.svg',
+    title:'No Makeup',
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+  {
+    image:'/assets/images/cloth.svg',
+    title:'Wear Loose Clothes',
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+]
