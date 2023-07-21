@@ -7,22 +7,22 @@ import google from "/public/assets/images/google.png";
 import Button from "../buttons/Button";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
 import OTPInput from "react-otp-input";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
 
 const Auth = ({ headingText, buttonText, isLoggedIn }) => {
+  const router = useRouter();
+
   const [OTP, setOTP] = useState("");
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const router = useRouter();
   const { pathname } = router;
   const shouldRenderInput = pathname === "/signup";
   const isForgotPassword = pathname === "/forgot-password";
-
-  console.log(pathname, "ppppp");
 
   // register function
   const RegisterUser = async () => {
@@ -33,9 +33,14 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
     };
     try {
       const response = await createAPIEndPoint(endPoints.regiter).create(data);
+      const { jwt, user } = response.data;
       setUserName("");
       setEmail("");
       setPassword("");
+      localStorage.setItem("Token", jwt);
+      localStorage.setItem("User", JSON.stringify(user));
+      console.log(response);
+      router.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -46,9 +51,13 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
     const data = { identifier: email, password };
     try {
       const response = await createAPIEndPoint(endPoints.login).create(data);
-      console.log(response, "response");
+      console.log(response, "response in Login");
       setEmail("");
       setPassword("");
+      const { jwt, user } = response.data;
+      localStorage.setItem("Token", jwt);
+      localStorage.setItem("User", JSON.stringify(user));
+      router.push("/");
     } catch (error) {
       console.log(error, "error in login");
     }
