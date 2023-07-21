@@ -2,8 +2,9 @@
   width: 100%;
   background-color: #fff;
   border-radius: 80px;
-  padding: 60px 40px;
+  padding: 40px;
   margin: 4em 0;
+  height: 700px;
 }
 .bookSessionSection h1 {
   font-size: 28px;
@@ -19,7 +20,7 @@
 }
 .bookSessionCard {
   background-color: rgb(162, 162, 162, 0.2);
-  padding: 50px 30px;
+  padding: 40px 30px;
   border-radius: 30px;
   flex: 1 0 calc(33.33% - 30px);
   margin: 15px;
@@ -38,4 +39,5 @@
  font-size: 16px;
   font-family: 'poppins';
   color: #A2A2A2;
+  margin-top: 1em;
 }

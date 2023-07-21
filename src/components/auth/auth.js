@@ -164,6 +164,7 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
               <p>Forgot Password?</p>
             </div>
           )}
+          <div style={{margin: '20px 0'}}>
         <Button
           text={buttonText}
           action={
@@ -176,6 +177,7 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
               : ResetPassword
           }
         ></Button>
+        </div>
         <div className={styles.authFormText}>
           <p>Or You Can Join With</p>
         </div>

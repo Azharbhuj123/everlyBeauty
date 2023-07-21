@@ -15,7 +15,7 @@ const BookSession = () => {
                     <div className={styles.bookSessionCard}>
                       <div className={styles.bookSessionCardTitle}>
                         <Image src={item.image} width={50} height={50} />
-                        <h2>{item.item}</h2>
+                        <h2>{item.title}</h2>
                       </div>
                       <div className={styles.bookSessionCardPara}>
                         <p>

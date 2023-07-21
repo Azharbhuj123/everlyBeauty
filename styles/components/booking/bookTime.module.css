@@ -4,11 +4,12 @@
  justify-content: space-between;
  background-color: #fff;
  border-radius: 80px;
- padding: 60px 40px;
+ padding: 40px 40px;
  margin: 4em 0;
+ height: 700px;
 }
 .bookTimeSectionLeft{
- width: 35%;
+ width: 40%;
 }
 .bookTimeSectionRight{
  width: 55%;
