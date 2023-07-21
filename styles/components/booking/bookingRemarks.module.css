@@ -1,0 +1,19 @@
+.bookingRemarksSection{
+ width: 100%;
+ background-color: #fff;
+ border-radius: 80px;
+ padding: 60px 40px;
+ margin: 4em 0;
+}
+.bookingRemarkContent{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.bookingRemarkContentImage{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: red;
+}
