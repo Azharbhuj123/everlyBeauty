@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL;
 export const createAPIEndPoint = (endpoint) => {
-  console.log(endpoint, "endpoint check");
-  let url = BASE_URL + endpoint + "/";
+  const BASE_URL = "https://api.everlybeauty.ca/api";
+  console.log(BASE_URL, "baseUrl");
+
+  let url = BASE_URL + "/" + endpoint + "/";
+  console.log(url, "endpoint check");
   return {
     fetchAll: () => axios.get(url),
     create: (newRecord) => axios.post(url, newRecord),

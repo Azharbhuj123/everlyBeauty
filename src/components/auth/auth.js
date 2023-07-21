@@ -8,36 +8,53 @@ import Button from "../buttons/Button";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import OTPInput from "react-otp-input";
+import { createAPIEndPoint } from "@/src/config/api";
+import { endPoints } from "@/src/config/endpoints";
 
 const Auth = ({ headingText, buttonText, isLoggedIn }) => {
   const [OTP, setOTP] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
   const { pathname } = router;
   const shouldRenderInput = pathname === "/signup";
   const isForgotPassword = pathname === "/forgot-password";
-  console.log(shouldRenderInput, "route");
-  console.log(isLoggedIn, "log check");
+
   console.log(pathname, "ppppp");
 
+  // register function
   const RegisterUser = async () => {
+    const data = {
+      username,
+      email,
+      password,
+    };
     try {
-      const response = await createAPIEndPoint(endPoints.regiter).create({});
+      const response = await createAPIEndPoint(endPoints.regiter).create(data);
+      setUserName("");
+      setEmail("");
+      setPassword("");
     } catch (error) {
       console.log(error);
     }
   };
 
+  // Login finction
   const Login = async () => {
+    const data = { identifier: email, password };
     try {
-      const response = await createAPIEndPoint(endPoints.login).create({});
+      const response = await createAPIEndPoint(endPoints.login).create(data);
+      console.log(response, "response");
+      setEmail("");
+      setPassword("");
     } catch (error) {
       console.log(error, "error in login");
     }
   };
 
-  const ForgotPassworrd = async () => {
+  const ForgotPassword = async () => {
     try {
       const response = await createAPIEndPoint(endPoints.forgotPassword).create(
         {}
@@ -67,15 +84,32 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
         <div className={styles.authFormInputs}>
           {!isForgotPassword && !(pathname === "/reset-password") && (
             <>
-              <input placeholder="Email" type="email" />
-              <input placeholder="Username" type="text" />
+              <input
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+              />
+              {shouldRenderInput && (
+                <input
+                  placeholder="Username"
+                  onChange={(e) => setUserName(e.target.value)}
+                  type="text"
+                />
+              )}
+              <input
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+              />
             </>
           )}
-          {shouldRenderInput && (
-            <input placeholder="Password" type="password" />
-          )}
+
           {isForgotPassword && (
-            <input placeholder="Enter Registered Email" type="email" />
+            <input
+              placeholder="Enter Registered Email"
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+            />
           )}
         </div>
 
@@ -111,8 +145,8 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
               <input
                 placeholder="New Password"
                 type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <input
                 placeholder="Confirm New Password"
@@ -130,13 +164,37 @@ const Auth = ({ headingText, buttonText, isLoggedIn }) => {
               <p>Forgot Password?</p>
             </div>
           )}
-        <Button text={buttonText}></Button>
+        <Button
+          text={buttonText}
+          action={
+            pathname == "/signup"
+              ? RegisterUser
+              : pathname == "/login"
+              ? Login
+              : pathname == "/forgot-password"
+              ? ForgotPassword
+              : ResetPassword
+          }
+        ></Button>
         <div className={styles.authFormText}>
           <p>Or You Can Join With</p>
         </div>
         <div className={styles.authFormIcons}>
-          <Image src={facebook} alt="" width={30} height={30} />
-          <Image src={google} alt="" width={30} height={30} />
+          <Link
+            href={
+              "https://api.everlybeauty.ca/api/" + endPoints.loginWithFaceBook
+            }
+          >
+            <Image src={facebook} alt="" width={30} height={30} />
+          </Link>
+
+          <Link
+            href={
+              "https://api.everlybeauty.ca/api/" + endPoints.loginWithGoogle
+            }
+          >
+            <Image src={google} alt="" width={30} height={30} />
+          </Link>
         </div>
         {!isForgotPassword && !(pathname === "/reset-password") && (
           <>
