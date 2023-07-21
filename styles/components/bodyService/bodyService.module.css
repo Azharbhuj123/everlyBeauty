@@ -37,19 +37,19 @@
   font-weight: 700;
   font-family: 'Gilroy';
   letter-spacing: 1px;
+  margin-bottom: 1em;
 }
 .bodyServiceContentRightHeading h3 {
   font-size: 28px;
   color: #000;
   font-family: 'Gilroy';
-  margin-top: 2em;
+  letter-spacing: 1px;
 }
 .bodyServiceContentRightHeading p {
   margin-top: 1em;
   font-size: 16;
   font-family: 'Poppins';
   color: #a2a2a2;
-  width: 75%;
 }
 
 /* Recipt */
@@ -80,7 +80,6 @@
 }
 .bodyServiceContentRightTableDescriptionLine {
   color: #d5d5d5;
-  /* font-weight: bold; */
   font-size: 20;
   font-family: 'Gilroy';
 }
