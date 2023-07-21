@@ -1,7 +1,19 @@
-import { ServiceReciptData, TotalReciptData } from '@/pages/api/utils'
-import React from 'react'
-import styles from '@/styles/components/bodyService/bodyService.module.css'
+import React, { useContext } from "react";
+import styles from "@/styles/components/bodyService/bodyService.module.css";
+import { ServiceReciptData, TotalReciptData } from "@/pages/api/utils";
+import { bookingContext } from "@/store/bookingContext";
+import MySessioninvoice from "./MySessioninvoice";
+
 const MySession = () => {
+  const [booking] = useContext(bookingContext);
+  console.log(booking, "pppp");
+
+  let totalPrice = booking.reduce((acc, service) => {
+    // Convert the price string to a number using parseInt or parseFloat
+    const price = parseFloat(service.price);
+    return acc + price;
+  }, 0);
+
   return (
     <>
       <div className={styles.bodyServiceContentRightHeading}>
@@ -14,7 +26,7 @@ const MySession = () => {
 
       {/* Recipt */}
       <div className={styles.bodyServiceContentRightTable}>
-        {ServiceReciptData.map((item, index) => {
+        {booking.map((item, index) => {
           return (
             <>
               <div className={styles.bodyServiceContentRightTableRow}>
@@ -22,7 +34,7 @@ const MySession = () => {
                   <div
                     className={styles.bodyServiceContentRightTableDescription}
                   >
-                    <p>{item.service}</p>
+                    <p>{item.name}</p>
                   </div>
                 </div>
                 <div
@@ -48,58 +60,15 @@ const MySession = () => {
                 </div>
               </div>
             </>
-          )
+          );
         })}
       </div>
       <div className={styles.bodyServiceContentRightcalc}>
-        {TotalReciptData.map((item, index) => {
-          return (
-            <>
-              <div className={styles.bodyServiceContentRightcalcRow}>
-                <div className={styles.bodyServiceContentRightcalcDetail}>
-                  <div
-                    className={styles.bodyServiceContentRightcalcDetailService}
-                  >
-                    <p>{item.total}</p>
-                  </div>
-                </div>
-                <div className={styles.bodyServiceContentRightcalcPrices}>
-                  <div
-                    className={styles.bodyServiceContentRightcalcDetailService}
-                  >
-                    <p>{item.discount}</p>
-                  </div>
-                  <div
-                    className={styles.bodyServiceContentRightcalcDetailService}
-                  >
-                    <p>{item.price}</p>
-                  </div>
-                </div>
-              </div>
-            </>
-          )
-        })}
-
-        <div className={styles.bodyServiceContentRightTotal}>
-          <div className={styles.bodyServiceContentRightcalcRow}>
-            <div className={styles.bodyServiceContentRightcalcDetail}>
-              <div className={styles.bodyServiceContentRightcalcDetailService}>
-                <p>Total</p>
-              </div>
-            </div>
-            <div className={styles.bodyServiceContentRightcalcPrices}>
-              <div className={styles.bodyServiceContentRightcalcDetailService}>
-                <p></p>
-              </div>
-              <div className={styles.bodyServiceContentRightcalcDetailService}>
-                <p>$308</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <MySessioninvoice heading={"Subtotal"} amount={totalPrice} />
+        <MySessioninvoice heading={"Total"} amount={totalPrice} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default MySession
+export default MySession;
