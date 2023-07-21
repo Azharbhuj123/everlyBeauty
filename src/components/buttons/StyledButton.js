@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from '@/styles/components/button.module.css'
+import Image from 'next/image'
+import arrow from '/public/assets/images/arrow-up-right.svg'
 
-const StyledButton = ({ children, backgroundColor, color }) => {
+const StyledButton = ({ text, backgroundColor, color, image }) => {
   const buttonStyle = {
     backgroundColor: backgroundColor,
     border: 'none',
@@ -22,7 +24,9 @@ const StyledButton = ({ children, backgroundColor, color }) => {
   }
   return (
     <>
-      <button style={buttonStyle}>{children}</button>
+      <button style={buttonStyle}>
+        {text} <Image src={image} width={15} height={15} />
+      </button>
     </>
   )
 }

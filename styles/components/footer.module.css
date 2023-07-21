@@ -1,10 +1,57 @@
+.footerTop {
+  display: flex;
+  width: 100%;
+  /* margin-top: 4em; */
+}
+.footerTopLeft {
+  width: 50%;
+  background-color: #e1ad9d;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: center;
+}
+.footerTopLeftContent {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.footerTopLeftContentpara {
+  color: #fff;
+  font-family: 'Poppins';
+  font-size: 16px;
+  margin-top: 2em;
+}
+.footerTopLeftLogo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.footerTopLeftContact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4em;
+}
+.footerTopLeftContactphone {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.footerTopLeftContactphone p {
+  color: #fff;
+  font-family: 'Poppins';
+  font-size: 16px;
+}
+.footerTopRight {
+  width: 50%;
+}
 .footerContainer {
   width: 100%;
   justify-content: center;
   align-items: center;
   display: flex;
   height: 100px;
-  margin-top: 2em;
+  /* margin-top: 2em; */
 }
 .footerWrapper {
   width: 100%;

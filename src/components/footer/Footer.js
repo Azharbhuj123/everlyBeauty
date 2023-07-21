@@ -6,7 +6,10 @@ import twitter from '/public/assets/images/twitter.svg'
 import instagram from '/public/assets/images/instagram.svg'
 import tiktok from '/public/assets/images/tiktok.svg'
 import { Facebook } from '../SVG'
-
+import logo from '/public/assets/images/logo-white.svg'
+import phone from '/public/assets/images/phone.svg'
+import email from '/public/assets/images/envelope.svg'
+import location from '/public/assets/images/locattion.svg'
 const Footer = () => {
   // const [isHovered, setIsHovered] = useState('')
   // const handleIconHover = (value) => {
@@ -14,6 +17,42 @@ const Footer = () => {
   // }
   return (
     <>
+      <div className={styles.footerTop}>
+        <div className={styles.footerTopLeft}>
+          <div className={styles.footerTopLeftContent}>
+            <div className={styles.footerTopLeftLogo}>
+              <Image src={logo} width={250} height={0} />
+            </div>
+            <div className={styles.footerTopLeftContentpara}>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.
+              </p>
+            </div>
+
+            <ul className={styles.footerTopLeftContact}>
+              <li className={styles.footerTopLeftContactphone}>
+                <Image src={phone} width={18} height={18} />
+                <p>(905)-876-8282</p>
+              </li>
+              <li className={styles.footerTopLeftContactphone}>
+                <Image src={email} width={18} height={18} />
+                <p>info@evabeautylhr.ca</p>
+              </li>
+              <li className={styles.footerTopLeftContactphone}>
+                <Image src={location} width={18} height={18} />
+                <p>854 King St. W., Hamilton Ontario, Canada</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className={styles.footerTopRight}>
+      <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        width="100%"
+        height="100%"
+        src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div></div>
+       
+     
       <div className={styles.footerContainer}>
         <div className={styles.footerWrapper}>
           <div className={styles.footerLeft}>
