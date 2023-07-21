@@ -27,10 +27,12 @@
 }
 .authFormInputs input {
   border: none;
-  height: 40px;
-  border-radius: 20px;
+  height: 45px;
+  border-radius: 35px;
   padding-left: 15px;
-  color: #a2a2a2;
+}
+.authFormInputs input:focus {
+  outline: none;
 }
 .authFormForgot {
   justify-content: flex-end;

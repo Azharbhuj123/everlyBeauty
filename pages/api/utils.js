@@ -73,7 +73,7 @@ export const testimonalsCrdData = [
   },
   {
     avatar: '/assets/images/avatar3.svg',
-    name: 'Jesssica Bernstein',
+    name: 'Eva Valentine',
     review:
       'I had my best laser hair removal experience ever. The staff are so respectful.',
   },
@@ -91,7 +91,7 @@ export const testimonalsCrdData = [
   },
   {
     avatar: '/assets/images/avatar3.svg',
-    name: 'Jesssica Bernstein',
+    name: 'Eva Valentine',
     review:
       'I had my best laser hair removal experience ever. The staff are so respectful.',
   },
