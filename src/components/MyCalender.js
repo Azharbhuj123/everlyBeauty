@@ -16,11 +16,9 @@ const MyCalender = () => {
     const day = date.getDay();
     return day !== 0 && day !== 1; // Sunday (0) and Saturday (6) are disabled
   };
-  console.log(isWeekday, "weekDay check");
 
   const handleSelectSlot = (slotInfo) => {
     setSelectedTime(slotInfo.start);
-    console.log();
     setShowTimePicker(true);
   };
 
@@ -29,7 +27,7 @@ const MyCalender = () => {
       ...events,
       { title: "New Event", start: selectedTime, end: time },
     ]);
-    setShowTimePicker(false);
+    setShowTimePicker(true);
   };
 
   return (
