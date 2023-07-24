@@ -13,24 +13,22 @@ const MyCalender = () => {
   const [selectedTime, setSelectedTime] = useState(null)
 
   const isWeekday = (date) => {
-    const day = date.getDay()
-    return day !== 0 && day !== 1 // Sunday (0) and Saturday (6) are disabled
-  }
-  console.log(isWeekday, 'weekDay check')
+    const day = date.getDay();
+    return day !== 0 && day !== 1; // Sunday (0) and Saturday (6) are disabled
+  };
 
   const handleSelectSlot = (slotInfo) => {
-    setSelectedTime(slotInfo.start)
-    console.log()
-    setShowTimePicker(true)
-  }
+    setSelectedTime(slotInfo.start);
+    setShowTimePicker(true);
+  };
 
   const handleSelectTime = (time) => {
     setEvents([
       ...events,
-      { title: 'New Event', start: selectedTime, end: time },
-    ])
-    setShowTimePicker(false)
-  }
+      { title: "New Event", start: selectedTime, end: time },
+    ]);
+    setShowTimePicker(true);
+  };
 
   return (
     <>
