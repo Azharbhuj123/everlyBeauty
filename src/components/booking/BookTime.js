@@ -5,6 +5,7 @@ import styles from "@/styles/components/booking/bookTime.module.css";
 import MySession from "../mySession/MySession";
 import Button from "../buttons/Button";
 import MyCalender from "../MyCalender";
+import MyCalendar2 from "../MyCalendar2";
 const BookTime = () => {
   return (
     <>
@@ -28,6 +29,7 @@ const BookTime = () => {
               </div>
               {/* Calendar */}
               <MyCalender />
+              {/* <MyCalendar2 /> */}
             </div>
           </div>
 

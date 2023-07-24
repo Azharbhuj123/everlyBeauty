@@ -4,6 +4,7 @@ import moment from "moment";
 import dayjs from "dayjs";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import TimePickerDialog from "./TimePickerDialog";
+import { TrendingUp } from "@material-ui/icons";
 
 const localizer = momentLocalizer(moment);
 
@@ -16,18 +17,21 @@ const MyCalender = () => {
     const day = date.getDay();
     return day !== 0 && day !== 1; // Sunday (0) and Saturday (6) are disabled
   };
+  console.log(isWeekday, "weekDay check");
 
   const handleSelectSlot = (slotInfo) => {
     setSelectedTime(slotInfo.start);
+    console.log(slotInfo, "slotInfo");
     setShowTimePicker(true);
   };
 
   const handleSelectTime = (time) => {
+    console.log(time, "oooo");
     setEvents([
       ...events,
       { title: "New Event", start: selectedTime, end: time },
     ]);
-    setShowTimePicker(true);
+    setShowTimePicker(false);
   };
 
   return (
