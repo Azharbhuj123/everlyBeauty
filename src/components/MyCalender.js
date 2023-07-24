@@ -1,45 +1,45 @@
-import React, { useState } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import dayjs from "dayjs";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import TimePickerDialog from "./TimePickerDialog";
+import React, { useState } from 'react'
+import { Calendar, momentLocalizer } from 'react-big-calendar'
+import moment from 'moment'
+import dayjs from 'dayjs'
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+import TimePickerDialog from './TimePickerDialog'
 
-const localizer = momentLocalizer(moment);
+const localizer = momentLocalizer(moment)
 
 const MyCalender = () => {
-  const [events, setEvents] = useState([]);
-  const [showTimePicker, setShowTimePicker] = useState(false);
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [events, setEvents] = useState([])
+  const [showTimePicker, setShowTimePicker] = useState(false)
+  const [selectedTime, setSelectedTime] = useState(null)
 
   const isWeekday = (date) => {
-    const day = date.getDay();
-    return day !== 0 && day !== 1; // Sunday (0) and Saturday (6) are disabled
-  };
-  console.log(isWeekday, "weekDay check");
+    const day = date.getDay()
+    return day !== 0 && day !== 1 // Sunday (0) and Saturday (6) are disabled
+  }
+  console.log(isWeekday, 'weekDay check')
 
   const handleSelectSlot = (slotInfo) => {
-    setSelectedTime(slotInfo.start);
-    console.log();
-    setShowTimePicker(true);
-  };
+    setSelectedTime(slotInfo.start)
+    console.log()
+    setShowTimePicker(true)
+  }
 
   const handleSelectTime = (time) => {
     setEvents([
       ...events,
-      { title: "New Event", start: selectedTime, end: time },
-    ]);
-    setShowTimePicker(false);
-  };
+      { title: 'New Event', start: selectedTime, end: time },
+    ])
+    setShowTimePicker(false)
+  }
 
   return (
     <>
       <Calendar
         localizer={localizer}
         events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500, padding: 50 }}
+        startAccessor='start'
+        endAccessor='end'
+        style={{ padding: '50px 0' }}
         dateConstraint={isWeekday}
         selectable
         onSelectSlot={handleSelectSlot}
@@ -52,7 +52,7 @@ const MyCalender = () => {
         onSelectTime={handleSelectTime}
       />
     </>
-  );
-};
+  )
+}
 
-export default MyCalender;
+export default MyCalender

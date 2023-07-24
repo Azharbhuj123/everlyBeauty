@@ -10,14 +10,6 @@ const BookTime = () => {
     <>
       <div className={styles.bookTimeContainer}>
         <div className={styles.bookTimeWrapper}>
-          <div className={styles.bookTimeButton}>
-            <StyledButton
-              color="#fff"
-              backgroundColor="#E1AD9D"
-              text="Dashboard"
-              image={arrow}
-            />
-          </div>
           <div className={styles.bookTimeSection}>
             <div className={styles.bookTimeSectionLeft}>
               <MySession />
@@ -31,23 +23,6 @@ const BookTime = () => {
             </div>
           </div>
 
-          <div className={styles.bookTimeButtons}>
-            <div className={styles.bookTimeButtonLeft}>
-              <Button
-                color="#000"
-                backgroundColor="#D9D9D6"
-                text="Edit Session"
-              />
-            </div>
-            <div className={styles.bookTimeButtonRight}>
-              <StyledButton
-                color="#fff"
-                backgroundColor="#E1AD9D"
-                text="Confirm"
-                image={arrow}
-              />
-            </div>
-          </div>
         </div>
       </div>
     </>

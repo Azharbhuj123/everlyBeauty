@@ -10,6 +10,7 @@ import logo from '/public/assets/images/logo-white.svg'
 import phone from '/public/assets/images/phone.svg'
 import email from '/public/assets/images/envelope.svg'
 import location from '/public/assets/images/locattion.svg'
+import Link from 'next/link'
 const Footer = () => {
   // const [isHovered, setIsHovered] = useState('')
   // const handleIconHover = (value) => {
@@ -21,7 +22,9 @@ const Footer = () => {
         <div className={styles.footerTopLeft}>
           <div className={styles.footerTopLeftContent}>
             <div className={styles.footerTopLeftLogo}>
+            <Link href='/'>
               <Image src={logo} width={250} height={0} />
+              </Link>
             </div>
             <div className={styles.footerTopLeftContentpara}>
               <p>

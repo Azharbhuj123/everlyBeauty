@@ -1,0 +1,38 @@
+.promoForm {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: min(395px, 90%);
+  background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
+  border-radius: 30px;
+  padding: 30px;
+}
+.promoFormContent {
+  display: flex;
+  flex-direction: column;
+}
+.promoFormContentHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.promoFormContentHeading {
+  font-size: 16px;
+  font-family: 'Gilroy';
+}
+.promoFormContentInput {
+  margin-top: 10px;
+}
+.promoFormContentInput input {
+  border: none;
+  height: 45px;
+  border-radius: 35px;
+  padding-left: 15px;
+  width: 100%;
+}
+.promoFormContentInput input:focus {
+  outline: none;
+}
+.promoFormContentButton {
+  margin-top: 20px;
+}

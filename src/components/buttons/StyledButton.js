@@ -3,7 +3,13 @@ import styles from '@/styles/components/button.module.css'
 import Image from 'next/image'
 import arrow from '/public/assets/images/arrow-up-right.svg'
 
-const StyledButton = ({ text, backgroundColor, color, image }) => {
+const StyledButton = ({
+  text,
+  backgroundColor,
+  color,
+  image,
+  onClick = () => {},
+}) => {
   const buttonStyle = {
     backgroundColor: backgroundColor,
     border: 'none',
@@ -22,9 +28,10 @@ const StyledButton = ({ text, backgroundColor, color, image }) => {
     cursor: 'pointer',
     boxShadow: '1px 30px 50px 25px rgba(225, 173, 157, 0.2)',
   }
+
   return (
     <>
-      <button style={buttonStyle}>
+      <button style={buttonStyle} onClick={onClick}>
         {text} <Image src={image} width={15} height={15} />
       </button>
     </>
