@@ -132,7 +132,6 @@ input:checked ~ label {
 }
 
 /* Progress-Graph */
-
 .recharts-legend-item svg {
   display: none !important;
 }
@@ -140,6 +139,7 @@ input:checked ~ label {
   font-size: 24px;
   font-family: 'Gilroy-Bold';
   text-transform: uppercase;
+  margin-top: 1em;
 }
 
 /* Vertical-Stepper */

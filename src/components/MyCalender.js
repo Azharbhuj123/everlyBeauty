@@ -21,7 +21,7 @@ const MyCalender = () => {
 
   const handleSelectSlot = (slotInfo) => {
     setSelectedTime(slotInfo.start);
-    console.log(slotInfo, "slotInfo");
+    console.log("slot", slotInfo);
     setShowTimePicker(true);
   };
 

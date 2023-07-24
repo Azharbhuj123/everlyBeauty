@@ -1,12 +1,15 @@
 import Layout from '@/src/components/Layout/Layout'
+import Blogs from '@/src/components/blog/Blogs'
 import React from 'react'
 
 const Blog = () => {
-  return <>
-  <Layout>
-  Blog
-</Layout>
-</>
+  return (
+    <>
+      <Layout>
+        <Blogs />
+      </Layout>
+    </>
+  )
 }
 
 export default Blog
