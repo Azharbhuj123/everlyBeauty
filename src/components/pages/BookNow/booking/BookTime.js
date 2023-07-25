@@ -2,10 +2,10 @@ import React from "react";
 import StyledButton from "../../../buttons/StyledButton";
 import arrow from "/public/assets/images/arrow-up-right-white.svg";
 import styles from "@/styles/components/booking/bookTime.module.css";
-import MySession from "../mySession/MySession";
-import Button from "../buttons/Button";
-import MyCalender from "../MyCalender";
-import MyCalendar2 from "../MyCalendar2";
+import MySession from "../../Home/mySession/MySession";
+import Button from "@/src/components/buttons/Button";
+import MyCalender from "../calendar/MyCalender";
+import MyCalendar2 from "@/src/components/MyCalendar2";
 const BookTime = () => {
   return (
     <>

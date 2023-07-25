@@ -1,18 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "@/styles/components/bodyService/bodyService.module.css";
 import { ServiceReciptData, TotalReciptData } from "@/pages/api/utils";
 import { bookingContext } from "@/store/bookingContext";
 import MySessioninvoice from "./MySessioninvoice";
 
 const MySession = () => {
+  const [discount, setDiscount] = useState(0);
+  const [discountPercent, setDiscountPercent] = useState(0);
   const [booking] = useContext(bookingContext);
-  console.log(booking, "pppp");
 
   let totalPrice = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseInt or parseFloat
     const price = parseFloat(service.price);
     return acc + price;
   }, 0);
+
+  const getDiscount = (totalPrice) => {
+    if (totalPrice >= 150 && totalPrice < 300) {
+      const discountPercent = (totalPrice / 100) * 10;
+      setDiscount(discountPercent);
+      setDiscountPercent(10);
+    } else if (totalPrice >= 300 && totalPrice < 450) {
+      const discountPercent = (totalPrice / 100) * 30;
+      setDiscount(discountPercent);
+      setDiscountPercent(30);
+    } else if (totalPrice >= 450) {
+      const discountPercent = (totalPrice / 100) * 50;
+      setDiscount(discountPercent);
+      setDiscount(50);
+    }
+  };
+
+  useEffect(() => {
+    getDiscount(totalPrice);
+  }, []);
 
   return (
     <>
@@ -26,7 +47,7 @@ const MySession = () => {
 
       {/* Recipt */}
       <div className={styles.bodyServiceContentRightTable}>
-        {booking.map((item, index) => {
+        {booking?.map((item, index) => {
           return (
             <>
               <div className={styles.bodyServiceContentRightTableRow}>
