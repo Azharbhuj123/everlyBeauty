@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "@/styles/components/blog/blogCard.module.css";
 import Image from "next/image";
-import Blog1 from "../../../public/assets/images/blog1.svg";
 import { blogCardData } from "@/pages/api/utils";
+
 const BlogCard = () => {
   return (
     <>

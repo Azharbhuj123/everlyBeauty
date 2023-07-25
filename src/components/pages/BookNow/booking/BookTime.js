@@ -1,5 +1,5 @@
 import React from "react";
-import StyledButton from "../buttons/StyledButton";
+import StyledButton from "../../../buttons/StyledButton";
 import arrow from "/public/assets/images/arrow-up-right-white.svg";
 import styles from "@/styles/components/booking/bookTime.module.css";
 import MySession from "../mySession/MySession";
@@ -24,7 +24,6 @@ const BookTime = () => {
               {/* <MyCalendar2 /> */}
             </div>
           </div>
-
         </div>
       </div>
     </>

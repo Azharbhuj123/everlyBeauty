@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from '@/styles/components/bodyService/discountToggle.module.css'
 import Switch from 'react-switch'
-import StyledButton from '../buttons/StyledButton'
+import StyledButton from '../../../buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
-import Auth from '../auth/auth'
+import Auth from '../../../auth/auth'
 import MySession from '../mySession/MySession'
 import PromoCard from './PromoCard'
 

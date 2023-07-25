@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Stepper, Step, StepLabel, Button, Typography } from '@mui/material'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
-import StyledButton from '../buttons/StyledButton'
+import StyledButton from '../../../buttons/StyledButton'
 
 const steps = [
   { label: 'Session 1', dot: ':', date: 'Jun 2023' },

@@ -151,10 +151,8 @@ const Auth = ({
               {/* inputForm */}
               {shouldRenderInput && (
                 <>
-                  <div className={styles.authFormSignup} style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <input placeholder='First Name' type='text' />
                     <input placeholder='Last Name' type='text' />
-                  </div>
                   <input
                     placeholder='Username'
                     onChange={(e) => setUserName(e.target.value)}

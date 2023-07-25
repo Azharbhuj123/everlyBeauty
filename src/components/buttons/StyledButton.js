@@ -1,7 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/button.module.css";
 import Image from "next/image";
-import arrow from "/public/assets/images/arrow-up-right.svg";
 
 const StyledButton = ({
   text,

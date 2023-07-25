@@ -29,6 +29,9 @@
   gap: 5px;
   display: flex;
 }
+.bodyServicelabels input{
+cursor: pointer;
+}
 .bodyServiceContentRight {
   width: 50%;
 }
