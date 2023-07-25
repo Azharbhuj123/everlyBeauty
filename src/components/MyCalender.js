@@ -38,13 +38,16 @@ const MyCalender = () => {
     <>
       <Calendar
         localizer={localizer}
-        events={events}
+        events={[]}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500, padding: 50 }}
         dateConstraint={isWeekday}
         selectable
-        onSelectSlot={handleSelectSlot}
+        onSelectSlot={() => {
+          handleSelectSlot();
+          console.log("Something");
+        }}
       />
 
       <TimePickerDialog

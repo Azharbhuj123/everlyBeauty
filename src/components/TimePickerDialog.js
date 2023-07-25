@@ -30,13 +30,13 @@ const TimePickerDialog = ({ open, onClose, onSelectTime }) => {
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          {/* <TimePicker
+          <TimePicker
             label="Time"
             value={selectedTime}
             minTime={dayjs(new Date(0, 0, 0, 9, 0))} // 9 am
             maxTime={dayjs(new Date(0, 0, 0, 17, 0))} // 5 pm
             onChange={(newValue) => setSelectedTime(newValue)}
-          /> */}
+          />
         </LocalizationProvider>
         {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <TimePicker

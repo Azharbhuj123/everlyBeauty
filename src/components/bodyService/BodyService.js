@@ -10,7 +10,7 @@ import MySession from "../mySession/MySession";
 import { bookingContext } from "@/store/bookingContext";
 const BodyService = () => {
   const [booking, setBooking] = useContext(bookingContext);
-  console.log(booking, "store check");
+
   const services = [
     {
       id: 1,
@@ -60,7 +60,7 @@ const BodyService = () => {
               <div className={styles.bodyServicecheckboxes}>
                 {services.map((item, index) => {
                   return (
-                    <label className={styles.bodyServicelabels}>
+                    <label key={item.id} className={styles.bodyServicelabels}>
                       <input
                         type="checkbox"
                         // onClick={() => setBooking([...booking, item])}
@@ -72,24 +72,9 @@ const BodyService = () => {
                     </label>
                   );
                 })}
-
-                {/* <label className={styles.bodyServicelabels}>
-                  <input type="checkbox" />
-                  Bikini
-                </label>
-
-                <label className={styles.bodyServicelabels}>
-                  <input type="checkbox" />
-                  Lower Leg
-                </label>
-
-                <label className={styles.bodyServicelabels}>
-                  <input type="checkbox" />
-                  Upper Back
-                </label> */}
               </div>
               <div className={styles.bodyServiceFemale}>
-                <Image src={female} width={400} height={800} />
+                <Image src={female} width={400} height={800} alt="" />
               </div>
             </div>
             <div className={styles.bodyServiceContentRight}>
