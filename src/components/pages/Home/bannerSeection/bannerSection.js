@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '@/styles/components/banner.module.css'
+import styles from '@/styles/components/banner/banner.module.css'
 import Image from 'next/image'
 import StyledButton from '../../../buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'

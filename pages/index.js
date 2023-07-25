@@ -4,9 +4,9 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Layout from '@/src/components/Layout/Layout'
 import Banner from '@/src/components/pages/Home/bannerSeection/bannerSection'
-import PromisSection from '@/src/components/pages/Home/promiseSection/PromisSection'
 import BodyService from '@/src/components/pages/Home/bodyService/BodyService'
 import Testimonals from '@/src/components/pages/Home/testimonals/Testimonals'
+import PromiseSection from '@/src/components/pages/Home/promise/PromiseSection'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
       <Layout>
         <Banner />
-        <PromisSection />
+        <PromiseSection />
         <BodyService />
         <Testimonals />
       </Layout>

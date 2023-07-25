@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from '@/styles/components/promise.module.css'
+import styles from '@/styles/components/promise/promise.module.css'
 import PromiseCard from './PromiseCard'
 
-const PromisSection = () => {
+const PromiseSection = () => {
   return (
     <>
       <div className={styles.promiseContainer}>
@@ -18,11 +18,11 @@ const PromisSection = () => {
               </p>
             </div>
           </div>
-          <PromiseCard/>
+          <PromiseCard />
         </div>
       </div>
     </>
   )
 }
 
-export default PromisSection
+export default PromiseSection

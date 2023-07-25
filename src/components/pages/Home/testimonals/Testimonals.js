@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactStars from 'react-stars'
-import styles from '@/styles/components/testimonials.module.css'
+import styles from '@/styles/components/testimonials/testimonials.module.css'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
@@ -10,9 +10,8 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import SwiperCore from 'swiper'
 
-
 const Testimonals = () => {
- SwiperCore.use([Autoplay])
+  SwiperCore.use([Autoplay])
   return (
     <>
       <div className={styles.testimonialsContainer}>
@@ -27,23 +26,21 @@ const Testimonals = () => {
               slidesPerView={3}
               loop={true}
               autoplay={{
-               delay: 2000,
-               disableOnInteraction: false,
+                delay: 2000,
+                disableOnInteraction: false,
               }}
               speed={1000}
-            
               onSlideChange={() => console.log('slide change')}
               onSwiper={(swiper) => console.log(swiper)}
               pagination={{
                 clickable: true,
               }}
               modules={[Pagination]}
-              
             >
               {testimonalsCrdData.map((item, index) => {
                 return (
                   <>
-                    <SwiperSlide >
+                    <SwiperSlide>
                       <div className={styles.testimonialsCard}>
                         <ReactStars
                           count={5}

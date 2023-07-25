@@ -1,8 +1,6 @@
 import React from 'react'
-import styles from '@/styles/components/promise.module.css'
+import styles from '@/styles/components/promise/promise.module.css'
 import Image from 'next/image'
-import safe from '/public/assets/images/promiseSafe.png'
-import arrow from '/public/assets/images/arrow-right.svg'
 import { promiseCardData } from '@/pages/api/utils'
 const PromiseCard = () => {
   return (
