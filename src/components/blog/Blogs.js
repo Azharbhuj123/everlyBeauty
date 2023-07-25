@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Search from '/public/assets/images/search.svg'
 import Image from 'next/image'
 import BlogCard from './BlogCard'
+import Faq from './Faq'
 const Blogs = () => {
   return (
     <>
@@ -38,7 +39,12 @@ const Blogs = () => {
       </div>
       <div className={styles.blogsContainer}>
         <div className={styles.blogsContentWrapper}>
-         <BlogCard/>
+          <BlogCard />
+        </div>
+      </div>
+      <div className={styles.blogsContainer}>
+        <div className={styles.blogsContentWrapper}>
+          <Faq />
         </div>
       </div>
     </>

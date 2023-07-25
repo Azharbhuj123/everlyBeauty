@@ -99,33 +99,51 @@ export const testimonalsCrdData = [
 
 export const bookSessionCardData = [
   {
-    image:'/assets/images/shave.svg',
-    title:'Shave',
+    image: '/assets/images/shave.svg',
+    title: 'Shave',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
   },
   {
-    image:'/assets/images/sun.svg',
-    title:'No Sun Exposure',
+    image: '/assets/images/sun.svg',
+    title: 'No Sun Exposure',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
   },
   {
-    image:'/assets/images/waxing.svg',
-    title:'No Plucking or Waxing',
+    image: '/assets/images/waxing.svg',
+    title: 'No Plucking or Waxing',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
   },
   {
-    image:'/assets/images/lotion.svg',
-    title:'No Lotion or Cream',
+    image: '/assets/images/lotion.svg',
+    title: 'No Lotion or Cream',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
   },
   {
-    image:'/assets/images/makeup.svg',
-    title:'No Makeup',
+    image: '/assets/images/makeup.svg',
+    title: 'No Makeup',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
   },
   {
-    image:'/assets/images/cloth.svg',
-    title:'Wear Loose Clothes',
+    image: '/assets/images/cloth.svg',
+    title: 'Wear Loose Clothes',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...",
+  },
+]
+
+export const blogCardData = [
+  {
+    image: '/assets/images/blog1.svg',
+    question: 'How Does Laser Hair Removal Work?',
+    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+  },
+  {
+    image: '/assets/images/blog2.svg',
+    question: "Is Laser Hair Removal Safe?",
+    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+  },
+  {
+    image: '/assets/images/blog3.svg',
+    question: 'What Should I do Before and After My Session?',
+    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
   },
 ]

@@ -3,7 +3,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   left: 50%;
-  width: min(395px, 90%);
+  width: min(450px, 90%);
   background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
   border-radius: 10%;
   padding: 30px;
@@ -33,6 +33,10 @@
 }
 .authFormInputs input:focus {
   outline: none;
+}
+.authFormSignup {
+  display: flex;
+  justify-content: space-between;
 }
 .authFormForgot {
   justify-content: flex-end;
@@ -70,9 +74,19 @@
 }
 .authFormSignupText p span {
   text-transform: uppercase;
-}
-.authFormSignupText p a {
-  color: #000;
-  text-decoration: none;
   cursor: pointer;
+  text-decoration: underline;
+}
+.authFormSignupText p {
+  color: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .authForm {
+    width: min(395px, 90%);
+  }
+  .authFormSignup {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

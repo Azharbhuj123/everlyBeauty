@@ -1,6 +1,11 @@
 import React from 'react'
 import styles from '@/styles/components/button.module.css'
-const Button = ({ text, action, color = '#fff', backgroundColor = '#000' }) => {
+const Button = ({
+  text,
+  color = '#fff',
+  backgroundColor = '#000',
+  action = () => {},
+}) => {
   const simpleButton = {
     backgroundColor: backgroundColor,
     width: '100%',
