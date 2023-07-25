@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Layout from '@/src/components/Layout/Layout'
-import Banner from '@/src/components/bannerSeection/bannerSection'
-import PromisSection from '@/src/components/promiseSection/PromisSection'
-import BodyService from '@/src/components/bodyService/BodyService'
-import Testimonals from '@/src/components/testimonals/Testimonals'
+import Banner from '@/src/components/pages/Home/bannerSeection/bannerSection'
+import PromisSection from '@/src/components/pages/Home/promiseSection/PromisSection'
+import BodyService from '@/src/components/pages/Home/bodyService/BodyService'
+import Testimonals from '@/src/components/pages/Home/testimonals/Testimonals'
 
 const inter = Inter({ subsets: ['latin'] })
 

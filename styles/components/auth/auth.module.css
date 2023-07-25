@@ -34,10 +34,6 @@
 .authFormInputs input:focus {
   outline: none;
 }
-.authFormSignup {
-  display: flex;
-  justify-content: space-between;
-}
 .authFormForgot {
   justify-content: flex-end;
   text-align: right;
@@ -84,9 +80,6 @@
 @media screen and (max-width: 480px) {
   .authForm {
     width: min(395px, 90%);
-  }
-  .authFormSignup {
-    flex-direction: column;
-    gap: 10px;
+    padding: 20px;
   }
 }
