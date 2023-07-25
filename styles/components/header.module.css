@@ -7,7 +7,9 @@
 }
 .wrapper {
   width: 100%;
-  max-width: 60%;
+  /* max-width: 1120px; */
+  max-width: 71em;
+  margin: 0 1em;
 }
 .header {
   display: flex;

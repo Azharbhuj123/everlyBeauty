@@ -151,8 +151,10 @@ const Auth = ({
               {/* inputForm */}
               {shouldRenderInput && (
                 <>
-                  <input placeholder='First Name' type='text' />
-                  <input placeholder='Last Name' type='text' />
+                  <div className={styles.authFormSignup} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <input placeholder='First Name' type='text' />
+                    <input placeholder='Last Name' type='text' />
+                  </div>
                   <input
                     placeholder='Username'
                     onChange={(e) => setUserName(e.target.value)}
@@ -236,7 +238,8 @@ const Auth = ({
             <Button text={buttonText} action={ResetPassword}></Button>
           )}
         </div>
-        <div className={styles.authFormText}>
+
+        {/* <div className={styles.authFormText}>
           <p>Or You Can Join With</p>
         </div>
         <div className={styles.authFormIcons}>
@@ -255,7 +258,7 @@ const Auth = ({
           >
             <Image src={google} alt='' width={30} height={30} />
           </Link>
-        </div>
+        </div> */}
         {mode !== 'forgot-password' && mode !== 'reset-password' && (
           <>
             <div className={styles.authFormSignupText}>

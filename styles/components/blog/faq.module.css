@@ -1,0 +1,63 @@
+/* components/Accordion.module.css */
+.faqContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 800px;
+}
+.faqTitle h1 {
+  font-size: 52px;
+  font-family: 'Gilroy';
+  margin-bottom: 1em;
+}
+.faqAccordions {
+  margin: 2em 0;
+}
+.accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  border: none;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 1px 30px 50px 25px rgba(225, 173, 157, 0.2);
+  width: 100%;
+}
+.active {
+  background-color: #dcaa9b;
+}
+.title h3 {
+  font-size: 20px;
+  font-family: 'Gilroy';
+}
+.title {
+  background-color: #fff;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.open {
+  background-color: #dcaa9b;
+}
+.title::after {
+  background-color: antiquewhite;
+}
+.content {
+  padding: 20px;
+  background-color: #dcaa9b;
+  width: 100%;
+}
+.content p {
+  font-size: 14px;
+  font-family: 'Gilroy';
+  margin-left: 2em;
+}
+.active .title {
+  /* Add styles for the active title */
+}
