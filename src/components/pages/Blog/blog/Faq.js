@@ -68,7 +68,10 @@ const Faq = ({ items }) => {
                 )}
               </div>
               {activeIndex === index && (
-                <div className={styles.content}>
+
+                <div className={`${styles.content} ${
+                  activeIndex === index ? styles.open : ''
+                }`}>
                   <p> {item.content} </p>
                 </div>
               )}

@@ -44,6 +44,9 @@
 }
 .open {
   background-color: #dcaa9b;
+  /* overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  max-height: 150; */
 }
 .title::after {
   background-color: antiquewhite;
@@ -52,12 +55,12 @@
   padding: 20px;
   background-color: #dcaa9b;
   width: 100%;
+  /* max-height: 150;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out; */
 }
 .content p {
   font-size: 14px;
   font-family: 'Gilroy';
   margin-left: 2em;
-}
-.active .title {
-  /* Add styles for the active title */
 }
