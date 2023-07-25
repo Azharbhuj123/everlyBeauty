@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styles from '@/styles/components/bodyService/PromoCard.module.css'
-import OTPInput from 'react-otp-input'
 import Image from 'next/image'
 import close from '/public/assets/images/circle-xmark.png'
 import Button from '../../../buttons/Button'
@@ -9,9 +8,9 @@ const PromoCard = ({ onClose }) => {
   const [OTP, setOTP] = useState('')
 
   const handlePromoCardClose = () => {
-    onClose() 
+    onClose()
   }
-  
+
   return (
     <>
       <div className={styles.promoForm}>

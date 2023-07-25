@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '@/styles/button.module.css'
 const Button = ({
   text,
   color = '#fff',
@@ -15,14 +16,18 @@ const Button = ({
     fontFamily: 'Gilroy',
     fontSize: '16px',
     border: '1px solid #000',
-    // margin: '20px 0',
     cursor: 'pointer',
     border: 'none',
     padding: '0px 25px',
   }
+
   return (
     <>
-      <button style={simpleButton} onClick={() => action()}>
+      <button
+        className={styles['button-animate']}
+        style={simpleButton}
+        onClick={() => action()}
+      >
         {text}
       </button>
     </>

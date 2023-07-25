@@ -1,34 +1,28 @@
-import React, { useState } from 'react'
-import styles from '@/styles/components/auth/auth.module.css'
+import React, { useEffect, useState } from 'react'
+import styles from '@/styles/auth.module.css'
 import Image from 'next/image'
 import close from '/public/assets/images/circle-xmark.png'
-import facebook from '/public/assets/images/facbook.png'
-import google from '/public/assets/images/google.png'
 import Button from '../buttons/Button'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import OTPInput from 'react-otp-input'
 import { createAPIEndPoint } from '@/src/config/api'
 import { endPoints } from '@/src/config/endpoints'
+import { useToasts } from 'react-toast-notifications'
 
-const Auth = ({
-  headingText,
-  buttonText,
-  isLoggedIn,
-  onClose,
-  mode,
-  setMode,
-}) => {
+const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   const router = useRouter()
   const [OTP, setOTP] = useState('')
   const [username, setUserName] = useState('')
   const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  
   const shouldRenderInput = mode == 'signup'
-  const isForgotPassword = mode == 'forgot-password'
+  const { addToast } = useToasts()
 
-  // const [isForgotPassword, setIsForgotPassword] = useState(false)
+ 
 
   // register function
   const RegisterUser = async () => {
@@ -36,6 +30,8 @@ const Auth = ({
       username,
       email,
       password,
+      firstName,
+      lastName,
     }
 
     try {
@@ -44,10 +40,17 @@ const Auth = ({
       setUserName('')
       setEmail('')
       setPassword('')
+      setFirstName('')
+      setLastName('')
       localStorage.setItem('Token', jwt)
       localStorage.setItem('User', JSON.stringify(user))
       console.log(response)
-      // router.push('/login')
+      // Toast notification for successfully signup
+      addToast('You have successful Signup!', {
+        appearance: 'success',
+        autoDismiss: true,
+      })
+      router.push('/')
     } catch (error) {
       console.log(error)
     }
@@ -64,8 +67,22 @@ const Auth = ({
       const { jwt, user } = response.data
       localStorage.setItem('Token', jwt)
       localStorage.setItem('User', JSON.stringify(user))
-      // router.push('/')
+      // Toast notification for successful login
+      addToast('Login successful!', {
+        appearance: 'success',
+        autoDismiss: true,
+      })
+      router.push('/book-now')
     } catch (error) {
+      const errorMessage = error.response
+        ? error.response.data.error.message
+        : 'An error occurred. Please try again.'
+      // Toast notification for login error
+      console.log(errorMessage, 'api error messsage')
+      addToast(errorMessage, {
+        appearance: 'error',
+        autoDismiss: true,
+      })
       console.log(error, 'error in login')
     }
   }
@@ -95,7 +112,6 @@ const Auth = ({
   const handleModalClose = () => {
     onClose()
     setMode('login')
-    // setIsForgotPassword(false)
   }
 
   const handleModeToggle = () => {
@@ -131,6 +147,7 @@ const Auth = ({
             height={25}
             onClick={handleModalClose}
           />
+          {console.log(mode, 'mode check')}
         </div>
         <div className={styles.authFormInputs}>
           {mode == 'forgot-password' && (
@@ -151,8 +168,16 @@ const Auth = ({
               {/* inputForm */}
               {shouldRenderInput && (
                 <>
-                    <input placeholder='First Name' type='text' />
-                    <input placeholder='Last Name' type='text' />
+                  <input
+                    placeholder='First Name'
+                    type='text'
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <input
+                    placeholder='Last Name'
+                    type='text'
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
                   <input
                     placeholder='Username'
                     onChange={(e) => setUserName(e.target.value)}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@/styles/components/header.module.css'
 import Image from 'next/image'
 import headerLogo from '/public/assets/images/logo.svg'
@@ -6,8 +6,29 @@ import arrow from '/public/assets/images/arrow-up-right.svg'
 import StyledButton from '../buttons/StyledButton'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Auth from '../auth/auth'
 const Header = () => {
   const router = useRouter()
+  const [mode, setMode] = useState('login')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isToken, setIsToken] = useState(null)
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('Token')
+    setIsToken(authToken)
+  }, [])
+
+  console.log(isToken,"ppppp");
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+    setMode('login')
+  }
+
   return (
     <>
       <div className={styles.headerContainer}>
@@ -59,11 +80,48 @@ const Header = () => {
             </div>
             <div className={styles.headerButton}>
               <Link href='/book-now'>
-                <StyledButton backgroundColor='#fff' color='#000' text='Book Now' image={arrow}/>
-                  
+                <StyledButton
+                  backgroundColor='#fff'
+                  color='#000'
+                  text='Book Now'
+                  image={arrow}
+                  onClick={() => {
+                    isToken === null
+                      ? handleModalOpen():router.push('/book-now')
+                  }}
+                />
               </Link>
             </div>
           </div>
+      {isModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <Auth
+              mode={mode}
+              setMode={setMode}
+              headingText={
+                mode == 'login'
+                  ? 'Log in'
+                  : mode == 'signup'
+                  ? 'Sign Up'
+                  : mode == 'forgot-password'
+                  ? 'Forgot Password'
+                  : 'Reset-Password'
+              }
+              buttonText={
+                mode == 'login'
+                  ? 'Log in'
+                  : mode == 'signup'
+                  ? 'Sign Up'
+                  : mode == 'forgot-password'
+                  ? 'Forgot Password'
+                  : 'Reset-Password'
+              }
+              onClose={handleModalClose}
+            />
+          </div>
+        </div>
+      )}
         </div>
       </div>
     </>

@@ -4,17 +4,22 @@ import Switch from 'react-switch'
 import StyledButton from '../../../buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
 import Auth from '../../../auth/auth'
-import MySession from '../mySession/MySession'
 import PromoCard from './PromoCard'
+import { useRouter } from 'next/router'
 
 const DiscountToggle = () => {
+  const router = useRouter()
   const [isChecked, setIsChecked] = useState(false)
   const [isCheckedTwo, setIsCheckedTwo] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isPromoCardModalOpen, setIsPromoCardModalOpen] = useState(false)
   const [mode, setMode] = useState('login')
+  const [isToken, isSetToken] = useState(null)
 
-  const isLoggedIn = false
+  useEffect(() => {
+    const authToken = localStorage.getItem('Token')
+    isSetToken(authToken)
+  }, [])
 
   const handleSwitchChange = (checked) => {
     setIsChecked(checked)
@@ -22,9 +27,6 @@ const DiscountToggle = () => {
       setIsPromoCardModalOpen(true)
     }
   }
-  useEffect(() => {
-    console.log(isModalOpen, 'isModalCheck')
-  }, [isModalOpen])
 
   const handleSwitchChangeTwo = (checkedTwo) => {
     setIsCheckedTwo(checkedTwo)
@@ -40,14 +42,6 @@ const DiscountToggle = () => {
   const handleModalClose = () => {
     setIsModalOpen(false)
     setMode('login')
-  }
-
-  const handleModeToggle = () => {
-    if (mode === 'login') {
-      setMode('signup')
-    } else {
-      setMode('login')
-    }
   }
 
   const handlePromoCardModalClose = () => {
@@ -99,7 +93,9 @@ const DiscountToggle = () => {
               backgroundColor='#E1AD9D'
               text='Book Now'
               image={arrow}
-              onClick={() => handleModalOpen()}
+              onClick={() => {
+                isToken !== null ? router.push('/book-now') : handleModalOpen()
+              }}
             />
           </div>
 
@@ -107,7 +103,6 @@ const DiscountToggle = () => {
             <div className={styles.modalOverlay}>
               <div className={styles.modalContent}>
                 <Auth
-                  isLoggedIn={isLoggedIn}
                   mode={mode}
                   setMode={setMode}
                   headingText={

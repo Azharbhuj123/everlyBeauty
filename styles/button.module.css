@@ -1,0 +1,16 @@
+.button-animate {
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+.button-animate:hover {
+  transition: all 0.5s ease;
+  transform: scale(1.07);
+}
+.styledButton-animate {
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+.styledButton-animate:hover {
+  transition: all 0.5s ease !important;
+  transform: scale(1.1) !important;
+}
