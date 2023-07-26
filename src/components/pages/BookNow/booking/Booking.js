@@ -30,6 +30,7 @@ const Booking = () => {
         return 'Confirm'
     }
   }
+  
   return (
     <>
       <div className={styles.bookingContainer}>

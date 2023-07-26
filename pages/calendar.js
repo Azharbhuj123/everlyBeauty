@@ -2,7 +2,7 @@ import MyCalender from '@/src/components/pages/BookNow/calendar/MyCalender'
 import React from 'react'
 MyCalender
 
-function Calener() {
+function Calendar() {
   return (
     <div>
       <MyCalender />
@@ -10,4 +10,4 @@ function Calener() {
   )
 }
 
-export default Calener
+export default Calendar

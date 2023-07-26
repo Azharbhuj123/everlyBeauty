@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Banner from '@/src/components/pages/Home/bannerSeection/bannerSection'
-import BodyService from '@/src/components/bodyService/BodyService'
 import Testimonals from '@/src/components/pages/Home/testimonals/Testimonals'
 import PromiseSection from '@/src/components/pages/Home/promise/PromiseSection'
+import BodyService from '@/src/components/pages/Home/bodyService/BodyService'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +19,7 @@ export default function Home() {
       </Head>
       <Banner />
       <PromiseSection />
-      <BodyService />
+      <BodyService/>
       <Testimonals />
     </>
   )

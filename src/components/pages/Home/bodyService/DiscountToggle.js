@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styles from '@/styles/components/bodyService/discountToggle.module.css'
 import Switch from 'react-switch'
-import StyledButton from '../buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
-import Auth from '../auth/auth'
 import PromoCard from './PromoCard'
 import { useRouter } from 'next/router'
+import StyledButton from '@/src/components/buttons/StyledButton'
+import Auth from '@/src/components/auth/auth'
 
 const DiscountToggle = () => {
   const router = useRouter()
@@ -94,7 +94,7 @@ const DiscountToggle = () => {
               text='Book Now'
               image={arrow}
               onClick={() => {
-                isToken !== null ? router.push('/book-now') : handleModalOpen()
+                isToken !== null ? router.push('/calendar') : handleModalOpen()
               }}
             />
           </div>
