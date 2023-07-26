@@ -1,3 +1,3 @@
 import React,{createContext} from 'react'
 
-export const discountContext=createContext(null)
+export const discountContext = createContext(null)

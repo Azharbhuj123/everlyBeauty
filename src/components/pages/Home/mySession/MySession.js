@@ -3,13 +3,13 @@ import styles from '@/styles/components/bodyService/bodyService.module.css'
 import { ServiceReciptData, TotalReciptData } from '@/pages/api/utils'
 import { bookingContext } from '@/store/bookingContext'
 import MySessionInvoice from './MySessionInvoice'
-// import { discountContext } from '@/store/discountContext'
+import { discountContext } from '@/store/discountContext'
 // import { discountPercentContext } from '@/store/discountPercentContext'
 
 const MySession = () => {
-  const [discount, setDiscount] = useState(0)
+  // const [discount, setDiscount] = useState(0)
   const [discountPercent, setDiscountPercent] = useState(0)
-  // const [discount, setDiscount] = useContext(discountContext)
+  const [discount, setDiscount] = useContext(discountContext)
   // const [discountPercent, setDiscountPercent] = useContext(discountPercentContext)
 
   // console.log(discountContext, 'context check');

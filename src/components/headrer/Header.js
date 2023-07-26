@@ -7,6 +7,7 @@ import StyledButton from '../buttons/StyledButton'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Auth from '../auth/auth'
+
 const Header = () => {
   const router = useRouter()
   const [mode, setMode] = useState('login')
@@ -79,7 +80,6 @@ const Header = () => {
               </Link>
             </div>
             <div className={styles.headerButton}>
-              <Link href='/book-now'>
                 <StyledButton
                   backgroundColor='#fff'
                   color='#000'
@@ -90,7 +90,6 @@ const Header = () => {
                       ? handleModalOpen():router.push('/book-now')
                   }}
                 />
-              </Link>
             </div>
           </div>
       {isModalOpen && (
