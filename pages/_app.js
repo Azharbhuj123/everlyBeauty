@@ -1,21 +1,20 @@
 import '@/styles/globals.css'
 import { bookingContext } from '@/store/bookingContext'
-import { discountContext } from '@/store/discountContext'
 import { discountPercentContext } from '@/store/discountPercentContext'
 import React, { useState } from 'react'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import { ToastProvider } from 'react-toast-notifications'
+import Layout from '@/src/components/Layout/Layout'
 
 export default function App({ Component, pageProps }) {
   const [booking, setBooking] = useState([])
-  const [discount, setDiscount] = useState(0)
   const [discountPercent, setDiscountPercent] = useState(0)
 
   return (
-    <discountContext.Provider value={[discount, setDiscount]}>
+    <Layout>
       <discountPercentContext.Provider
-        value={(discountPercent, setDiscountPercent)}
+        value={[discountPercent, setDiscountPercent]}
       >
         <ToastProvider>
           <bookingContext.Provider value={[booking, setBooking]}>
@@ -27,6 +26,6 @@ export default function App({ Component, pageProps }) {
           </bookingContext.Provider>
         </ToastProvider>
       </discountPercentContext.Provider>
-    </discountContext.Provider>
+    </Layout>
   )
 }

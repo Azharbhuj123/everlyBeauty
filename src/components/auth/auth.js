@@ -72,7 +72,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
         appearance: 'success',
         autoDismiss: true,
       })
-      router.push('/book-now')
+      router.push('/calendar')
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.error.message

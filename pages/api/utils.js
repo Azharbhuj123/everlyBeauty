@@ -138,12 +138,69 @@ export const blogCardData = [
   },
   {
     image: '/assets/images/blog2.svg',
-    question: "Is Laser Hair Removal Safe?",
+    question: 'Is Laser Hair Removal Safe?',
     text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
   },
   {
     image: '/assets/images/blog3.svg',
     question: 'What Should I do Before and After My Session?',
     text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+  },
+]
+
+export const services = [
+  {
+    id: 1,
+    name: 'Leg',
+    price: '90',
+    time: '12',
+  },
+  {
+    id: 2,
+    name: 'Bikini',
+    price: '70',
+    time: 9,
+  },
+  {
+    id: 3,
+    name: 'Arm',
+    price: '70',
+    time: '9',
+  },
+  {
+    id: 4,
+    name: 'Back',
+    price: '55',
+    time: '7',
+  },
+  {
+    id: 5,
+    name: 'Front',
+    price: '55',
+    time: '7',
+  },
+  {
+    id: 6,
+    name: 'Under Arms',
+    price: '45',
+    time: '6',
+  },
+  {
+    id: 7,
+    name: 'Chest',
+    price: '40',
+    time: '5',
+  },
+  {
+    id: 8,
+    name: 'Face & Neck',
+    price: '55',
+    time: '7',
+  },
+  {
+    id: 9,
+    name: 'Abdomen',
+    price: '40',
+    time: '5',
   },
 ]

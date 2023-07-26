@@ -139,11 +139,31 @@ input:checked ~ label {
 }
 /* end */
 
-
 /* MUI Calendar */
 /* .MuiDialogContent-root:first-child {
   padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-} */
+}
+/* end */
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+:-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1ad9d;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* background: gray;  */
+}
+/* end */
