@@ -10,7 +10,7 @@ const BlogCard = () => {
         {blogCardData.map((item, index) => {
           return (
             <>
-              <div className={styles.blogCard}>
+              <div key={index} className={styles.blogCard}>
                 <div className={styles.blogCardImage}>
                   <Image src={item.image} width={200} height={100} />
                 </div>

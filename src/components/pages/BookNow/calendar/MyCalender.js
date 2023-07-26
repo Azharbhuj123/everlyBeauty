@@ -64,7 +64,7 @@ const MyCalender = () => {
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500, padding: 50 }}
+        style={{ height: 500, }}
         dateConstraint={isWeekday}
         selectable
         onSelectSlot={(e) => handleSelectSlot(e)}

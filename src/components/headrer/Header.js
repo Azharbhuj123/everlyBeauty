@@ -18,7 +18,7 @@ const Header = () => {
     setIsToken(authToken);
   }, []);
 
-  console.log(isToken, "ppppp");
+  console.log(isToken, "auth token check");
 
   const handleModalOpen = () => {
     setIsModalOpen(true);

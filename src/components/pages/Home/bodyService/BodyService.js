@@ -50,7 +50,7 @@ const BodyService = () => {
     },
     {
       id: 5,
-      name: "Back",
+      name: "Front",
       price: "55",
       time: "7",
     },

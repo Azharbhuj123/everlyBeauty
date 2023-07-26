@@ -16,7 +16,7 @@ const PromoCard = ({ onClose }) => {
       <div className={styles.promoForm}>
         <div className={styles.promoFormContent}>
           <div className={styles.promoFormContentHeading}>
-            <h1>Enter Discount Code</h1>
+            <h1>Promo Code</h1>
             <Image
               src={close}
               alt=''
