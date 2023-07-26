@@ -142,26 +142,4 @@ input:checked ~ label {
   margin-top: 1em;
 }
 
-/* Vertical-Stepper */
-.MuiStepLabel-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.MuiStepLabel-label p {
-  font-size: 16px;
-  font-family: 'Gilroy';
-  color: #000;
-}
-.MuiStepLabel-label span {
-  font-size: 16px;
-  font-family: 'Gilroy';
-  color: #000;
-}
-.Mui-active{
-  color: #E1AD9D !important;
-}
-.Mui-completed {
-  color: #E1AD9D !important;
-}
 

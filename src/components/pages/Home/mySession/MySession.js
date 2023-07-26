@@ -64,7 +64,7 @@ const MySession = () => {
                   <div
                     className={styles.bodyServiceContentRightTableDescription}
                   >
-                    <p>{`${item.time}${'min'}`}</p>
+                    <p>{`${item.time}${"min"}`}</p>
                   </div>
                   <p
                     className={
