@@ -11,6 +11,8 @@ const MyCalender = () => {
   const [events, setEvents] = useState([]);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+  const [date, setDate] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState({});
 
   const isWeekday = (date) => {
@@ -44,9 +46,8 @@ const MyCalender = () => {
   };
 
   const handleSelectTime = (time, durationInMinutes) => {
-    const endTime = moment(selectedTime)
-      .add(durationInMinutes, "minutes")
-      .toDate();
+    const endTime = moment(selectedTime).add(45, "minutes").toDate();
+    setEndTime(endTime);
     const dateKey = moment(selectedTime).format("YYYY-MM-DD");
 
     setEvents([
@@ -64,7 +65,7 @@ const MyCalender = () => {
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500, }}
+        style={{ height: 500 }}
         dateConstraint={isWeekday}
         selectable
         onSelectSlot={(e) => handleSelectSlot(e)}
@@ -72,6 +73,9 @@ const MyCalender = () => {
 
       <TimePickerDialog
         style={{ padding: 30 }}
+        start={selectedTime}
+        end={endTime}
+        date={date}
         open={showTimePicker}
         onClose={() => setShowTimePicker(false)}
         onSelectTime={handleSelectTime}

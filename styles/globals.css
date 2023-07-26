@@ -141,9 +141,9 @@ input:checked ~ label {
 
 
 /* MUI Calendar */
-.MuiDialogContent-root:first-child {
+/* .MuiDialogContent-root:first-child {
   padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
+} */
