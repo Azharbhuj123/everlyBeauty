@@ -1,19 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styles from '@/styles/components/bodyService/bodyService.module.css'
-import { ServiceReciptData, TotalReciptData } from '@/pages/api/utils'
 import { bookingContext } from '@/store/bookingContext'
 import MySessionInvoice from './MySessionInvoice'
-import { discountContext } from '@/store/discountContext'
-// import { discountPercentContext } from '@/store/discountPercentContext'
+import MySessionDiscount from './MySessionDiscount'
+import { discountPercentContext } from '@/store/discountPercentContext'
 
 const MySession = () => {
-  // const [discount, setDiscount] = useState(0)
-  const [discountPercent, setDiscountPercent] = useState(0)
-  const [discount, setDiscount] = useContext(discountContext)
-  // const [discountPercent, setDiscountPercent] = useContext(discountPercentContext)
-
-  // console.log(discountContext, 'context check');
   const [booking] = useContext(bookingContext)
+  const [discount, setDiscount] = useState(0)
+  const [discountPercent, setDiscountPercent] = useContext(
+    discountPercentContext
+  )
 
   let totalPrice = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseFloat
@@ -31,7 +28,6 @@ const MySession = () => {
       discountPercent = 50
     }
     setDiscountPercent(discountPercent)
-    // Calculate the discount amount using the discount percentage
     const discountAmount = (totalPrice / 100) * discountPercent
     setDiscount(discountAmount)
   }
@@ -40,9 +36,7 @@ const MySession = () => {
     getDiscount(totalPrice)
   }, [totalPrice])
 
-  // Calculate the total amount after applying the discount
   const totalAmount = totalPrice - discount
-
   return (
     <>
       <div className={styles.bodyServiceContentRightHeading}>
@@ -97,7 +91,7 @@ const MySession = () => {
           })}
         </div>
         <div className={styles.bodyServiceContentRightcalc}>
-          <MySessionInvoice
+          <MySessionDiscount
             heading={'Discount'}
             discount={discountPercent}
             amount={discount}

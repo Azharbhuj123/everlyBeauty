@@ -139,42 +139,6 @@ input:checked ~ label {
 }
 /* end */
 
-/* Vertical-Stepper */
-.MuiStepLabel-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.MuiStepLabel-label p {
-  font-size: 16px;
-  font-family: 'Gilroy';
-  color: #000;
-}
-.MuiStepLabel-label span {
-  font-size: 16px;
-  font-family: 'Gilroy';
-  color: #000;
-}
-.Mui-active{
-  color: #E1AD9D !important;
-}
-.Mui-completed {
-  color: #E1AD9D !important;
-}
-::-webkit-scrollbar {
-  width: 4px;
-  border: 1px solid #d5d5d5;
-}
-::-webkit-scrollbar-track {
-  border-radius: 0;
-  background: #eeeeee;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  background: #E1AD9D;
-}
-/* end */
-
 /* MUI Calendar */
 .MuiDialogContent-root:first-child {
   padding-top: 20px;
@@ -182,3 +146,24 @@ input:checked ~ label {
   flex-direction: column;
   gap: 20px;
 }
+/* end */
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+:-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1ad9d;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* background: gray;  */
+}
+/* end */

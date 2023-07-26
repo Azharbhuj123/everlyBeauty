@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from '@/styles/components/bodyService/bodyService.module.css'
 import Image from 'next/image'
 import female from '/public/assets/images/colada-female.png'
-import { ServiceReciptData, TotalReciptData } from '@/pages/api/utils'
+import { services } from '@/pages/api/utils'
 import Progressbar from './Progressbar'
 import DiscountToggle from './DiscountToggle'
 import DiscountType from './DiscountType'
@@ -10,8 +10,14 @@ import MySession from '../mySession/MySession'
 import { bookingContext } from '@/store/bookingContext'
 import { createAPIEndPoint } from '@/src/config/api'
 import { endPoints } from '@/src/config/endpoints'
+import { discountPercentContext } from '@/store/discountPercentContext'
+
 const BodyService = () => {
   const [booking, setBooking] = useContext(bookingContext)
+  const [discountPercent, setDiscountPercent] = useContext(
+    discountPercentContext
+  )
+
   const getService = async () => {
     try {
       const Response = await createAPIEndPoint(endPoints.services).fetchAll()
@@ -22,63 +28,6 @@ const BodyService = () => {
   useEffect(() => {
     getService()
   }, [])
-
-  const services = [
-    {
-      id: 1,
-      name: 'Leg',
-      price: '90',
-      time: '12',
-    },
-    {
-      id: 2,
-      name: 'Bikini',
-      price: '70',
-      time: 9,
-    },
-    {
-      id: 3,
-      name: 'Arm',
-      price: '70',
-      time: '9',
-    },
-    {
-      id: 4,
-      name: 'Back',
-      price: '55',
-      time: '7',
-    },
-    {
-      id: 5,
-      name: 'Front',
-      price: '55',
-      time: '7',
-    },
-    {
-      id: 6,
-      name: 'Under Arms',
-      price: '45',
-      time: '6',
-    },
-    {
-      id: 7,
-      name: 'Chest',
-      price: '40',
-      time: '5',
-    },
-    {
-      id: 8,
-      name: 'Face & Neck',
-      price: '55',
-      time: '7',
-    },
-    {
-      id: 9,
-      name: 'Abdomen',
-      price: '40',
-      time: '5',
-    },
-  ]
 
   const handleCheckBox = (service) => {
     const existingService = booking.find((item) => item.id === service.id)
@@ -134,7 +83,7 @@ const BodyService = () => {
             }}
           >
             <div style={{ width: '75%' }}>
-              <Progressbar />
+              <Progressbar discountPercent={discountPercent} />
               <DiscountToggle />
               <DiscountType />
             </div>

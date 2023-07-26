@@ -9,26 +9,26 @@ import { useRouter } from 'next/router'
 import Auth from '../auth/auth'
 
 const Header = () => {
-  const router = useRouter()
-  const [mode, setMode] = useState('login')
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isToken, setIsToken] = useState(null)
+  const router = useRouter();
+  const [mode, setMode] = useState("login");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isToken, setIsToken] = useState(null);
 
   useEffect(() => {
-    const authToken = localStorage.getItem('Token')
-    setIsToken(authToken)
-  }, [])
+    const authToken = localStorage.getItem("Token");
+    setIsToken(authToken);
+  }, []);
 
-  console.log(isToken,"auth token check");
+  console.log(isToken, "auth token check");
 
   const handleModalOpen = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   const handleModalClose = () => {
-    setIsModalOpen(false)
-    setMode('login')
-  }
+    setIsModalOpen(false);
+    setMode("login");
+  };
 
   return (
     <>
@@ -81,46 +81,47 @@ const Header = () => {
             </div>
             <div className={styles.headerButton}>
                 <StyledButton
-                  backgroundColor='#fff'
-                  color='#000'
-                  text='Book Now'
+                  backgroundColor="#fff"
+                  color="#000"
+                  text="Book Now"
                   image={arrow}
                   onClick={() => {
                     isToken === null
-                      ? handleModalOpen():router.push('/book-now')
+                      ? handleModalOpen()
+                      : router.push("/book-now");
                   }}
                 />
             </div>
           </div>
-      {isModalOpen && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
-            <Auth
-              mode={mode}
-              setMode={setMode}
-              headingText={
-                mode == 'login'
-                  ? 'Log in'
-                  : mode == 'signup'
-                  ? 'Sign Up'
-                  : mode == 'forgot-password'
-                  ? 'Forgot Password'
-                  : 'Reset-Password'
-              }
-              buttonText={
-                mode == 'login'
-                  ? 'Log in'
-                  : mode == 'signup'
-                  ? 'Sign Up'
-                  : mode == 'forgot-password'
-                  ? 'Forgot Password'
-                  : 'Reset-Password'
-              }
-              onClose={handleModalClose}
-            />
-          </div>
-        </div>
-      )}
+          {isModalOpen && (
+            <div className={styles.modalOverlay}>
+              <div className={styles.modalContent}>
+                <Auth
+                  mode={mode}
+                  setMode={setMode}
+                  headingText={
+                    mode == "login"
+                      ? "Log in"
+                      : mode == "signup"
+                      ? "Sign Up"
+                      : mode == "forgot-password"
+                      ? "Forgot Password"
+                      : "Reset-Password"
+                  }
+                  buttonText={
+                    mode == "login"
+                      ? "Log in"
+                      : mode == "signup"
+                      ? "Sign Up"
+                      : mode == "forgot-password"
+                      ? "Forgot Password"
+                      : "Reset-Password"
+                  }
+                  onClose={handleModalClose}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
