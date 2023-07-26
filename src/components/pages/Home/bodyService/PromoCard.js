@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from '@/styles/components/bodyService/PromoCard.module.css'
 import Image from 'next/image'
 import close from '/public/assets/images/circle-xmark.png'
-import Button from '../../../buttons/Button'
+import Button from '../buttons/Button'
 
 const PromoCard = ({ onClose }) => {
   const [OTP, setOTP] = useState('')
