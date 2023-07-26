@@ -18,7 +18,7 @@ const Header = () => {
     setIsToken(authToken)
   }, [])
 
-  console.log(isToken,"ppppp");
+  console.log(isToken,"auth token check");
 
   const handleModalOpen = () => {
     setIsModalOpen(true)
@@ -35,43 +35,43 @@ const Header = () => {
         <div className={styles.wrapper}>
           <div className={styles.header}>
             <div className={styles.headerLogo}>
-              <Link href='/'>
-                <Image src={headerLogo} alt='' width={100} height={50} />
+              <Link href="/">
+                <Image src={headerLogo} alt="" width={100} height={50} />
               </Link>
             </div>
             <div className={styles.headerNavbar}>
-              <Link href='/'>
+              <Link href="/">
                 <li
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === '/' ? styles.active : ''
+                    router.pathname === "/" ? styles.active : ""
                   }`}
                 >
                   {/* {console.log(active, 'color')} */}
                   Home
                 </li>
               </Link>
-              <Link href='/gallery'>
+              <Link href="/gallery">
                 <div
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === '/gallery' ? styles.active : ''
+                    router.pathname === "/gallery" ? styles.active : ""
                   }`}
                 >
                   Gallery
                 </div>
               </Link>
-              <Link href='/blog'>
+              <Link href="/blog">
                 <div
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === '/blog' ? styles.active : ''
+                    router.pathname === "/blog" ? styles.active : ""
                   }`}
                 >
                   Blog
                 </div>
               </Link>
-              <Link href='/contact-us'>
+              <Link href="/contact-us">
                 <div
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === '/contact-us' ? styles.active : ''
+                    router.pathname === "/contact-us" ? styles.active : ""
                   }`}
                 >
                   Contact Us
@@ -125,7 +125,7 @@ const Header = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

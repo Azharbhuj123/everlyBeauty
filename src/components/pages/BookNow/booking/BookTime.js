@@ -3,8 +3,9 @@ import StyledButton from "../../../buttons/StyledButton";
 import arrow from "/public/assets/images/arrow-up-right-white.svg";
 import styles from "@/styles/components/booking/bookTime.module.css";
 import MySession from "../../Home/mySession/MySession";
-import Button from "../../../buttons/Button";
+import Button from "@/src/components/buttons/Button";
 import MyCalender from "../calendar/MyCalender";
+import MyCalendar2 from "@/src/components/MyCalendar2";
 const BookTime = () => {
   return (
     <>
@@ -20,9 +21,9 @@ const BookTime = () => {
               </div>
               {/* Calendar */}
               <MyCalender />
+              {/* <MyCalendar2 /> */}
             </div>
           </div>
-
         </div>
       </div>
     </>

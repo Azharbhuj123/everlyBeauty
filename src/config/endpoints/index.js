@@ -5,4 +5,5 @@ export const endPoints = {
   resetPassword: "",
   loginWithGoogle: "connect/google",
   loginWithFaceBook: "connect/facebook",
+  services: "services",
 };

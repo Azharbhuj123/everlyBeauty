@@ -22,8 +22,8 @@ const Footer = () => {
         <div className={styles.footerTopLeft}>
           <div className={styles.footerTopLeftContent}>
             <div className={styles.footerTopLeftLogo}>
-            <Link href='/'>
-              <Image src={logo} width={250} height={0} />
+              <Link href='/'>
+                <Image src={logo} width={250} height={0} alt='' />
               </Link>
             </div>
             <div className={styles.footerTopLeftContentpara}>
@@ -35,7 +35,7 @@ const Footer = () => {
 
             <ul className={styles.footerTopLeftContact}>
               <li className={styles.footerTopLeftContactphone}>
-                <Image src={phone} width={18} height={18} />
+                <Image src={phone} width={18} height={18} alt='' />
                 <p>(905)-876-8282</p>
               </li>
               <li className={styles.footerTopLeftContactphone}>
@@ -43,19 +43,25 @@ const Footer = () => {
                 <p>info@evabeautylhr.ca</p>
               </li>
               <li className={styles.footerTopLeftContactphone}>
-                <Image src={location} width={18} height={18} />
+                <Image src={location} width={18} height={18} alt='' />
                 <p>854 King St. W., Hamilton Ontario, Canada</p>
               </li>
             </ul>
           </div>
         </div>
         <div className={styles.footerTopRight}>
-      <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-        width="100%"
-        height="100%"
-        src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div></div>
-       
-     
+          <iframe
+            class='gmap_iframe'
+            frameborder='0'
+            scrolling='no'
+            marginheight='0'
+            marginwidth='0'
+            style={{ width: '100%', height: '100%' }}
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.4505603483008!2d-79.90236482329225!3d43.26293577758375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c9b5e80cc846b%3A0x2daad40c69e692d5!2s854%20King%20St%20W%2C%20Hamilton%2C%20ON%20L8S%201K3%2C%20Canada!5e0!3m2!1sen!2s!4v1690312423172!5m2!1sen!2s'
+          ></iframe>
+        </div>
+      </div>
+
       <div className={styles.footerContainer}>
         <div className={styles.footerWrapper}>
           <div className={styles.footerLeft}>

@@ -70,12 +70,12 @@ input:checked ~ label {
   height: 20px;
   border-radius: 5px;
 }
-
 [type='checkbox']:checked {
   appearance: auto;
   accent-color: #dcaa9b;
   border-radius: 5px;
 }
+/* end */
 
 /* progressbar */
 .p-progressbar {
@@ -93,6 +93,7 @@ input:checked ~ label {
   height: 23px !important;
   top: 1px !important;
 }
+/* end */
 
 /* swiper-slider */
 .swiper-pagination-bullets {
@@ -112,12 +113,6 @@ input:checked ~ label {
   display: inline-block;
   border-radius: var(--swiper-pagination-bullet-border-radius, 50%) !important;
 }
-.MuiDialogContent-root:first-child {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 .swiper-pagination-bullet-active {
   background-color: #e1ad9d !important;
   width: var(
@@ -130,6 +125,7 @@ input:checked ~ label {
   ) !important;
   border-radius: var(--swiper-pagination-bullet-border-radius, 20px) !important;
 }
+/* end */
 
 /* Progress-Graph */
 .recharts-legend-item svg {
@@ -141,6 +137,7 @@ input:checked ~ label {
   text-transform: uppercase;
   margin-top: 1em;
 }
+/* end */
 
 /* Vertical-Stepper */
 .MuiStepLabel-label {
@@ -164,4 +161,24 @@ input:checked ~ label {
 .Mui-completed {
   color: #E1AD9D !important;
 }
+::-webkit-scrollbar {
+  width: 4px;
+  border: 1px solid #d5d5d5;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #eeeeee;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: #E1AD9D;
+}
+/* end */
 
+/* MUI Calendar */
+.MuiDialogContent-root:first-child {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

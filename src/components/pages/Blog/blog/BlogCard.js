@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from '@/styles/components/blog/blogCard.module.css'
-import Image from 'next/image'
-import { blogCardData } from '@/pages/api/utils'
+import React from "react";
+import styles from "@/styles/components/blog/blogCard.module.css";
+import Image from "next/image";
+import { blogCardData } from "@/pages/api/utils";
 
 const BlogCard = () => {
   return (
@@ -10,7 +10,7 @@ const BlogCard = () => {
         {blogCardData.map((item, index) => {
           return (
             <>
-              <div className={styles.blogCard}>
+              <div key={index} className={styles.blogCard}>
                 <div className={styles.blogCardImage}>
                   <Image src={item.image} width={200} height={100} />
                 </div>
@@ -20,11 +20,11 @@ const BlogCard = () => {
                 </div>
               </div>
             </>
-          )
+          );
         })}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BlogCard
+export default BlogCard;

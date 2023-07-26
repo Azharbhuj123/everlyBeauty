@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "@/styles/components/bodyService/bodyService.module.css";
+import React from 'react'
+import styles from '@/styles/components/bodyService/bodyService.module.css'
 
-const MySessioninvoice = ({ heading, amount }) => {
+const MySessionInvoice = ({ heading, amount, discount}) => {
   return (
     <>
       <div className={styles.bodyServiceContentRightcalcRow}>
@@ -12,7 +12,7 @@ const MySessioninvoice = ({ heading, amount }) => {
         </div>
         <div className={styles.bodyServiceContentRightcalcPrices}>
           <div className={styles.bodyServiceContentRightcalcDetailService}>
-            <p></p>
+            <p>{discount}</p>
           </div>
           <div className={styles.bodyServiceContentRightcalcDetailService}>
             <p>${amount}</p>
@@ -20,7 +20,8 @@ const MySessioninvoice = ({ heading, amount }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MySessioninvoice;
+export default MySessionInvoice
+

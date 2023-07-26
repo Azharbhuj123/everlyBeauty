@@ -10,7 +10,7 @@ const PromiseCard = () => {
           {promiseCardData.map((item, index) => {
             return (
               <>
-                <div className={styles.promiseCard}>
+                <div key={index} className={styles.promiseCard}>
                   <div className={styles.promiseCardContent}>
                     <div className={styles.promiseCardContentImage}>
                       <Image src={item.img} width={80} height={80} alt='' />

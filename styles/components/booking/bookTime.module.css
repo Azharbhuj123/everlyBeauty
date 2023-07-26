@@ -1,25 +1,28 @@
-.bookTimeSection{
- width: 100%;
- display: flex;
- justify-content: space-between;
- background-color: #fff;
- border-radius: 80px;
- padding: 40px 40px;
- margin: 4em 0;
- height: 700px;
+.bookTimeSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 80px;
+  padding: 40px 40px;
+  margin: 4em 0;
+  height: 700px;
 }
-.bookTimeSectionLeft{
- width: 40%;
+.bookTimeSectionLeft {
+  width: 40%;
+  overflow-y: scroll;
+  padding-right: 10px;
 }
-.bookTimeSectionRight{
- width: 55%;
+.bookTimeSectionRight {
+  width: 55%;
 }
-.bookTimeSectionRightContent{
- display: flex;
- flex-direction: column;
+.bookTimeSectionRightContent {
+  display: flex;
+  flex-direction: column;
 }
-.bookTimeSectionRightContent h1{
- font-size: 28px;
- font-family: 'Gilroy';
- letter-spacing: 1px;
+.bookTimeSectionRightContent h1 {
+  font-size: 28px;
+  font-family: 'Gilroy';
+  letter-spacing: 1px;
+  margin-bottom: 1em;
 }
