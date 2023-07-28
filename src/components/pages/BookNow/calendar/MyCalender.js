@@ -40,7 +40,7 @@ const MyCalender = () => {
   };
 
   useEffect(() => {
-    getAllSlots();
+    // getAllSlots();
   }, []);
 
   const isSlotOccupied = (start, end) => {
