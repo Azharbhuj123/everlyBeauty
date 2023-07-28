@@ -183,3 +183,24 @@ input:checked ~ label {
     width: 5px !important;
   }
 }
+
+/* Drawer */
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  width: 50%;
+  background-color: #fceeeb;
+}
+.css-10hburv-MuiTypography-root {
+  font-size: 16px;
+  font-family: 'Gilroy' !important;
+  border-bottom: 1px solid #DCAA9B;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.css-10hburv-MuiTypography-root:last-child {
+border-bottom: none;
+}
+@media screen and (max-width: 500px) {
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+    width: 75%;
+  }
+}

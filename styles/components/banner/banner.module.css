@@ -141,7 +141,7 @@
 
 @media screen and (max-width: 768px) {
   .bannerWrapper {
-    height: auto;
+    height: 17em;
   }
   .bannerContentRight {
     display: none;
