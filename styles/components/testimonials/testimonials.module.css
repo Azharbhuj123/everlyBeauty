@@ -55,3 +55,19 @@
   font-family: 'Gilroy';
   margin-top: 1em;
 }
+@media screen and (max-width: 768px) {
+  .testimonialsHeading {
+    margin-top: 4em;
+  }
+}
+@media screen and (max-width: 425px) {
+  .testimonialsHeading {
+    margin: 2em 1em 2em 1em !important;
+  }
+  .testimonialsHeading h1 {
+    font-size: 2em;
+  }
+  .testimonialsCards{
+    margin: 2em 1em 4em 1em !important;
+  }
+}

@@ -51,7 +51,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding:  0 1em;
+  padding: 0 1em;
 }
 .searchBar {
   display: flex;
@@ -85,4 +85,34 @@
 .blogCards {
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .blogsContainer {
+    margin-top: 2em;
+  }
+  .backgroundimage {
+    height: auto;
+  }
+  .blogsContent {
+    margin-top: 6em !important;
+    margin-bottom: 2em !important;
+  }
+  .searchBar {
+    width: 80%;
+  }
+  .blogsContentWrapper {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .blogsContainer {
+    margin-top: 1em;
+  }
+  .blogsContent h1 {
+    font-size: 2em;
+  }
+  .blogsContent h3 {
+    font-size: 18px;
+  }
 }

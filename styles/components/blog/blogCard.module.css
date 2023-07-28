@@ -44,3 +44,15 @@
   color: #ffff;
   margin-top: 1em;
 }
+
+@media screen and (max-width: 768px) {
+  .blogCards {
+    flex-wrap: wrap;
+  }
+  .blogCard {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(50% - 30px) !important;
+    /* margin: 10px; */
+  }
+}

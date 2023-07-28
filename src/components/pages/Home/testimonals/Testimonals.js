@@ -36,6 +36,27 @@ const Testimonals = () => {
                 clickable: true,
               }}
               modules={[Pagination]}
+              breakpoints={{
+                769: {
+                  slidesPerView: 3,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                501: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                500: {
+                  slidesPerView: 1,
+                  spaceBetween: 30,
+                },
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 30,
+                },
+              }}
             >
               {testimonalsCrdData.map((item, index) => {
                 return (

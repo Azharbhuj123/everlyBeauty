@@ -30,11 +30,11 @@ const MySession = () => {
     } else if (totalPrice >= 450) {
       discountPercent = 50;
     }
-    setDiscountPercent(discountPercent);
-    const discountAmount = (totalPrice / 100) * discountPercent;
-    const roudedDiscountAmount = Math.round(discountAmount);
-    setDiscount(roudedDiscountAmount);
-  };
+    setDiscountPercent(discountPercent)
+    const discountAmount = (totalPrice / 100) * discountPercent
+    const roudedDiscountAmount = Math.round(discountAmount)
+    setDiscount(roudedDiscountAmount)
+  }
 
   useEffect(() => {
     getDiscount(totalPrice);
@@ -103,8 +103,8 @@ const MySession = () => {
             discount={discountPercent}
             amount={discount}
           />
-          <MySessionInvoice heading={"Subtotal"} amount={totalPrice} />
-          <MySessionInvoice heading={"Total"} amount={roundedTotalAmount} />
+          <MySessionInvoice heading={'Subtotal'} amount={totalPrice} />
+          <MySessionInvoice heading={'Total'} amount={roundedTotalAmount} />
         </div>
       </div>
     </>

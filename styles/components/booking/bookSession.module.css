@@ -20,10 +20,10 @@
 }
 .bookSessionCard {
   background-color: rgb(162, 162, 162, 0.2);
-  padding: 40px 30px;
+  padding: 30px 20px;
   border-radius: 30px;
   flex: 1 0 calc(33.33% - 30px);
-  margin: 15px;
+  margin: 10px;
 }
 .bookSessionCardTitle {
   display: flex;
@@ -35,9 +35,34 @@
   font-family: 'Gilroy';
   letter-spacing: 1px;
 }
-.bookSessionCardPara p{
- font-size: 16px;
+.bookSessionCardPara p {
+  font-size: 16px;
   font-family: 'poppins';
-  color: #A2A2A2;
+  color: #a2a2a2;
   margin-top: 1em;
+}
+
+@media screen and (max-width: 1440px) {
+  .bookSessionCards {
+    margin-top: 1em !important;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .bookSessionSection {
+    height: 750px;
+  }
+  .bookSessionCardPara p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 865px) {
+  .bookSessionCard {
+    padding: 20px !important;
+  }
+  .bookSessionCardTitle h2 {
+    font-size: 18px;
+  }
+  .bookSessionSection {
+    padding: 30px;
+  }
 }

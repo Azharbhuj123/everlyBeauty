@@ -75,6 +75,12 @@ input:checked ~ label {
   accent-color: #dcaa9b;
   border-radius: 5px;
 }
+@media screen and (max-width: 768px) {
+  [type='checkbox'] {
+    width: 20px;
+    height: 20px;
+  }
+}
 /* end */
 
 /* progressbar */
@@ -169,6 +175,37 @@ input:checked ~ label {
 /* end */
 
 /* Calendar */
-.rbc-btn-group > button:first-child:not(:last-child) {
+/* .rbc-btn-group > button:first-child:not(:last-child) {
   display: none;
+} */
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 5px !important;
+  }
+}
+
+/* Drawer */
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  width: 50%;
+  background-color: #fceeeb;
+}
+.css-10hburv-MuiTypography-root {
+  font-size: 16px;
+  font-family: 'Gilroy' !important;
+  border-bottom: 1px solid #dcaa9b;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.css-10hburv-MuiTypography-root:last-child {
+  border-bottom: none;
+}
+@media screen and (max-width: 500px) {
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+    width: 75%;
+  }
+}
+
+/* Calendar */
+.rbc-btn-group > button:first-child {
+  background-color: #e1ad9d;
 }

@@ -63,3 +63,18 @@
     font-size: 2.5em;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .faqContainer {
+    margin-top: 2em;
+  }
+}
+@media screen and (max-width: 425px) {
+  .faqTitle h1 {
+    font-size: 2em;
+  }
+  .faqContainer {
+    height: auto;
+    margin-bottom: 2em;
+  }
+}

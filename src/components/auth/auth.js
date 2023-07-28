@@ -10,17 +10,17 @@ import { endPoints } from "@/src/config/endpoints";
 import { useToasts } from "react-toast-notifications";
 
 const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
-  const router = useRouter();
-  const [OTP, setOTP] = useState("");
-  const [username, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const router = useRouter()
+  const [OTP, setOTP] = useState('')
+  const [username, setUserName] = useState('')
+  const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const shouldRenderInput = mode == "signup";
-  // const { addToast } = useToasts()
+  const shouldRenderInput = mode == 'signup'
+  const { addToast } = useToasts()
 
   // register function
   const RegisterUser = async () => {
@@ -66,10 +66,10 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       localStorage.setItem("Token", jwt);
       localStorage.setItem("User", JSON.stringify(user));
       // Toast notification for successful login
-      // addToast("Login successful!", {
-      //   appearance: "success",
-      //   autoDismiss: true,
-      // });
+      addToast("Login successful!", {
+        appearance: "success",
+        autoDismiss: true,
+      });
       router.push("/calendar");
     } catch (error) {
       const errorMessage = error.response
@@ -77,10 +77,10 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
         : "An error occurred. Please try again.";
       // Toast notification for login error
       console.log(errorMessage, "api error messsage");
-      // addToast(errorMessage, {
-      //   appearance: "error",
-      //   autoDismiss: true,
-      // });
+      addToast(errorMessage, {
+        appearance: "error",
+        autoDismiss: true,
+      });
       console.log(error, "error in login");
     }
   };
@@ -169,7 +169,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
               />
             </>
           )}
-          {mode == "forgot-password" && (
+          {mode == 'forgot-password' && (
             <input
               placeholder="Enter Registered Email"
               onChange={(e) => setEmail(e.target.value)}

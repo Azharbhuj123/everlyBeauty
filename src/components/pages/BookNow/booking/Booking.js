@@ -54,7 +54,7 @@ const Booking = () => {
               )}
             </div>
           </Link>
-          <Swiper
+          {/* <Swiper
             style={{ width: '100%', height: '850px' }}
             spaceBetween={50}
             slidesPerView={1}
@@ -65,17 +65,17 @@ const Booking = () => {
               clickable: true,
             }}
             modules={[Pagination]}
-          >
-            <SwiperSlide>
-              <BookTime />
-            </SwiperSlide>
+          > */}
+          {/* <SwiperSlide> */}
+          <BookTime />
+          {/* </SwiperSlide>
             <SwiperSlide>
               <BookSession />
             </SwiperSlide>
             <SwiperSlide>
               <BookingRemarks />
-            </SwiperSlide>
-          </Swiper>
+            </SwiperSlide> */}
+          {/* </Swiper> */}
           <div className={styles.bookingButtons}>
             <div className={styles.bookingButtonLeft}>
               {!activeSlideIndex === 0 ? (
