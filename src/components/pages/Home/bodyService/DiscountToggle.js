@@ -94,7 +94,7 @@ const DiscountToggle = () => {
               text='Book Now'
               image={arrow}
               onClick={() => {
-                isToken !== null ? router.push('/calendar') : handleModalOpen()
+                isToken !== null ? router.push('/book-now') : handleModalOpen()
               }}
             />
           </div>
