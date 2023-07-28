@@ -56,10 +56,10 @@ const BodyService = () => {
                         type="checkbox"
                         checked={booking.some(
                           (element) =>
-                            item.id === element.id &&
-                            item.name === element.name &&
-                            item.price === element.price &&
-                            item.time === element.time
+                            item?.id === element?.id &&
+                            item?.name === element?.name &&
+                            item?.price === element?.price &&
+                            item?.time === element?.time
                         )}
                         // onClick={() => setBooking([...booking, item])}
                         onChange={() => {
