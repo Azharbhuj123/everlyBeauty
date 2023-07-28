@@ -18,7 +18,7 @@
   justify-content: space-between;
 }
 .headerLogo {
-  /* width: 20%; */
+
 }
 .headerLogo img {
   width: 100%;
@@ -26,7 +26,7 @@
 .headerNavbar {
   display: flex;
   gap: 30px;
-  width: 50%;
+  width: 35em;
   justify-content: flex-end;
   font-weight: 600;
   cursor: pointer;
@@ -44,7 +44,7 @@
   color: #e1ad9d;
 }
 .headerButton {
-  width: 17%;
+  width: 12em;
 }
 .headerButton a {
   text-decoration: none;
@@ -71,4 +71,22 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 /* end */
+
+@media screen and (max-width: 1048px) {
+  .headerNavbar {
+  width: 25em;
+  }
+}
+@media screen and (max-width: 880px) {
+  .headerLogo {
+    width: 10em;
+  }
+  .headerNavbar {
+    width: 22em;
+    }
+  .headerButton {
+    width: 10em;
+  }
+}

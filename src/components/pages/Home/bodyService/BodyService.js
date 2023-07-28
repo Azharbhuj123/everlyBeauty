@@ -64,9 +64,9 @@ const BodyService = () => {
                   )
                 })}
               </div>
-              <div className={styles.bodyServiceFemale}>
-                <Image src={female} width={400} height={800} alt='' />
-              </div>
+              {/* <div className={styles.bodyServiceFemale}>
+                <Image src={female} width={400} height={'auto'} alt='' />
+              </div> */}
             </div>
             <div className={styles.bodyServiceContentRight}>
               <div className={styles.bodyServiceContentRightHeading}>
@@ -82,7 +82,7 @@ const BodyService = () => {
               marginTop: '6em',
             }}
           >
-            <div style={{ width: '75%' }}>
+            <div style={{ width: '100%', margin: '0 1em' }}>
               <Progressbar discountPercent={discountPercent} />
               <DiscountToggle />
               <DiscountType />

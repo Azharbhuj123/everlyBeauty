@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "@/styles/components/booking/bookSession.module.css";
-import Image from "next/image";
-import { bookSessionCardData } from "@/pages/api/utils";
+import React from 'react'
+import styles from '@/styles/components/booking/bookSession.module.css'
+import Image from 'next/image'
+import { bookSessionCardData } from '@/pages/api/utils'
 
 const BookSession = () => {
   return (
@@ -14,7 +14,7 @@ const BookSession = () => {
               <>
                 <div key={item.id} className={styles.bookSessionCard}>
                   <div className={styles.bookSessionCardTitle}>
-                    <Image src={item.image} width={50} height={50} alt="" />
+                    <Image src={item.image} width={50} height={50} alt='' />
                     <h2>{item.title}</h2>
                   </div>
                   <div className={styles.bookSessionCardPara}>
@@ -22,12 +22,12 @@ const BookSession = () => {
                   </div>
                 </div>
               </>
-            );
+            )
           })}
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BookSession;
+export default BookSession

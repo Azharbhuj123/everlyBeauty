@@ -4,19 +4,25 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: right;
 }
 .bannerWrapper {
   width: 100%;
-  max-width: 80%;
+  max-width: 100%;
+  height: 52em;
 }
 .bannerContent {
   display: flex;
 }
+.bannerContentLeftParent {
+  width: 50%;
+  justify-content: end;
+  display: flex;
+}
 .bannerContentLeft {
-  width: 35%;
+  width: 35em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +47,7 @@
   margin-top: 1em;
 }
 .bannerContentRight {
-  width: 65%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,4 +56,85 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('/assets/images/colada.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 9;
+  width: 42em;
+  height: 40em;
+}
+/* @media screen and (max-width: 1440px) {
+  .bannerWrapper {
+  height: 42em;
+  }
+} */
+@media screen and (max-width: 1200px) {
+  .bannerWrapper {
+    height: 42em;
+    }
+  .bannerContent {
+    margin: 0 2em;
+  }
+  .bannerContentLeftParent {
+    width: 50%;
+    justify-content: left;
+    display: flex;
+  }
+  .bannerContentLeft {
+    width: 30em;
+  }
+  .bannerContentRight {
+    width: 40em;
+  }
+  .bannerContentRightImage {
+    width: 40em;
+    height: 34em;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .bannerContent{
+    margin-top: 3em;
+  }
+  .bannerContentLeftHeading h1 {
+    font-size: 2.5em;
+  }
+  .bannerContentLeftParent {
+    width: 25em;
+  }
+  .bannerContentLeftButton {
+    width: 12em !important;
+  }
+  .bannerContentRight {
+    width: 40em;
+  }
+  .bannerContentRightImage {
+    width: 35em;
+    height: 25em;
+  }
+}
+@media screen and (max-width: 930px) {
+  .bannerContentLeftParent {
+    width: 20em;
+  }
+  .bannerContentRight {
+    width: 35em;
+  }
+  .bannerContentRightImage {
+    width: 30em;
+    height: 25em;
+  }
+}
+@media screen and (max-width: 930px) {
+  .bannerContentLeftParent {
+    width: 17em;
+  }
+  .bannerContentRight {
+    width: 32em;
+  }
+  .bannerContentRightImage {
+    width: 32em;
+    height: 25em;
+  }
 }

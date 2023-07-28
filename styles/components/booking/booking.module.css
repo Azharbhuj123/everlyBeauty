@@ -29,3 +29,14 @@
 .bookingButtonRight{
  width: 300px;
 }
+@media screen and (max-width: 1350px) {
+  .bookingWrapper{
+    max-width: 71em;
+    margin: 0 1em;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .bookingWrapper{
+    max-width: 95%;
+  }
+}

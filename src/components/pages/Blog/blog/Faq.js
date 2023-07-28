@@ -1,10 +1,10 @@
 // components/Accordion.js
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '@/styles/components/blog/faq.module.css'
 import plus from '/public/assets/images/plus.svg'
 import minus from '/public/assets/images/minus.svg'
-
 import Image from 'next/image'
+
 const Faq = ({ items }) => {
   const accordionItems = [
     {
@@ -40,6 +40,7 @@ const Faq = ({ items }) => {
   ]
 
   const [activeIndex, setActiveIndex] = useState(null)
+  const [isTransitioning, setIsTransitioning] = useState(false) // New state variable
 
   const handleItemClick = (index) => {
     setActiveIndex(index === activeIndex ? null : index)
@@ -68,12 +69,15 @@ const Faq = ({ items }) => {
                 )}
               </div>
               {activeIndex === index && (
-
-                <div className={`${styles.content} ${
-                  activeIndex === index ? styles.open : ''
-                }`}>
-                  <p> {item.content} </p>
-                </div>
+                <>
+                  <div
+                    className={`${styles.content} ${
+                      activeIndex === index ? styles.open : ''
+                    }`}
+                  >
+                    <p> {item.content} </p>
+                  </div>
+                </>
               )}
             </div>
           ))}

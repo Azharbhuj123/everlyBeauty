@@ -18,11 +18,9 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  
-  const shouldRenderInput = mode == 'signup'
-  const { addToast } = useToasts()
 
- 
+  const shouldRenderInput = mode == 'signup'
+  // const { addToast } = useToasts()
 
   // register function
   const RegisterUser = async () => {
@@ -149,7 +147,28 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
           />
           {console.log(mode, 'mode check')}
         </div>
+        
+        {/* inputForm */}
         <div className={styles.authFormInputs}>
+          {shouldRenderInput && (
+            <>
+              <input
+                placeholder='First Name'
+                type='text'
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <input
+                placeholder='Last Name'
+                type='text'
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <input
+                    placeholder='Username'
+                    onChange={(e) => setUserName(e.target.value)}
+                    type='text'
+                  />
+            </>
+          )}
           {mode == 'forgot-password' && (
             <input
               placeholder='Enter Registered Email'
@@ -165,26 +184,6 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
                 type='email'
               />
 
-              {/* inputForm */}
-              {shouldRenderInput && (
-                <>
-                  <input
-                    placeholder='First Name'
-                    type='text'
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                  <input
-                    placeholder='Last Name'
-                    type='text'
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                  <input
-                    placeholder='Username'
-                    onChange={(e) => setUserName(e.target.value)}
-                    type='text'
-                  />
-                </>
-              )}
               <input
                 placeholder='Password'
                 onChange={(e) => setPassword(e.target.value)}

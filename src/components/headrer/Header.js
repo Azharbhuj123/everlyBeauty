@@ -47,7 +47,6 @@ const Header = () => {
                     router.pathname === '/' ? styles.active : ''
                   }`}
                 >
-                  {/* {console.log(active, 'color')} */}
                   Home
                 </li>
               </Link>

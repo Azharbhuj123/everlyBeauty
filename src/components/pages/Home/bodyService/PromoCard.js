@@ -5,7 +5,6 @@ import close from '/public/assets/images/circle-xmark.png'
 import Button from '@/src/components/buttons/Button'
 
 const PromoCard = ({ onClose }) => {
-  const [OTP, setOTP] = useState('')
   const handlePromoCardClose = () => {
     onClose()
   }

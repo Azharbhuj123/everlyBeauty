@@ -30,7 +30,7 @@ const Booking = () => {
         return 'Confirm'
     }
   }
-  
+
   return (
     <>
       <div className={styles.bookingContainer}>
@@ -44,12 +44,14 @@ const Booking = () => {
             }}
           >
             <div className={styles.bookingButton}>
-              <StyledButton
-                color='#fff'
-                backgroundColor='#E1AD9D'
-                text='Dashboard'
-                image={arrow}
-              />
+              {activeSlideIndex === 2 ? null : (
+                <StyledButton
+                  color='#fff'
+                  backgroundColor='#E1AD9D'
+                  text='Dashboard'
+                  image={arrow}
+                />
+              )}
             </div>
           </Link>
           <Swiper
@@ -76,7 +78,7 @@ const Booking = () => {
           </Swiper>
           <div className={styles.bookingButtons}>
             <div className={styles.bookingButtonLeft}>
-              {activeSlideIndex === 0 ? (
+              {!activeSlideIndex === 0 ? (
                 <Button
                   color='#000'
                   backgroundColor='#D9D9D6'
@@ -84,14 +86,25 @@ const Booking = () => {
                 />
               ) : null}
             </div>
-            <div className={styles.bookingButtonRight}>
-              <StyledButton
-                color='#fff'
-                backgroundColor='#E1AD9D'
-                text={getButtonText()}
-                image={arrow}
-              />
-            </div>
+            <Link
+              href='/dashboard'
+              style={{
+                textDecoration: 'none',
+                justifyContent: 'end',
+                display: 'flex',
+              }}
+            >
+              <div className={styles.bookingButtonRight}>
+                {activeSlideIndex === 2 ? (
+                  <StyledButton
+                    color='#fff'
+                    backgroundColor='#E1AD9D'
+                    text={getButtonText()}
+                    image={arrow}
+                  />
+                ) : null}
+              </div>
+            </Link>
           </div>
         </div>
       </div>

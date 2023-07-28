@@ -13,7 +13,7 @@
 .footerTopLeftContent {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 35.5em;
 }
 .footerTopLeftContentpara {
   color: #fff;
@@ -56,12 +56,13 @@
 }
 .footerWrapper {
   width: 100%;
-  max-width: 70%;
+  max-width: 71em;
   display: flex;
   align-items: center;
+  margin: 0 1em;
 }
 .footerLeft {
-  width: 50%;
+  width: 35.5em;
   justify-content: center;
   align-items: center;
 }
@@ -77,9 +78,10 @@
   cursor: pointer;
 }
 .footerRight {
-  width: 50%;
+  width: 35.5em;
   justify-content: center;
   align-items: center;
+  margin-right: 1em;
 }
 .footerRight p {
   color: #000;
@@ -89,4 +91,10 @@
 }
 .footerRight p span {
   color: #e1ad9d;
+}
+
+@media screen and (max-width: 1100px) {
+  .footerTopLeft{
+    padding: 40px;
+  }
 }
