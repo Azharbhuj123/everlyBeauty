@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import TimePickerDialog from "./TimePickerDialog";
 import { bookingContext } from "@/store/bookingContext";
-
+import { createAPIEndPoint } from "@/src/config/api";
+import { endPoints } from "@/src/config/endpoints";
 const localizer = momentLocalizer(moment);
 
 const MyCalender = () => {
@@ -17,6 +18,7 @@ const MyCalender = () => {
   const [booking] = useContext(bookingContext);
 
   // get The total slot time
+
   let totalSlotTime = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseFloat
     const time = parseFloat(service.time);
@@ -25,8 +27,21 @@ const MyCalender = () => {
 
   const isWeekday = (date) => {
     const day = date.getDay();
-    return day !== 0 && day !== 1; // Sunday (0) and Saturday (6) are disabled
+    return day >= 2 && day <= 6; // Tuesday to Saturday (0: Sunday, 1: Monday, ..., 6: Saturday)
   };
+
+  const getAllSlots = async () => {
+    const response = await createAPIEndPoint(endPoints.createSlot).fetchAll();
+    setEvents(response.data.data.map((item) => item.attributes));
+    console.log(
+      response.data.data.map((item) => item.attributes),
+      "pppp"
+    );
+  };
+
+  useEffect(() => {
+    getAllSlots();
+  }, []);
 
   const isSlotOccupied = (start, end) => {
     return events.some(
@@ -69,6 +84,13 @@ const MyCalender = () => {
 
     setShowTimePicker(false);
   };
+  const minTime = new Date(0, 0, 0, 9, 0, 0); // 9:00 AM
+  const maxTime = new Date(0, 0, 0, 18, 0, 0); // 5:00 PM
+
+  const currentDate = moment();
+
+  // Add one day to the current date to get the next day for booking
+  const nextBookingDate = currentDate.add(1, "day").toDate();
 
   return (
     <>
@@ -81,6 +103,10 @@ const MyCalender = () => {
         dateConstraint={isWeekday}
         selectable
         onSelectSlot={(e) => handleSelectSlot(e)}
+        min={minTime}
+        max={maxTime}
+        defaultDate={nextBookingDate}
+        defaultView="day"
       />
 
       <TimePickerDialog

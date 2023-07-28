@@ -18,16 +18,16 @@ const BodyService = () => {
     discountPercentContext
   )
   const [allServices, setAllServices] = useState(services)
-  const getService = async () => {
-    try {
-      const Response = await createAPIEndPoint(endPoints.services).fetchAll()
-      console.log(Response, 'response for services')
-    } catch (error) {}
-  }
+  // const getService = async () => {
+  //   try {
+  //     const Response = await createAPIEndPoint(endPoints.services).fetchAll()
+  //     console.log(Response, 'response for services')
+  //   } catch (error) {}
+  // }
 
-  useEffect(() => {
-    getService()
-  }, [])
+  // useEffect(() => {
+  //   getService()
+  // }, [])
 
   const handleCheckBox = (service) => {
     const existingService = booking.find((item) => item.id === service.id)
@@ -57,17 +57,6 @@ const BodyService = () => {
               <div className={styles.bodyServicecheckboxes}>
                 <div className={styles.bodyServiceColumn}>
                   {firstColumnLabels.map((item, index) => {
-                    console.log(
-                      bookinSet.has(
-                        JSON.stringify({
-                          id: item.id,
-                          name: item.name,
-                          time: item.time,
-                          price: item.price,
-                        })
-                      ),
-                      '[]'
-                    )
                     return (
                       <label key={item.id} className={styles.bodyServicelabels}>
                         <input

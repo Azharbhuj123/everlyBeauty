@@ -20,7 +20,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const shouldRenderInput = mode == 'signup'
-  // const { addToast } = useToasts()
+  const { addToast } = useToasts()
 
   // register function
   const RegisterUser = async () => {
@@ -66,10 +66,10 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       localStorage.setItem("Token", jwt);
       localStorage.setItem("User", JSON.stringify(user));
       // Toast notification for successful login
-      // addToast("Login successful!", {
-      //   appearance: "success",
-      //   autoDismiss: true,
-      // });
+      addToast("Login successful!", {
+        appearance: "success",
+        autoDismiss: true,
+      });
       router.push("/calendar");
     } catch (error) {
       const errorMessage = error.response
@@ -77,10 +77,10 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
         : "An error occurred. Please try again.";
       // Toast notification for login error
       console.log(errorMessage, "api error messsage");
-      // addToast(errorMessage, {
-      //   appearance: "error",
-      //   autoDismiss: true,
-      // });
+      addToast(errorMessage, {
+        appearance: "error",
+        autoDismiss: true,
+      });
       console.log(error, "error in login");
     }
   };
@@ -147,26 +147,26 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
           />
           {console.log(mode, "mode check")}
         </div>
-        
+
         {/* inputForm */}
         <div className={styles.authFormInputs}>
           {shouldRenderInput && (
             <>
               <input
-                placeholder='First Name'
-                type='text'
+                placeholder="First Name"
+                type="text"
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <input
-                placeholder='Last Name'
-                type='text'
+                placeholder="Last Name"
+                type="text"
                 onChange={(e) => setLastName(e.target.value)}
               />
               <input
-                    placeholder='Username'
-                    onChange={(e) => setUserName(e.target.value)}
-                    type='text'
-                  />
+                placeholder="Username"
+                onChange={(e) => setUserName(e.target.value)}
+                type="text"
+              />
             </>
           )}
           {mode == 'forgot-password' && (

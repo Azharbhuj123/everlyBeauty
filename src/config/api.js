@@ -3,7 +3,7 @@ import axios from "axios";
 export const createAPIEndPoint = (endpoint) => {
   // const BASE_URL = "https://api.everlybeauty.ca/api";
   // const BASE_URL = "https://8246-103-125-71-8.ngrok-free.app/api";
-  const BASE_URL = "http://192.168.0.135:80/api";
+  const BASE_URL = "http://192.168.2.112/api";
   let token =
     typeof localStorage !== "undefined" && localStorage.getItem("Token");
 
@@ -25,7 +25,15 @@ export const createAPIEndPoint = (endpoint) => {
           },
         }
       ),
-    fetchAll: () => axios.get(url),
+    fetchAll: () =>
+      axios.get(
+        url,
+        token !== null && {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      ),
     create: (newRecord) => axios.post(url, newRecord),
     createWithToken: (newRecord) =>
       axios.post(

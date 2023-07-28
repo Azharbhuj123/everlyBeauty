@@ -56,9 +56,15 @@ const TimePickerDialog = ({
 
     let data = {
       // user_id: userIdInString,
-      // user_email: user?.email,
+      user_email: user?.email,
       payableAmount: payable,
       services: services,
+      startTime: fomatedStartTime,
+      endTime: fomatedSEndTime,
+      date: date,
+    };
+
+    let slotData = {
       startTime: fomatedStartTime,
       endTime: fomatedSEndTime,
       date: date,
@@ -75,6 +81,13 @@ const TimePickerDialog = ({
     } catch (error) {
       console.log(error, "error check");
     }
+    // Create slot
+    try {
+      const response = await createAPIEndPoint(
+        endPoints.createSlot
+      ).createWithToken({ data: slotData });
+      console.log(response, "response check in slot creation");
+    } catch (error) {}
     onClose();
   };
 
