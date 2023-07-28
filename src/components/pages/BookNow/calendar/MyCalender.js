@@ -106,7 +106,7 @@ const MyCalender = () => {
         min={minTime}
         max={maxTime}
         defaultDate={nextBookingDate}
-        defaultView="day"
+        defaultView="week"
       />
 
       <TimePickerDialog
