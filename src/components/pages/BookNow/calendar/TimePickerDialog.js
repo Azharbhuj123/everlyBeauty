@@ -1,7 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useLayoutEffect } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
+import moment from "moment";
+import axios from "axios";
 // import {
 //   // TimePicker,
 //   MuiPickersUtilsProvider,
@@ -13,27 +15,67 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { bookingContext } from "@/store/bookingContext";
-
-const TimePickerDialog = ({ open, onClose, onSelectTime }) => {
+import { payableAmountContext } from "@/store/payableAmountContext";
+import { createAPIEndPoint } from "@/src/config/api";
+import { endPoints } from "@/src/config/endpoints";
+const TimePickerDialog = ({
+  open,
+  onClose,
+  onSelectTime,
+  start,
+  end,
+  date,
+}) => {
   const router = useRouter();
   const [selectedTime, setSelectedTime] = useState(dayjs());
   const [booking, setBooking] = useContext(bookingContext);
+  const [payable, setPayable] = useContext(payableAmountContext);
+  const services = booking.map((item) => item.name);
 
-  console.log(booking, "booking in picker");
+  const [user, setUser] = useState(null);
+
+  useLayoutEffect(() => {
+    let userDetails = localStorage.getItem("User");
+    userDetails = JSON.parse(userDetails);
+    setUser(userDetails);
+  }, []);
 
   const handleTimeChange = (time) => {
     setSelectedTime(time);
   };
+  console.log(user, "user check");
+  const handleSave = async () => {
+    // format start time and endTime
+    const startTime = moment(start, "YYYY-MM-DD HH:mm:ss.SSS");
+    const fomatedStartTime = startTime.format("HH:mm:ss.SSS");
+    const endTime = moment(end, "YYYY-MM-DD HH:mm:ss.SSS");
+    const fomatedSEndTime = endTime.format("HH:mm:ss.SSS");
+    // consvert  userId from number to string
+    let userId = user.id;
+    let userIdInString = userId.toString();
 
-  const handleSave = () => {
+    let data = {
+      // user_id: userIdInString,
+      // user_email: user?.email,
+      payableAmount: payable,
+      services: services,
+      startTime: fomatedStartTime,
+      endTime: fomatedSEndTime,
+      date: date,
+    };
+
     if (selectedTime) {
       onSelectTime(selectedTime);
     }
-
+    try {
+      const response = await createAPIEndPoint(
+        endPoints.userSlot
+      ).createWithToken({ data: data });
+      console.log(response, "response check");
+    } catch (error) {
+      console.log(error, "error check");
+    }
     onClose();
-    setTimeout(() => {
-      router.push("/book-now");
-    }, 1000);
   };
 
   return (

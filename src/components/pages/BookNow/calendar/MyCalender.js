@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import TimePickerDialog from "./TimePickerDialog";
-import { TrendingUp } from "@material-ui/icons";
+import { bookingContext } from "@/store/bookingContext";
 
 const localizer = momentLocalizer(moment);
 
@@ -14,6 +14,14 @@ const MyCalender = () => {
   const [endTime, setEndTime] = useState(null);
   const [date, setDate] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState({});
+  const [booking] = useContext(bookingContext);
+
+  // get The total slot time
+  let totalSlotTime = booking.reduce((acc, service) => {
+    // Convert the price string to a number using parseFloat
+    const time = parseFloat(service.time);
+    return acc + time;
+  }, 0);
 
   const isWeekday = (date) => {
     const day = date.getDay();
@@ -31,8 +39,12 @@ const MyCalender = () => {
 
   const handleSelectSlot = (slotInfo) => {
     setSelectedTime(slotInfo?.start);
-    const selectedEndTime = moment(slotInfo?.start).add(30, "minutes").toDate(); // Replace 30 with the default duration in minutes
+    const selectedEndTime = moment(slotInfo?.start)
+      .add(totalSlotTime, "minutes")
+      .toDate(); // Replace 30 with the default duration in minutes
+    setEndTime(selectedEndTime);
     const dateKey = moment(slotInfo?.start).format("YYYY-MM-DD");
+    setDate(dateKey);
 
     if (isSlotOccupied(slotInfo?.start, selectedEndTime)) {
       alert("This time slot is already occupied by another event.");
@@ -46,8 +58,8 @@ const MyCalender = () => {
   };
 
   const handleSelectTime = (time, durationInMinutes) => {
-    const endTime = moment(selectedTime).add(45, "minutes").toDate();
-    setEndTime(endTime);
+    const endTime = moment(selectedTime).add(totalSlotTime, "minutes").toDate();
+    // setEndTime(endTime);
     const dateKey = moment(selectedTime).format("YYYY-MM-DD");
 
     setEvents([
