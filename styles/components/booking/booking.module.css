@@ -18,25 +18,25 @@
   align-self: flex-end;
   display: flex;
 }
-.bookingButtons{
- display: flex;
- justify-content: space-between;
- align-items: center;
+.bookingButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.bookingButtonLeft{
- width: 200px;
+.bookingButtonLeft {
+  width: 200px;
 }
-.bookingButtonRight{
- width: 300px;
+.bookingButtonRight {
+  width: 15em;
 }
 @media screen and (max-width: 1350px) {
-  .bookingWrapper{
+  .bookingWrapper {
     max-width: 71em;
     margin: 0 1em;
   }
 }
 @media screen and (max-width: 1170px) {
-  .bookingWrapper{
+  .bookingWrapper {
     max-width: 95%;
   }
 }

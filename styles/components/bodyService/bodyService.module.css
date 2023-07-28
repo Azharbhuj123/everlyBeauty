@@ -25,8 +25,13 @@
 .bodyServicecheckboxes {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   width: 100%;
+}
+.bodyServiceColumn {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 .bodyServicelabels {
   /* font-size: 16px; */
@@ -120,11 +125,74 @@
 .bodyServiceContentRightTotal {
   margin-top: 1em;
 }
+.progressbarContainer {
+  justify-content: center;
+  display: flex;
+  margin-top: 6em;
+}
+.progressbarSection {
+  width: 100%;
+  margin: 0 1em;
+}
 @media screen and (max-width: 1100px) {
   .bodyServiceContentRightHeading h1 {
     font-size: 2.5em;
   }
   .bodyServiceContent {
     margin: 8em 1em 0em 1em;
+  }
+}
+@media screen and (max-width: 425px) {
+  .bodyServiceContentRightHeading h1 {
+    font-size: 1.5em;
+  }
+  .bodyServicelabels {
+    font-size: 14px;
+  }
+  .bodyServiceContentRightHeading h3 {
+    font-size: 20px;
+  }
+  .bodyServiceContentRightHeading p {
+    font-size: 14px;
+  }
+  .bodyServiceContentRightTableRow {
+    padding: 10px 30px !important;
+  }
+  .bodyServiceContentRightTableServiceDetail {
+    width: 40%;
+  }
+  .bodyServiceContentRightcalcRow {
+    padding: 10px 30px;
+  }
+  .bodyServiceContentRightcalcPrices {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .bodyServiceContent {
+    flex-direction: column !important;
+  }
+  .bodyServicecheckboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    grid-gap: 20px; /* Add some space between the columns */
+  }
+  .bodyServiceContentLeft {
+    width: 100% !important;
+    overflow-x: scroll;
+  }
+  .bodyServicelabels {
+    font-size: 16px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    width: 160px;
+  }
+  .bodyServiceContentRight {
+    width: 100% !important;
+    margin-top: 1em;
+  }
+  .progressbarContainer {
+    margin: 3em 1em 0 1em !important;
   }
 }

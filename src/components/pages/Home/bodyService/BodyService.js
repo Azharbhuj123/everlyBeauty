@@ -17,7 +17,7 @@ const BodyService = () => {
   const [discountPercent, setDiscountPercent] = useContext(
     discountPercentContext
   )
-
+  const [allServices, setAllServices] = useState(services)
   const getService = async () => {
     try {
       const Response = await createAPIEndPoint(endPoints.services).fetchAll()
@@ -41,6 +41,12 @@ const BodyService = () => {
       setBooking([...booking, service])
     }
   }
+  useEffect(() => {}, [])
+  const bookinSet = new Set(booking.map((item) => JSON.stringify(item)))
+
+  const midIndex = Math.ceil(allServices.length / 2)
+  const firstColumnLabels = allServices.slice(0, midIndex)
+  const secondColumnLabels = allServices.slice(midIndex)
 
   return (
     <>
@@ -49,20 +55,61 @@ const BodyService = () => {
           <div className={styles.bodyServiceContent}>
             <div className={styles.bodyServiceContentLeft}>
               <div className={styles.bodyServicecheckboxes}>
-                {services.map((item, index) => {
-                  return (
+                <div className={styles.bodyServiceColumn}>
+                  {firstColumnLabels.map((item, index) => {
+                    console.log(
+                      bookinSet.has(
+                        JSON.stringify({
+                          id: item.id,
+                          name: item.name,
+                          time: item.time,
+                          price: item.price,
+                        })
+                      ),
+                      '[]'
+                    )
+                    return (
+                      <label key={item.id} className={styles.bodyServicelabels}>
+                        <input
+                          type='checkbox'
+                          checked={booking.some(
+                            (element) =>
+                              item.id === element.id &&
+                              item.name === element.name &&
+                              item.price === element.price &&
+                              item.time === element.time
+                          )}
+                          // onClick={() => setBooking([...booking, item])}
+                          onChange={() => {
+                            handleCheckBox(item)
+                          }}
+                        />
+                        {item.name}
+                      </label>
+                    )
+                  })}
+                </div>
+                {/* Second column of checkboxes */}
+                <div className={styles.bodyServiceColumn}>
+                  {secondColumnLabels.map((item) => (
                     <label key={item.id} className={styles.bodyServicelabels}>
                       <input
                         type='checkbox'
-                        // onClick={() => setBooking([...booking, item])}
+                        checked={booking.some(
+                          (element) =>
+                            item.id === element.id &&
+                            item.name === element.name &&
+                            item.price === element.price &&
+                            item.time === element.time
+                        )}
                         onChange={() => {
                           handleCheckBox(item)
                         }}
                       />
                       {item.name}
                     </label>
-                  )
-                })}
+                  ))}
+                </div>
               </div>
               {/* <div className={styles.bodyServiceFemale}>
                 <Image src={female} width={400} height={'auto'} alt='' />
@@ -75,14 +122,8 @@ const BodyService = () => {
               </div>
             </div>
           </div>
-          <div
-            style={{
-              justifyContent: 'center',
-              display: 'flex',
-              marginTop: '6em',
-            }}
-          >
-            <div style={{ width: '100%', margin: '0 1em' }}>
+          <div className={styles.progressbarContainer}>
+            <div className={styles.progressbarSection}>
               <Progressbar discountPercent={discountPercent} />
               <DiscountToggle />
               <DiscountType />
