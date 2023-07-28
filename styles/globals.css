@@ -206,6 +206,41 @@ input:checked ~ label {
 }
 
 /* Calendar */
-.rbc-btn-group > button:first-child {
+.rbc-btn-group > button:first-child:not(:last-child) {
   background-color: #e1ad9d;
+  font-family: 'Gilroy';
+  font-weight: 400;
+  color: #fff;
+}
+.rbc-btn-group > button:not(:first-child):not(:last-child) {
+  background-color: #e1ad9d;
+  font-family: 'Gilroy';
+  color: #fff;
+}
+.rbc-btn-group > button:last-child:not(:first-child) {
+  background-color: #e1ad9d;
+  font-family: 'Gilroy';
+  color: #fff;
+}
+.rbc-toolbar .rbc-toolbar-label {
+  font-family: 'Poppins';
+}
+.rbc-calendar {
+  font-family: 'Poppins';
+}
+.rbc-button-link {
+  font-family: 'Poppins';
+}
+.rbc-event {
+  background-color: #e1ad9d !important;
+}
+.MuiDialogContent-root:first-child {
+  font-size: 'Gilroy';
+}
+.MuiButton-label {
+  font-family: 'Gilroy';
+  color: #fff;
+}
+.MuiButton-contained {
+  background-color: #000 !important;
 }
