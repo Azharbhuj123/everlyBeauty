@@ -20,7 +20,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const shouldRenderInput = mode == 'signup'
-  const { addToast } = useToasts()
+  // const { addToast } = useToasts()
 
   // register function
   const RegisterUser = async () => {
@@ -77,10 +77,10 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
         : "An error occurred. Please try again.";
       // Toast notification for login error
       console.log(errorMessage, "api error messsage");
-      addToast(errorMessage, {
-        appearance: "error",
-        autoDismiss: true,
-      });
+      // addToast(errorMessage, {
+      //   appearance: "error",
+      //   autoDismiss: true,
+      // });
       console.log(error, "error in login");
     }
   };
