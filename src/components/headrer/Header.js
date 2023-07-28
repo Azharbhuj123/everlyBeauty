@@ -50,13 +50,13 @@ const Header = () => {
                   Home
                 </li>
               </Link>
-              <Link href='/gallery'>
+              <Link href='/dashboard'>
                 <div
                   className={`${styles.headerNavbarLink} ${
                     router.pathname === '/gallery' ? styles.active : ''
                   }`}
                 >
-                  Gallery
+                  Dashboard
                 </div>
               </Link>
               <Link href='/blog'>
@@ -87,7 +87,7 @@ const Header = () => {
                 onClick={() => {
                   isToken === null
                     ? handleModalOpen()
-                    : router.push('/calendar')
+                    : router.push('/book-now')
                 }}
               />
             </div>

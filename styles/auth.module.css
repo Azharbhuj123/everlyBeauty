@@ -135,9 +135,17 @@
   margin-top: 2em;
   width: 200px;
 }
+@media screen and (max-width: 425px) {
+  .contactUsFormInputs {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 480px) {
   .authForm {
     width: min(395px, 90%);
     padding: 20px;
+  }
+  .contactUsFormContainer {
+    margin-top: 3em;
   }
 }

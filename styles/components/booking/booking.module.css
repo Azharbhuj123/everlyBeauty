@@ -40,3 +40,8 @@
     max-width: 95%;
   }
 }
+@media screen and (max-width: 768px) {
+  .bookingButton {
+    margin-top: 3em;
+  }
+}
