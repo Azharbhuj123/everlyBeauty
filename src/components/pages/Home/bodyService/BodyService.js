@@ -18,26 +18,25 @@ const BodyService = () => {
     discountPercentContext
   );
   const [allServices, setAllServices] = useState(services);
-  const getService = async () => {
-    try {
-      const Response = await createAPIEndPoint(endPoints.services).fetchAll();
-      console.log(Response, "response for services");
-    } catch (error) {}
-  };
+  // const getService = async () => {
+  //    console.log(Response, "response for services");
+  //     try {
+  //     const Response = await createAPIEndPoint(endPoints.services).fetchAll();
+  //  } catch (error) {}
+  // };
 
-  useEffect(() => {
-    getService();
-  }, []);
+  useEffect(() => {}, [booking]);
 
   const handleCheckBox = (service) => {
     const existingService = booking.find((item) => item.id === service.id);
-    console.log(existingService, "service");
+
     if (existingService) {
       // Remove the service from newArray
       let updatedServices = booking.filter((item) => item.id !== service.id);
       setBooking(updatedServices);
     } else {
       // Push the service into newArray
+
       setBooking([...booking, service]);
     }
   };
@@ -51,28 +50,16 @@ const BodyService = () => {
             <div className={styles.bodyServiceContentLeft}>
               <div className={styles.bodyServicecheckboxes}>
                 {allServices.map((item, index) => {
-                  console.log(
-                    bookinSet.has(
-                      JSON.stringify({
-                        id: item.id,
-                        name: item.name,
-                        time: item.time,
-                        price: item.price,
-                      })
-                    ),
-                    "[]"
-                  );
                   return (
                     <label key={item.id} className={styles.bodyServicelabels}>
                       <input
                         type="checkbox"
-                        checked={bookinSet.has(
-                          JSON.stringify({
-                            id: item.id,
-                            name: item.name,
-                            time: item.time,
-                            price: item.price,
-                          })
+                        checked={booking.some(
+                          (element) =>
+                            item.id === element.id &&
+                            item.name === element.name &&
+                            item.price === element.price &&
+                            item.time === element.time
                         )}
                         // onClick={() => setBooking([...booking, item])}
                         onChange={() => {

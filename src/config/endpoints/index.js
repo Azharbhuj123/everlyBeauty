@@ -7,4 +7,5 @@ export const endPoints = {
   loginWithFaceBook: "connect/facebook",
   services: "services",
   userSlot: "user-slots",
+  createSlot: "slots",
 };
