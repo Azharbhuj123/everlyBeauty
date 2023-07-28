@@ -11,15 +11,21 @@ const Progressbar = ({ discountPercent }) => {
   const interval = useRef(null)
 
   useEffect(() => {
-    // Reset the progress bar value when discountPercent changes
-    setValue(discountPercent)
+    let progressValue = discountPercent * 2
+    if (progressValue > 100) {
+      progressValue = 100 // Ensure progressValue does not exceed 100%
+    }
+    setValue(progressValue)
   }, [discountPercent])
 
   return (
-    <div className='card'>
+    <>
       <Toast ref={toast}></Toast>
-      <ProgressBar value={value}></ProgressBar>
-    </div>
+      <ProgressBar
+        value={value}
+        displayValueTemplate={() => `${discountPercent}%`}
+      ></ProgressBar>
+    </>
   )
 }
 

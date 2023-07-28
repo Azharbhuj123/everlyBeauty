@@ -66,7 +66,7 @@ const DiscountToggle = () => {
                 handleDiameter={24}
               />
               <span className={styles.discountToggleLeftText}>
-                10% Referral Discount
+                10% Promo Code Discount
               </span>
             </div>
             <p className={styles.discountTogglesCenterLine}>|</p>

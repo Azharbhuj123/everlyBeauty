@@ -19,7 +19,8 @@
 }
 .blogsWrapper {
   width: 100%;
-  max-width: 60%;
+  max-width: 71em;
+  margin: 0 1em;
 }
 .blogsContent {
   margin-top: 10em;
@@ -45,11 +46,12 @@
 /* SearcBar */
 .blogsContentWrapper {
   width: 100%;
-  max-width: 60%;
+  max-width: 71em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding:  0 1em;
 }
 .searchBar {
   display: flex;

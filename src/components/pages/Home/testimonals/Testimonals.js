@@ -22,7 +22,7 @@ const Testimonals = () => {
           <div className={styles.testimonialsCards}>
             <Swiper
               style={{ width: '100%', height: '400px' }}
-              spaceBetween={50}
+              spaceBetween={30}
               slidesPerView={3}
               loop={true}
               autoplay={{
