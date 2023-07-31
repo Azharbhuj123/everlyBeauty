@@ -122,6 +122,10 @@
   font-family: 'Gilroy';
   font-size: 18px;
 }
+.bodyServiceContentRightcalcDetailServicePrice {
+  font-size: 18px;
+  font-family: 'Gilroy';
+}
 .bodyServiceContentRightTotal {
   margin-top: 1em;
 }
@@ -194,5 +198,18 @@
   }
   .progressbarContainer {
     margin: 3em 1em 0 1em !important;
+  }
+  .bodyServiceContentRightTableDescription p {
+    font-size: 16px;
+  }
+  .bodyServiceContentRightTableDescription p {
+    font-size: 14px;
+  }
+  .bodyServiceContentRightcalcDetailService p {
+    font-size: 16px;
+  }
+  .bodyServiceContentRightcalcDetailServicePrice p {
+    font-size: 16px !important;
+    font-family: 'Gilroy';
   }
 }

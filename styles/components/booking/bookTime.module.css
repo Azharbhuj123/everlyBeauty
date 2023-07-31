@@ -11,7 +11,7 @@
 .bookTimeSectionLeft {
   width: 40%;
   overflow-y: scroll;
-  padding-right: 10px;
+  padding-right: 5px;
 }
 .bookTimeSectionRight {
   width: 55%;
@@ -39,11 +39,16 @@
   }
   .bookTimeSectionLeft {
     width: 100% !important;
+    padding-right: 0px;
   }
   .bookTimeSectionRight {
     width: 100% !important;
     margin-top: 3em;
     align-items: center;
+  }
+  .bookTimeSection {
+    border-radius: 50px;
+    padding: 20px;
   }
 }
 @media screen and (max-width: 425px) {

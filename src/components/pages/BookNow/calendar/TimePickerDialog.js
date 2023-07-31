@@ -60,8 +60,8 @@ const TimePickerDialog = ({
       user_email: user?.email,
       payableAmount: payable,
       services: services,
-      startTime: fomatedStartTime,
-      endTime: fomatedSEndTime,
+      start: fomatedStartTime,
+      end: fomatedSEndTime,
       date: date,
     };
 
@@ -80,7 +80,7 @@ const TimePickerDialog = ({
       ).createWithToken({ data: data });
       console.log(response, "response check");
     } catch (error) {
-      console.log(error, "error check");
+      console.log(error.response.data.error.message, "error check");
     }
     // Create slot
     try {

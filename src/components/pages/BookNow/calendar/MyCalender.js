@@ -11,7 +11,9 @@ import ValidationPopUps from "./ValidationPopUps";
 const localizer = momentLocalizer(moment);
 
 const MyCalender = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([
+    { title: "booked", start: "12:00:00", end: "12:30:00" },
+  ]);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [ValidationText, setValidationText] = useState("");
@@ -35,19 +37,55 @@ const MyCalender = () => {
   };
 
   const getAllSlots = async () => {
-    const response = await createAPIEndPoint(endPoints.createSlot).fetchAll();
+    const convertToFormattedTime = (time) => {
+      return moment(time, "HH:mm:ss").format(
+        "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ (Z)"
+      );
+    };
+    const response = await createAPIEndPoint(endPoints.userSlot).fetchAll();
     setEvents(response.data.data.map((item) => item.attributes));
-    console.log(
-      response.data.data.map((item) => item.attributes),
-      "pppp"
-    );
+    let eventData = response.data.data.map((item) => item.attributes);
+    const convertedData = eventData.map((item) => ({
+      title: "booked",
+      start: new Date(convertToFormattedTime(`${item.date} ${item.start}`)),
+      end: new Date(convertToFormattedTime(`${item.date} ${item.start}`)),
+    }));
+    console.log(convertedData, "converted data check");
+
+    setEvents(convertedData);
   };
 
   useEffect(() => {
-    // getAllSlots();
+    getAllSlots();
   }, []);
 
+  console.log(events, "ooooo");
+
+  // const roundTimeInterval = (start, end) => {
+  //   const durationInMinutes = moment(end).diff(start, "minutes");
+
+  //   if (durationInMinutes <= 10) {
+  //     return 15;
+  //   } else if (durationInMinutes <= 15) {
+  //     return 30;
+  //   } else if (durationInMinutes <= 30) {
+  //     return 45;
+  //   } else if (durationInMinutes <= 45) {
+  //     return 60;
+  //   } else {
+  //     // Calculate the remainder after dividing by 60 to get the minutes
+  //     const minutes = durationInMinutes % 60;
+  //     // Subtract the minutes from the total duration to get the rounded hour
+  //     const roundedHour = durationInMinutes - minutes;
+  //     // Add 15 minutes if there is any remainder
+  //     const roundedDuration = roundedHour + (minutes > 0 ? 15 : 0);
+  //     return roundedDuration;
+  //   }
+  // };
+
   const isSlotOccupied = (start, end) => {
+    // const totalSlotTimeRounded = roundTimeInterval(start, end);
+    // console.log(totalSlotTimeRounded, "rounded");
     return events.some(
       (event) =>
         moment(start).isBetween(event.start, event.end, undefined, "[]") ||
@@ -57,6 +95,7 @@ const MyCalender = () => {
   };
 
   const handleSelectSlot = (slotInfo) => {
+    console.log(slotInfo, "slotInfo");
     if (booking.length) {
       setSelectedTime(slotInfo?.start);
       const selectedEndTime = moment(slotInfo?.start)
@@ -107,7 +146,7 @@ const MyCalender = () => {
   const maxTime = new Date(0, 0, 0, 18, 0, 0); // 5:00 PM
 
   const currentDate = moment();
-
+  console.log(events, "events check");
   // Add one day to the current date to get the next day for booking
   const nextBookingDate = currentDate.add(1, "day").toDate();
 
@@ -128,6 +167,8 @@ const MyCalender = () => {
         max={maxTime}
         defaultDate={nextBookingDate}
         defaultView="week"
+        //         step={4
+        // 0}
       />
 
       <TimePickerDialog

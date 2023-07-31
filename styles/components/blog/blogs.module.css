@@ -59,6 +59,7 @@
   width: 500px; /* Set the desired width of the search bar */
   position: relative;
 }
+
 .searchInput {
   padding: 15px 40px 15px 20px; /* Adjust padding to make room for the icon */
   border-radius: 4px;
@@ -68,6 +69,7 @@
   box-shadow: 1px 30px 50px 25px rgba(225, 173, 157, 0.2);
   width: 100%;
   font-family: 'Gilroy';
+  font-size: 16px;
 }
 .searchInput::placeholder {
   color: #999;
