@@ -81,6 +81,7 @@ const Header = () => {
                   className={`${styles.headerNavbarLink} ${
                     router.pathname === '/dashboard' ? styles.active : ''
                   }`}
+                  style={{ display: isToken == null ? 'none' : 'block' }}
                 >
                   Dashboard
                 </div>

@@ -1,0 +1,111 @@
+.testimonialFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6em 0;
+}
+.testimonialForm {
+  width: min(600px, 90%);
+  background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
+  border-radius: 10%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.testimonialFormHeading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.testimonialFormHeading h1 {
+  font-family: 'Gilroy';
+  font-size: 32px;
+  text-align: center;
+}
+.testimonialFormInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 95%;
+}
+.testimonialFormProfile h2 {
+  font-size: 20px;
+  font-family: 'Gilroy';
+  margin-bottom: 10px;
+}
+.testimonialFormProfileImage {
+  border-radius: 50%;
+  background-color: #fff;
+  width: 9em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 8.5em;
+}
+.testimonialFormProfileImage img {
+  border-radius: 50%;
+  width: 100%;
+}
+.testimonialFormInputs {
+  align-items: center;
+}
+.testimonialFormProfile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.testimonialFormInputs input {
+  border: none;
+  height: 45px;
+  border-radius: 35px;
+  padding-left: 15px;
+  width: 100%;
+  font-family: 'Gilroy';
+}
+.testimonialFormComment {
+  width: 100%;
+}
+.testimonialFormComment h2 {
+  font-size: 22px;
+  font-family: 'Gilroy';
+  margin-bottom: 10px;
+}
+.testimonialFormRating {
+  width: 100%;
+}
+.testimonialFormRating h2 {
+  font-size: 22px;
+  font-family: 'Gilroy';
+}
+.testimonialFormSubheading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  font-size: 16px;
+  font-family: 'Poppins';
+  margin-top: 1em;
+}
+.testimonialFormInputs textarea {
+  border: none;
+  height: 100px;
+  border-radius: 22px;
+  padding: 15px;
+  width: 100%;
+}
+.testimonialFormInputs textarea {
+  font-family: 'Gilroy';
+}
+.testimonialFormInputs input:focus {
+  outline: none;
+}
+.testimonialFormInputs textarea:focus {
+  outline: none;
+}
+.testimonialFormButton {
+  margin-top: 2em;
+  width: 200px;
+}

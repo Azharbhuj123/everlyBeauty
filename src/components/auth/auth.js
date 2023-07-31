@@ -10,17 +10,17 @@ import { endPoints } from '@/src/config/endpoints'
 import { useToasts } from 'react-toast-notifications'
 
 const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
-  const router = useRouter()
-  const [OTP, setOTP] = useState('')
-  const [username, setUserName] = useState('')
-  const [email, setEmail] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const router = useRouter();
+  const [OTP, setOTP] = useState("");
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const shouldRenderInput = mode == 'signup'
-  // const { addToast } = useToasts()
+  const shouldRenderInput = mode == "signup";
+  // const { addToast } = useToasts();
 
   // register function
   const RegisterUser = async () => {
@@ -48,7 +48,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       //   appearance: "success",
       //   autoDismiss: true,
       // });
-      // router.push("/");
+      setMode("login");
     } catch (error) {
       console.log(error)
     }
@@ -70,7 +70,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
         appearance: 'success',
         autoDismiss: true,
       })
-      router.push('/calendar')
+      router.push('/book-now')
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.error.message
@@ -169,7 +169,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
               />
             </>
           )}
-          {mode == 'forgot-password' && (
+          {mode == "forgot-password" && (
             <input
               placeholder='Enter Registered Email'
               onChange={(e) => setEmail(e.target.value)}

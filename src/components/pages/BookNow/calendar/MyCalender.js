@@ -6,11 +6,15 @@ import TimePickerDialog from "./TimePickerDialog";
 import { bookingContext } from "@/store/bookingContext";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
+import ValidationPopUps from "./ValidationPopUps";
+
 const localizer = momentLocalizer(moment);
 
 const MyCalender = () => {
   const [events, setEvents] = useState([]);
   const [showTimePicker, setShowTimePicker] = useState(false);
+  const [showValidation, setShowValidation] = useState(false);
+  const [ValidationText, setValidationText] = useState("");
   const [selectedTime, setSelectedTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [date, setDate] = useState(null);
@@ -53,25 +57,40 @@ const MyCalender = () => {
   };
 
   const handleSelectSlot = (slotInfo) => {
-    setSelectedTime(slotInfo?.start);
-    const selectedEndTime = moment(slotInfo?.start)
-      .add(totalSlotTime, "minutes")
-      .toDate(); // Replace 30 with the default duration in minutes
-    setEndTime(selectedEndTime);
-    const dateKey = moment(slotInfo?.start).format("YYYY-MM-DD");
-    setDate(dateKey);
+    if (booking.length) {
+      setSelectedTime(slotInfo?.start);
+      const selectedEndTime = moment(slotInfo?.start)
+        .add(totalSlotTime, "minutes")
+        .toDate();
+      setEndTime(selectedEndTime);
+      const dateKey = moment(slotInfo?.start).format("YYYY-MM-DD");
+      setDate(dateKey);
 
-    if (isSlotOccupied(slotInfo?.start, selectedEndTime)) {
-      alert("This time slot is already occupied by another event.");
+      // Get the next day from the current date
+      const nextDay = moment().add(1, "day").startOf("day");
+
+      // Check if the selected date is greater than or equal to the next day
+      if (moment(slotInfo?.start).isSameOrAfter(nextDay)) {
+        if (isSlotOccupied(slotInfo?.start, selectedEndTime)) {
+          setValidationText("This time slot is already occupied.");
+          setShowValidation(true);
+        } else {
+          setSelectedSlots({
+            ...selectedSlots,
+            [dateKey]: [...(selectedSlots[dateKey] || []), slotInfo],
+          });
+          setShowTimePicker(true);
+        }
+      } else {
+        setValidationText("Please select a date from the next day onwards.");
+        setShowValidation(true);
+      }
     } else {
-      setSelectedSlots({
-        ...selectedSlots,
-        [dateKey]: [...(selectedSlots[dateKey] || []), slotInfo],
-      });
-      setShowTimePicker(true);
+      setValidationText("Kindly select the services first");
+
+      setShowValidation(true);
     }
   };
-
   const handleSelectTime = (time, durationInMinutes) => {
     const endTime = moment(selectedTime).add(totalSlotTime, "minutes").toDate();
     // setEndTime(endTime);
@@ -102,11 +121,13 @@ const MyCalender = () => {
         style={{ height: 500 }}
         dateConstraint={isWeekday}
         selectable
-        onSelectSlot={(e) => handleSelectSlot(e)}
+        onSelectSlot={(e) => {
+          handleSelectSlot(e);
+        }}
         min={minTime}
         max={maxTime}
         defaultDate={nextBookingDate}
-        defaultView="day"
+        defaultView="week"
       />
 
       <TimePickerDialog
@@ -117,6 +138,11 @@ const MyCalender = () => {
         open={showTimePicker}
         onClose={() => setShowTimePicker(false)}
         onSelectTime={handleSelectTime}
+      />
+      <ValidationPopUps
+        ValidationText={ValidationText}
+        open={showValidation}
+        onClose={() => setShowValidation(false)}
       />
     </>
   );

@@ -140,6 +140,8 @@
     width: 100%;
   }
 }
+/* end */
+
 @media screen and (max-width: 480px) {
   .authForm {
     width: min(395px, 90%);
