@@ -67,6 +67,7 @@
   border-radius: 20px;
   box-shadow: 1px 30px 50px 25px rgba(225, 173, 157, 0.2);
   width: 100%;
+  font-family: 'Gilroy';
 }
 .searchInput::placeholder {
   color: #999;

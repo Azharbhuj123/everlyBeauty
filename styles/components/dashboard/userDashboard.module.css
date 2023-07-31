@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 8em;
+  margin-top: 1em;
 }
 .dashboardWrapper {
   width: 100%;
@@ -35,9 +36,9 @@
   letter-spacing: 1px;
   margin-bottom: 1em;
 }
-.dashboardSectionLeftContentGraph{
- display: flex;
- align-items: center;
+.dashboardSectionLeftContentGraph {
+  display: flex;
+  align-items: center;
 }
 .dashboardSectionLeftContentGraphTitle h2 {
   font-size: 24px;
@@ -45,28 +46,92 @@
   color: #e1ad9d;
   font-weight: bolder;
   text-transform: uppercase;
-  writing-mode: vertical-rl; 
-  text-orientation: mixed; 
-  transform: rotate(
-    180deg
-  ); 
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
 }
 
 /* Right */
 .dashboardSectionRight {
- width: 35%;
- background-color: #fff;
- border-radius: 80px;
- padding: 40px;
+  width: 35%;
+  background-color: #fff;
+  border-radius: 80px;
+  padding: 40px;
 }
-.dashboardSectionRightContent{
- display: flex;
- flex-direction: column;
+.dashboardSectionRightContent {
+  display: flex;
+  flex-direction: column;
 }
-.dashboardSectionRightContentTitle h1{
- font-size: 28px;
- color: #000;
- font-family: 'Gilroy';
- letter-spacing: 1px;
- margin-bottom: 1em;
+.dashboardSectionRightContentTitle h1 {
+  font-size: 28px;
+  color: #000;
+  font-family: 'Gilroy';
+  letter-spacing: 1px;
+  margin-bottom: 1em;
+}
+@media screen and (max-width: 1400px) {
+  .dashboardSectionLeft {
+    width: 45em;
+  }
+  .dashboardSectionRight {
+    width: 25em;
+  }
+  .dashboardSection {
+    gap: 30px;
+  }
+  .dashboardWrapper {
+    max-width: 95%;
+    margin: 0 1em;
+  }
+}
+@media screen and (max-width: 1180px) {
+  .dashboardSectionLeft {
+    padding: 30px;
+    width: 40em;
+  }
+  .dashboardSectionRight {
+    padding: 30px;
+    width: 30em;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .dashboardSectionLeft {
+    width: 35em !important;
+  }
+  .dashboardSectionRight {
+    width: 35em !important;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .dashboardSection {
+    flex-direction: column;
+  }
+  .dashboardSectionLeft {
+    width: 100% !important;
+  }
+  .dashboardSectionRight {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .dashboardSectionLeft{
+    border-radius: 50px;
+    padding: 20px;
+  }
+  .dashboardSectionRight{
+    border-radius: 50px;
+    padding: 20px;
+  }
+  .dashboardContainer {
+    margin-bottom: 4em;
+  }
+  .dashboardSection {
+    margin: 3em 0;
+  }
+}
+@media screen and (max-width: 425px) {
+  .dashboardSection {
+    margin: 2em 0;
+  }
 }

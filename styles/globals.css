@@ -206,7 +206,7 @@ input:checked ~ label {
 }
 
 /* Calendar */
-/* .rbc-month-view {
+.rbc-month-view {
   border: 1px solid #e1ad9d !important;
 }
 .rbc-header {
@@ -217,9 +217,45 @@ input:checked ~ label {
 .rbc-header + .rbc-header:last-child {
   border-right: none !important;
 }
-.rbc-row-bg {
+.rbc-time-view {
+  border: 1px solid #e1ad9d !important;
+}
+.rbc-time-header.rbc-overflowing {
   border-right: 1px solid #e1ad9d !important;
-} */
+}
+.rbc-time-header-content {
+  border-left: 1px solid #e1ad9d !important;
+}
+.rbc-time-content {
+  border-top: 1px solid #e1ad9d !important;
+}
+.rbc-time-column .rbc-timeslot-group {
+  border-bottom: 1px solid #e1ad9d;
+}
+.rbc-row-bg {
+  border-bottom: 1px solid #e1ad9d;
+}
+.rbc-row-bg:last-child {
+  border-bottom: none !important;
+}
+.rbc-time-column .rbc-timeslot-group:last-child {
+  border-bottom: none;
+}
+.rbc-day-slot .rbc-event {
+  border: none !important;
+}
+.rbc-time-content > * + * > * {
+  border-left: 1px solid #e1ad9d !important;
+}
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid #e1ad9d !important;
+}
+.rbc-day-bg:last-child {
+  border-right: none;
+}
+.rbc-agenda-view table.rbc-agenda-table {
+  border: 1px solid #e1ad9d !important;
+}
 .rbc-btn-group > button:first-child:not(:last-child) {
   background-color: #e1ad9d;
   font-family: 'Gilroy';
@@ -274,4 +310,42 @@ input:checked ~ label {
   .rbc-btn-group {
     margin-top: 0px;
   }
+}
+
+/* Stepper */
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+  color: #e1ad9d;
+}
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: #e1ad9d;
+}
+.css-14sza3e-MuiStepLabel-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.css-1hv8oq8-MuiStepLabel-label.Mui-active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.css-1hv8oq8-MuiStepLabel-label.Mui-disabled {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.css-1hv8oq8-MuiStepLabel-label.Mui-completed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.css-1sn4lm3-MuiTypography-root {
+  font-family: 'Gilroy';
+  font-size: 14px;
+}
+.recharts-layer .recharts-cartesian-axis-tick{
+font-family: "Poppins";
+}
+.recharts-tooltip-wrapper{
+  font-family: 'Gilroy';
 }
