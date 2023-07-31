@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/auth.module.css";
-import Image from "next/image";
-import close from "/public/assets/images/circle-xmark.png";
-import Button from "../buttons/Button";
-import { useRouter } from "next/router";
-import OTPInput from "react-otp-input";
-import { createAPIEndPoint } from "@/src/config/api";
-import { endPoints } from "@/src/config/endpoints";
-import { useToasts } from "react-toast-notifications";
+import React, { useEffect, useState } from 'react'
+import styles from '@/styles/auth.module.css'
+import Image from 'next/image'
+import close from '/public/assets/images/circle-xmark.png'
+import Button from '../buttons/Button'
+import { useRouter } from 'next/router'
+import OTPInput from 'react-otp-input'
+import { createAPIEndPoint } from '@/src/config/api'
+import { endPoints } from '@/src/config/endpoints'
+import { useToasts } from 'react-toast-notifications'
 
 const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   const router = useRouter()
@@ -30,19 +30,19 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       password,
       firstName,
       lastName,
-    };
+    }
 
     try {
-      const response = await createAPIEndPoint(endPoints.regiter).create(data);
-      const { jwt, user } = response.data;
-      setUserName("");
-      setEmail("");
-      setPassword("");
-      setFirstName("");
-      setLastName("");
-      localStorage.setItem("Token", jwt);
-      localStorage.setItem("User", JSON.stringify(user));
-      console.log(response);
+      const response = await createAPIEndPoint(endPoints.regiter).create(data)
+      const { jwt, user } = response.data
+      setUserName('')
+      setEmail('')
+      setPassword('')
+      setFirstName('')
+      setLastName('')
+      localStorage.setItem('Token', jwt)
+      localStorage.setItem('User', JSON.stringify(user))
+      console.log(response)
       // Toast notification for successfully signup
       // addToast("You have successful Signup!", {
       //   appearance: "success",
@@ -50,88 +50,88 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       // });
       // router.push("/");
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   // Login finction
   const Login = async () => {
-    const data = { identifier: email, password };
+    const data = { identifier: email, password }
     try {
-      const response = await createAPIEndPoint(endPoints.login).create(data);
-      console.log(response, "response in Login");
-      setEmail("");
-      setPassword("");
-      const { jwt, user } = response.data;
-      localStorage.setItem("Token", jwt);
-      localStorage.setItem("User", JSON.stringify(user));
+      const response = await createAPIEndPoint(endPoints.login).create(data)
+      console.log(response, 'response in Login')
+      setEmail('')
+      setPassword('')
+      const { jwt, user } = response.data
+      localStorage.setItem('Token', jwt)
+      localStorage.setItem('User', JSON.stringify(user))
       // Toast notification for successful login
-      addToast("Login successful!", {
-        appearance: "success",
+      addToast('Login successful!', {
+        appearance: 'success',
         autoDismiss: true,
-      });
-      router.push("/calendar");
+      })
+      router.push('/calendar')
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.error.message
-        : "An error occurred. Please try again.";
+        : 'An error occurred. Please try again.'
       // Toast notification for login error
-      console.log(errorMessage, "api error messsage");
+      console.log(errorMessage, 'api error messsage')
       // addToast(errorMessage, {
       //   appearance: "error",
       //   autoDismiss: true,
       // });
-      console.log(error, "error in login");
+      console.log(error, 'error in login')
     }
-  };
+  }
 
   const ForgotPassword = async () => {
-    setMode("reset-password");
+    setMode('reset-password')
     try {
       const response = await createAPIEndPoint(endPoints.forgotPassword).create(
         {}
-      );
+      )
     } catch (error) {
-      console.log(error, "error in login");
+      console.log(error, 'error in login')
     }
-  };
+  }
 
   const ResetPassword = async () => {
     try {
       const response = await createAPIEndPoint(endPoints.resetPassword).create(
         {}
-      );
+      )
     } catch (error) {
-      console.log(error, "error in login");
+      console.log(error, 'error in login')
     }
-  };
+  }
 
   // ModalCose-Function
   const handleModalClose = () => {
-    onClose();
-    setMode("login");
-  };
+    onClose()
+    setMode('login')
+  }
 
   const handleModeToggle = () => {
     switch (mode) {
-      case "login":
-        setMode("signup");
-        break;
-      case "signup":
-        setMode("login");
-        break;
-      case "forgot-password":
-        setMode("forgot-password");
-        break;
-      case "reset-password":
-        setMode("reset-password");
-        break;
+      case 'login':
+        setMode('signup')
+        break
+      case 'signup':
+        setMode('login')
+        break
+      case 'forgot-password':
+        setMode('forgot-password')
+        break
+      case 'reset-password':
+        setMode('reset-password')
+        break
       default:
-        setMode("login");
-        break;
+        setMode('login')
+        break
     }
-  };
-  console.log("mode", mode);
+  }
+  console.log('mode', mode)
 
   return (
     <>
@@ -140,12 +140,12 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
           <h2>{headingText}</h2>
           <Image
             src={close}
-            alt=""
+            alt=''
             width={25}
             height={25}
             onClick={handleModalClose}
           />
-          {console.log(mode, "mode check")}
+          {console.log(mode, 'mode check')}
         </div>
 
         {/* inputForm */}
@@ -153,84 +153,84 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
           {shouldRenderInput && (
             <>
               <input
-                placeholder="First Name"
-                type="text"
+                placeholder='First Name'
+                type='text'
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <input
-                placeholder="Last Name"
-                type="text"
+                placeholder='Last Name'
+                type='text'
                 onChange={(e) => setLastName(e.target.value)}
               />
               <input
-                placeholder="Username"
+                placeholder='Username'
                 onChange={(e) => setUserName(e.target.value)}
-                type="text"
+                type='text'
               />
             </>
           )}
           {mode == 'forgot-password' && (
             <input
-              placeholder="Enter Registered Email"
+              placeholder='Enter Registered Email'
               onChange={(e) => setEmail(e.target.value)}
-              type="email"
+              type='email'
             />
           )}
-          {mode !== "reset-password" && mode !== "forgot-password" && (
+          {mode !== 'reset-password' && mode !== 'forgot-password' && (
             <>
               <input
-                placeholder="Email"
+                placeholder='Email'
                 onChange={(e) => setEmail(e.target.value)}
-                type="email"
+                type='email'
               />
 
               <input
-                placeholder="Password"
+                placeholder='Password'
                 onChange={(e) => setPassword(e.target.value)}
-                type="password"
+                type='password'
               />
             </>
           )}
         </div>
 
-        {mode == "reset-password" && (
+        {mode == 'reset-password' && (
           <>
-            <div style={{ justifyContent: "center", display: "flex" }}>
+            <div style={{ justifyContent: 'center', display: 'flex' }}>
               <OTPInput
                 value={OTP}
                 onChange={(otpValue) => setOTP(otpValue)}
                 numInputs={4}
                 isInputNum
-                renderSeparator={<span style={{ width: "15px" }}></span>}
+                renderSeparator={<span style={{ width: '15px' }}></span>}
                 renderInput={(props) => <input {...props} />}
                 shouldAutoFocus={true}
                 inputStyle={{
-                  border: "1px solid transparent",
-                  borderRadius: "8px",
-                  width: "45px",
-                  height: "45px",
-                  fontSize: "16px",
-                  color: "#000",
-                  fontWeight: "400",
-                  caretColor: "blue",
-                  fontFamily: "Gilroy",
+                  border: '1px solid transparent',
+                  borderRadius: '8px',
+                  width: '45px',
+                  height: '45px',
+                  fontSize: '16px',
+                  color: '#000',
+                  fontWeight: '400',
+                  caretColor: 'blue',
+                  fontFamily: 'Gilroy',
                 }}
                 focusStyle={{
-                  border: "1px solid #CFD3DB",
-                  outline: "none",
+                  border: '1px solid #CFD3DB',
+                  outline: 'none',
                 }}
               />
             </div>
             <div className={styles.authFormInputs}>
               <input
-                placeholder="New Password"
-                type="password"
+                placeholder='New Password'
+                type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <input
-                placeholder="Confirm New Password"
-                type="password"
+                placeholder='Confirm New Password'
+                type='password'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
@@ -238,25 +238,25 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
           </>
         )}
 
-        {mode == "login" && (
+        {mode == 'login' && (
           <div
             className={styles.authFormForgot}
-            onClick={() => setMode("forgot-password")}
+            onClick={() => setMode('forgot-password')}
           >
             <p>Forgot Password?</p>
           </div>
         )}
-        <div style={{ margin: "20px 0" }}>
-          {mode === "login" && (
+        <div style={{ margin: '20px 0' }}>
+          {mode === 'login' && (
             <Button text={buttonText} action={Login}></Button>
           )}
-          {mode == "signup" && (
+          {mode == 'signup' && (
             <Button text={buttonText} action={RegisterUser}></Button>
           )}
-          {mode == "forgot-password" && (
+          {mode == 'forgot-password' && (
             <Button text={buttonText} action={ForgotPassword}></Button>
           )}
-          {mode == "reset-password" && (
+          {mode == 'reset-password' && (
             <Button text={buttonText} action={ResetPassword}></Button>
           )}
         </div>
@@ -281,15 +281,15 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
             <Image src={google} alt='' width={30} height={30} />
           </Link>
         </div> */}
-        {mode !== "forgot-password" && mode !== "reset-password" && (
+        {mode !== 'forgot-password' && mode !== 'reset-password' && (
           <>
             <div className={styles.authFormSignupText}>
               <p>
-                {mode == "signup"
-                  ? "Already have an Account "
+                {mode == 'signup'
+                  ? 'Already have an Account '
                   : "Don't Have an Account? "}
                 <span onClick={handleModeToggle}>
-                  {mode == "signup" ? "Log In" : "Sign Up"}
+                  {mode == 'signup' ? 'Log In' : 'Sign Up'}
                 </span>
               </p>
             </div>
@@ -297,7 +297,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth
