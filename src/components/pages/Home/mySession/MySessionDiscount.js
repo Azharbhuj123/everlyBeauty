@@ -11,10 +11,10 @@ const MySessionDiscount = ({ heading, amount, discount}) => {
           </div>
         </div>
         <div className={styles.bodyServiceContentRightcalcPrices}>
-          <div className={styles.bodyServiceContentRightcalcDetailService}>
+          <div className={styles.bodyServiceContentRightcalcDetailServicePrice}>
             <p>{`${discount}${'%'}`}</p>
           </div>
-          <div className={styles.bodyServiceContentRightcalcDetailService}>
+          <div className={styles.bodyServiceContentRightcalcDetailServicePrice}>
             <p>${amount}</p>
           </div>
         </div>
