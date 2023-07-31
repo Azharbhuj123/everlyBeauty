@@ -50,4 +50,7 @@
   .bookTimeSectionRightContent h1 {
     font-size: 1.2em;
   }
+  .bookTimeSection {
+    margin: 3em 0 !important;
+  }
 }

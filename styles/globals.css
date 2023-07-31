@@ -206,6 +206,20 @@ input:checked ~ label {
 }
 
 /* Calendar */
+/* .rbc-month-view {
+  border: 1px solid #e1ad9d !important;
+}
+.rbc-header {
+  border: 1px solid #e1ad9d !important;
+  border-left: none !important;
+  border-top: none !important;
+}
+.rbc-header + .rbc-header:last-child {
+  border-right: none !important;
+}
+.rbc-row-bg {
+  border-right: 1px solid #e1ad9d !important;
+} */
 .rbc-btn-group > button:first-child:not(:last-child) {
   background-color: #e1ad9d;
   font-family: 'Gilroy';
@@ -238,9 +252,26 @@ input:checked ~ label {
   font-size: 'Gilroy';
 }
 .MuiButton-label {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy' !important;
   color: #fff;
 }
 .MuiButton-contained {
   background-color: #000 !important;
+}
+@media screen and (max-width: 1510px) {
+  .rbc-toolbar {
+    justify-content: start !important;
+    align-items: center;
+  }
+  .rbc-btn-group {
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 442px) {
+  .rbc-toolbar {
+    justify-content: center !important;
+  }
+  .rbc-btn-group {
+    margin-top: 0px;
+  }
 }
