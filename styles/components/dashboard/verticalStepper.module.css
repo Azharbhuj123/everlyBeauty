@@ -1,5 +1,14 @@
-.verticalStepperSteps{
- display: flex;
- justify-content: space-between;
- align-items: center;
+.verticalStepperSteps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stepperButton {
+  width: 180px;
+  margin-top: -3em;
+}
+@media screen and (max-width: 1180px) {
+  .stepperButton {
+    width: 150px;
+  }
 }

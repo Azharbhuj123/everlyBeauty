@@ -130,24 +130,6 @@ export const bookSessionCardData = [
   },
 ];
 
-export const blogCardData = [
-  {
-    image: "/assets/images/blog1.svg",
-    question: "How Does Laser Hair Removal Work?",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  },
-  {
-    image: "/assets/images/blog2.svg",
-    question: "Is Laser Hair Removal Safe?",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  },
-  {
-    image: "/assets/images/blog3.svg",
-    question: "What Should I do Before and After My Session?",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  },
-];
-
 export const services = [
   {
     id: 1,

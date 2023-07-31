@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Stepper, Step, StepLabel, Button, Typography } from '@mui/material'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
 import StyledButton from '../../../buttons/StyledButton'
-
+import styles from '@/styles/components/dashboard/verticalStepper.module.css'
 const steps = [
   { label: 'Session 1', dot: ':', date: 'Jun 2023' },
   { label: 'Session 2', dot: ':', date: 'Jul 2023' },
@@ -37,6 +37,7 @@ const VerticalStepper = () => {
                   display: 'flex',
                   width: '50%',
                   justifyContent: 'space-between',
+                  alignItems: 'center',
                 }}
               >
                 <h2>{dot}</h2>
@@ -55,7 +56,7 @@ const VerticalStepper = () => {
         }}
       >
         {isLastStep ? null : (
-          <div style={{ width: '180px', marginTop: '-3em' }}>
+          <div className={styles.stepperButton}>
             <StyledButton
               color='#fff'
               backgroundColor='#E1AD9D'

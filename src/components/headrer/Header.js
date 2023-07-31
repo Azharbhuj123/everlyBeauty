@@ -57,15 +57,7 @@ const Header = () => {
                   Home
                 </li>
               </Link>
-              <Link href='/dashboard'>
-                <div
-                  className={`${styles.headerNavbarLink} ${
-                    router.pathname === '/dashboard' ? styles.active : ''
-                  }`}
-                >
-                  Dashboard
-                </div>
-              </Link>
+
               <Link href='/blog'>
                 <div
                   className={`${styles.headerNavbarLink} ${
@@ -82,6 +74,15 @@ const Header = () => {
                   }`}
                 >
                   Contact Us
+                </div>
+              </Link>
+              <Link href='/dashboard'>
+                <div
+                  className={`${styles.headerNavbarLink} ${
+                    router.pathname === '/dashboard' ? styles.active : ''
+                  }`}
+                >
+                  Dashboard
                 </div>
               </Link>
             </div>
@@ -130,16 +131,7 @@ const Header = () => {
                       />
                     </ListItem>
                   </Link>
-                  <Link href='/dashboard' style={{ textDecoration: 'none' }}>
-                    <ListItem button>
-                      <ListItemText
-                        primary='Dashboard'
-                        className={`${styles.headerNavbarLink} ${
-                          router.pathname === '/dashboard' ? styles.active : ''
-                        }`}
-                      />
-                    </ListItem>
-                  </Link>
+
                   <Link href='/blog' style={{ textDecoration: 'none' }}>
                     <ListItem button>
                       <ListItemText
@@ -150,6 +142,7 @@ const Header = () => {
                       />
                     </ListItem>
                   </Link>
+
                   <Link href='/contact-us' style={{ textDecoration: 'none' }}>
                     <ListItem button>
                       <ListItemText
@@ -160,6 +153,18 @@ const Header = () => {
                       />
                     </ListItem>
                   </Link>
+
+                  <Link href='/dashboard' style={{ textDecoration: 'none' }}>
+                    <ListItem button>
+                      <ListItemText
+                        primary='Dashboard'
+                        className={`${styles.headerNavbarLink} ${
+                          router.pathname === '/dashboard' ? styles.active : ''
+                        }`}
+                      />
+                    </ListItem>
+                  </Link>
+
                   <ListItem button>
                     <ListItemText
                       primary={
