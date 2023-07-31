@@ -206,7 +206,7 @@ input:checked ~ label {
 }
 
 /* Calendar */
-/* .rbc-month-view {
+.rbc-month-view {
   border: 1px solid #e1ad9d !important;
 }
 .rbc-header {
@@ -219,7 +219,7 @@ input:checked ~ label {
 }
 .rbc-row-bg {
   border-right: 1px solid #e1ad9d !important;
-} */
+}
 .rbc-btn-group > button:first-child:not(:last-child) {
   background-color: #e1ad9d;
   font-family: 'Gilroy';
