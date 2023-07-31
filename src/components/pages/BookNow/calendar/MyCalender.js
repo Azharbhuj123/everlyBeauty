@@ -11,9 +11,7 @@ import ValidationPopUps from "./ValidationPopUps";
 const localizer = momentLocalizer(moment);
 
 const MyCalender = () => {
-  const [events, setEvents] = useState([
-    { title: "booked", start: "12:00:00", end: "12:30:00" },
-  ]);
+  const [events, setEvents] = useState([]);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [ValidationText, setValidationText] = useState("");
@@ -43,7 +41,7 @@ const MyCalender = () => {
       );
     };
     const response = await createAPIEndPoint(endPoints.userSlot).fetchAll();
-    setEvents(response.data.data.map((item) => item.attributes));
+    // setEvents(response.data.data.map((item) => item.attributes));
     let eventData = response.data.data.map((item) => item.attributes);
     const convertedData = eventData.map((item) => ({
       title: "booked",
@@ -52,7 +50,7 @@ const MyCalender = () => {
     }));
     console.log(convertedData, "converted data check");
 
-    setEvents(convertedData);
+    // setEvents(convertedData);
   };
 
   useEffect(() => {
