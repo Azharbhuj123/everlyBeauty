@@ -2,9 +2,11 @@ import React, { useState, useContext, useEffect, useLayoutEffect } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
+import { useRouter } from "next/router";
 
 import { endPoints } from "@/src/config/endpoints";
 const ValidationPopUps = ({ open, onClose, ValidationText }) => {
+  const router = useRouter();
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
@@ -29,7 +31,14 @@ const ValidationPopUps = ({ open, onClose, ValidationText }) => {
             <Button
               variant="contained"
               color="#E1AD9D"
-              onClick={() => onClose()}
+              onClick={() => {
+                onClose();
+                ValidationText == "Kindly select the services first" &&
+                  router.push({
+                    pathname: "/",
+                    query: { isGoToService: true },
+                  });
+              }}
             >
               Ok
             </Button>

@@ -18,6 +18,9 @@ import { bookingContext } from "@/store/bookingContext";
 import { payableAmountContext } from "@/store/payableAmountContext";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
+// import TimePicker from "react-time-picker";
+// import "react-time-picker/dist/TimePicker.css";
+// import { TimePicker } from "react-ios-time-picker";
 const TimePickerDialog = ({
   open,
   onClose,
@@ -25,6 +28,7 @@ const TimePickerDialog = ({
   start,
   end,
   date,
+  setStartedTime,
 }) => {
   const router = useRouter();
   const [selectedTime, setSelectedTime] = useState(dayjs());
@@ -95,13 +99,24 @@ const TimePickerDialog = ({
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
+        {/* <TimePicker
+          onChange={(time) => {
+            // Do something with the selected time from the Time Picker
+            console.log("Selected Time:", time);
+          }}
+          value={new Date(start)}
+        /> */}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <TimePicker
             label="Time"
-            value={selectedTime}
-            minTime={dayjs(new Date(0, 0, 0, 9, 0))} // 9 am
+            value={dayjs(new Date(start))}
+            minTime={dayjs(new Date(start))} // 9 am
             maxTime={dayjs(new Date(0, 0, 0, 17, 0))} // 5 pm
-            onChange={(newValue) => setSelectedTime(newValue)}
+            onChange={(newValue) => {
+              setSelectedTime(newValue);
+              // console.log(newValue, "new value check");
+              setStartedTime(new Date(newValue));
+            }}
           />
         </LocalizationProvider>
         {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -122,9 +137,9 @@ const TimePickerDialog = ({
             fontFamily: "Poppins",
           }}
         >
-          <h3>
+          {/* <h3>
             Are you sure. you want to set the visit at the selected time slot?
-          </h3>
+          </h3> */}
 
           <div
             style={{

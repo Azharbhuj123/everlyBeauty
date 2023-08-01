@@ -10,6 +10,7 @@ import { endPoints } from "@/src/config/endpoints";
 import { useToasts } from "react-toast-notifications";
 
 const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
+  // const { addToast } = useToasts();
   const router = useRouter();
   const [OTP, setOTP] = useState("");
   const [username, setUserName] = useState("");
@@ -20,7 +21,6 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const shouldRenderInput = mode == "signup";
-  const { addToast } = useToasts();
 
   // register function
   const RegisterUser = async () => {
@@ -66,14 +66,14 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       localStorage.setItem("Token", jwt);
       localStorage.setItem("User", JSON.stringify(user));
       // Toast notification for successful login
-      addToast("Login successful!", {
-        appearance: "success",
-        autoDismiss: true,
-      });
+      // addToast("Login successful!", {
+      //   appearance: "success",
+      //   autoDismiss: true,
+      // });
       router.push("/book-now");
     } catch (error) {
       const errorMessage = error.response
-        ? error.response.data.error.message
+        ? error?.response?.data?.error?.message
         : "An error occurred. Please try again.";
       // Toast notification for login error
       console.log(errorMessage, "api error messsage");
@@ -81,6 +81,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       //   appearance: "error",
       //   autoDismiss: true,
       // });
+      alert(errorMessage);
       console.log(error, "error in login");
     }
   };

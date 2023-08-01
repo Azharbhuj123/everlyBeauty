@@ -1,20 +1,16 @@
 import axios from "axios";
 
 export const createAPIEndPoint = (endpoint) => {
-  // const BASE_URL = "https://api.everlybeauty.ca/api";
+  const BASE_URL = "https://api.everlybeauty.ca/api";
   // const BASE_URL = "https://8246-103-125-71-8.ngrok-free.app/api";
-  const BASE_URL = "http://192.168.2.112/api";
+  // const BASE_URL = "http://192.168.2.112/api";
   let token =
     typeof localStorage !== "undefined" && localStorage.getItem("Token");
 
   const headers = {
     Authorization: `Bearer ${token}`,
   };
-  console.log(BASE_URL, "baseUrl");
-
   let url = BASE_URL + "/" + endpoint + "/";
-  console.log(url, "endpoint check");
-
   return {
     fetchAllWithToken: () =>
       axios.get(
