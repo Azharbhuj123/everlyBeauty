@@ -84,6 +84,9 @@ input:checked ~ label {
 /* end */
 
 /* progressbar */
+.p-progressbar-determinate .p-progressbar-label {
+  font-family: 'Gilroy-Bold' !important;
+}
 .p-progressbar {
   border-radius: 20px !important;
   height: 40px !important;
@@ -144,7 +147,6 @@ input:checked ~ label {
   margin-top: 1em;
 }
 /* end */
-
 
 /* scrollbar */
 ::-webkit-scrollbar {
@@ -302,7 +304,6 @@ input:checked ~ label {
   .rbc-btn-group {
     margin-top: 0px;
   }
-
 }
 
 /* Stepper */
@@ -336,9 +337,10 @@ input:checked ~ label {
   font-family: 'Gilroy';
   font-size: 14px;
 }
-.recharts-layer .recharts-cartesian-axis-tick{
-font-family: "Poppins";
+.recharts-layer .recharts-cartesian-axis-tick {
+  font-family: 'Poppins';
 }
-.recharts-tooltip-wrapper{
+.recharts-tooltip-wrapper {
   font-family: 'Gilroy';
 }
+/* end */
