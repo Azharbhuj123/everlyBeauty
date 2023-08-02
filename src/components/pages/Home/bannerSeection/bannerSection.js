@@ -31,7 +31,13 @@ const Banner = () => {
             </div>
             <div className={styles.bannerContentRight}>
               <div className={styles.bannerContentRightImage}>
-                {/* <Image src={colada} width={800} height={'auto'} alt='' /> */}
+                <Image
+                  src={colada}
+                  width={800}
+                  height={'auto'}
+                  alt=''
+                  loading='lazy'
+                />
               </div>
             </div>
           </div>

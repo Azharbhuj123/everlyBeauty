@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { createAPIEndPoint } from '@/src/config/api'
 import { endPoints } from '@/src/config/endpoints'
 
-const BlogCard = ({ blogCardData }) => {
-  const BASE_URL = 'http://192.168.0.145:80'
+const BlogCard = () => {
+  const BASE_URL = 'https://api.everlybeauty.ca/api'
   const [artileItems, setArticelItems] = useState([])
   const getArticle = async () => {
     try {
