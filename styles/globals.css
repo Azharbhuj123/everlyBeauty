@@ -288,6 +288,9 @@ input:checked ~ label {
 .MuiButton-contained {
   background-color: #000 !important;
 }
+.rbc-agenda-view table.rbc-agenda-table tbody > tr > td {
+  border: 1px solid #e1ad9d !important;
+}
 @media screen and (max-width: 1510px) {
   .rbc-toolbar {
     justify-content: start !important;
