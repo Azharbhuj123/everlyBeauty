@@ -107,7 +107,7 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
   // ModalCose-Function
   const handleModalClose = () => {
     onClose();
-    setMode("login");
+    // setMode("login");
   };
 
   const handleModeToggle = () => {

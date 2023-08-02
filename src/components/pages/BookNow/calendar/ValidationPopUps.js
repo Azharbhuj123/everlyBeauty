@@ -36,7 +36,7 @@ const ValidationPopUps = ({ open, onClose, ValidationText }) => {
                 ValidationText == "Kindly select the services first" &&
                   router.push({
                     pathname: "/",
-                    query: { isGoToService: true },
+                    // query: { isGoToService: true },
                   });
               }}
             >

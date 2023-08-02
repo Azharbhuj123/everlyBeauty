@@ -45,7 +45,7 @@ const MyCalender = () => {
     // setEvents(response.data.data.map((item) => item.attributes));
     let eventData = response.data.data.map((item) => item.attributes);
     const convertedData = eventData.map((item) => ({
-      title: "booked",
+      // title: "booked",
       start: new Date(convertToFormattedTime(item.date, item.start)),
       end: new Date(convertToFormattedTime(item.date, item.end)),
     }));
@@ -111,10 +111,7 @@ const MyCalender = () => {
     // setEndTime(endTime);
     const dateKey = moment(selectedTime).format("YYYY-MM-DD");
 
-    setEvents([
-      ...events,
-      { title: "Booked", start: selectedTime, end: endTime },
-    ]);
+    setEvents([...events, { start: selectedTime, end: endTime }]);
 
     setShowTimePicker(false);
   };
@@ -142,7 +139,7 @@ const MyCalender = () => {
         min={minTime}
         max={maxTime}
         defaultDate={nextBookingDate}
-        defaultView="week"
+        defaultView="day"
         // step={10}
       />
 

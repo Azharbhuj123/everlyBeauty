@@ -56,26 +56,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('/assets/images/colada.png');
+  /* background-image: url('/assets/images/colada.png'); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   z-index: 2;
-  width: 42em;
-  height: 40em;
 }
-/* @media screen and (max-width: 1440px) {
-  .bannerWrapper {
-  height: 42em;
-  }
-} */
+
 @media screen and (max-width: 1200px) {
   .bannerWrapper {
     height: 42em;
   }
   .bannerContent {
     margin: 0 1em;
+    justify-content: space-between;
   }
   .bannerContentLeftParent {
     width: 50%;
@@ -86,11 +81,10 @@
     width: 30em;
   }
   .bannerContentRight {
-    width: 40em;
+    width: 43em;
   }
-  .bannerContentRightImage {
-    width: 40em;
-    height: 34em;
+  .bannerContentRightImage img{
+    width: 43em;
   }
 }
 @media screen and (max-width: 1100px) {
@@ -107,11 +101,10 @@
     width: 12em !important;
   }
   .bannerContentRight {
-    width: 40em;
+    width: 36em;
   }
-  .bannerContentRightImage {
-    width: 35em;
-    height: 25em;
+  .bannerContentRightImage img{
+    width: 36em;
   }
 }
 @media screen and (max-width: 930px) {
@@ -119,25 +112,12 @@
     width: 20em;
   }
   .bannerContentRight {
-    width: 35em;
-  }
-  .bannerContentRightImage {
     width: 30em;
-    height: 25em;
+  }
+  .bannerContentRightImage img{
+    width: 30em;
   }
 }
-/* @media screen and (max-width: 930px) {
-  .bannerContentLeftParent {
-    width: 17em;
-  }
-  .bannerContentRight {
-    width: 32em;
-  }
-  .bannerContentRightImage {
-    width: 32em;
-    height: 25em;
-  }
-} */
 
 @media screen and (max-width: 768px) {
   .bannerWrapper {

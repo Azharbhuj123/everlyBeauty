@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL = 'http://192.168.0.145:80/api'
+export const BASE_URL = "http://192.168.0.145:80/api";
 export const createAPIEndPoint = (endpoint, isPopulated = false) => {
   // const BASE_URL = "https://api.everlybeauty.ca/api";
   // const BASE_URL = "https://8246-103-125-71-8.ngrok-free.app/api";

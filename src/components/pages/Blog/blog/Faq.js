@@ -14,6 +14,7 @@ const Faq = ({ items }) => {
     try {
       const response = await createAPIEndPoint(endPoints.faqs).fetchAll()
       setAccordianItems(response?.data?.data)
+      console.log(response?.data?.data, 'respone check')
     } catch (error) {
       console.log(error,"error")
     }
