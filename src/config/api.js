@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const BASE_URL = "http://192.168.0.145:80/api";
+export const BASE_URL = 'http://192.168.0.145:80/api'
 export const createAPIEndPoint = (endpoint, isPopulated = false) => {
   // const BASE_URL = "https://api.everlybeauty.ca/api";
   // const BASE_URL = "https://8246-103-125-71-8.ngrok-free.app/api";
 
   let token =
-    typeof localStorage !== "undefined" && localStorage.getItem("Token");
+    typeof localStorage !== 'undefined' && localStorage.getItem('Token')
 
   const headers = {
     Authorization: `Bearer ${token}`,
-  };
-  let url = BASE_URL + "/" + endpoint + "/";
+  }
+  let url = BASE_URL + '/' + endpoint + '/'
   return {
     fetchAllWithToken: () =>
       axios.get(
@@ -80,5 +80,5 @@ export const createAPIEndPoint = (endpoint, isPopulated = false) => {
           },
         }
       ),
-  };
-};
+  }
+}
