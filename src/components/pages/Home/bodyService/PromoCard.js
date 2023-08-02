@@ -16,6 +16,7 @@ const PromoCard = ({ onClose }) => {
           <div className={styles.promoFormContentHeading}>
             <h1>Promo Code</h1>
             <Image
+            style={{cursor: 'pointer'}}
               src={close}
               alt=''
               width={25}
