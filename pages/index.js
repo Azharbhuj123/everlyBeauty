@@ -11,17 +11,6 @@ import BodyService from "@/src/components/pages/Home/bodyService/BodyService";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const router = useRouter();
-  const bodyRef = useRef();
-  const paramValue = router.query.isGoToService;
-
-  useEffect(() => {
-    if (paramValue) {
-      // document.getElementById("body").scrollTo({ y: 100, behavior: "smooth" });
-      // bodyRef.current.scrollTo({ behavior: "smooth" });
-    }
-  }, []);
-
   return (
     <>
       <Head>
@@ -32,7 +21,7 @@ export default function Home() {
       </Head>
       <Banner />
       <PromiseSection />
-      <BodyService ref={bodyRef} id="body" />
+      <BodyService />
       <Testimonals />
     </>
   );
