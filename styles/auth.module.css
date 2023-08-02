@@ -31,6 +31,7 @@
   border-radius: 35px;
   padding-left: 15px;
   font-family: 'Gilroy';
+  width: 100%;
 }
 .authFormInputs input:focus {
   outline: none;
