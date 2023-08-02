@@ -7,12 +7,11 @@ import { useRouter } from 'next/router'
 import OTPInput from 'react-otp-input'
 import { createAPIEndPoint } from '@/src/config/api'
 import { endPoints } from '@/src/config/endpoints'
-import { useToasts } from 'react-toast-notifications'
+import toast from 'react-hot-toast'
 import hide from '/public/assets/images/hide.png'
 import eye from '/public/assets/images/eye.png'
 
 const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
-  const { addToast } = useToasts()
   const router = useRouter()
   const [OTP, setOTP] = useState('')
   const [username, setUserName] = useState('')
@@ -48,17 +47,15 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       setPassword('')
       setFirstName('')
       setLastName('')
-      localStorage.setItem('Token', jwt)
-      localStorage.setItem('User', JSON.stringify(user))
+      // localStorage.setItem('Token', jwt)
+      // localStorage.setItem('User', JSON.stringify(user))
       console.log(response)
       // Toast notification for successfully signup
-      addToast('You have successful Signup!', {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+      toast.success('You have successfully signup!')
       setMode('login')
     } catch (error) {
-      console.log(error)
+      console.log(error, 'signup')
+      toast.error(error?.response?.data?.error?.message)
     }
   }
 
@@ -74,23 +71,15 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       localStorage.setItem('Token', jwt)
       localStorage.setItem('User', JSON.stringify(user))
       // Toast notification for successful login
-      addToast('Login successful!', {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+      toast.success('Login Successfully')
       router.push('/book-now')
     } catch (error) {
       const errorMessage = error.response
         ? error?.response?.data?.error?.message
         : 'An error occurred. Please try again.'
       // Toast notification for login error
-      console.log(errorMessage, 'api error messsage')
-      addToast(errorMessage, {
-        appearance: 'error',
-        autoDismiss: true,
-      })
-      // alert(errorMessage);
-      console.log(error, 'error in login')
+      console.log(error, 'api error messsage')
+      toast.error(errorMessage)
     }
   }
 
