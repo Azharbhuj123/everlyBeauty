@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/auth.module.css";
-import Image from "next/image";
-import close from "/public/assets/images/circle-xmark.png";
-import Button from "../buttons/Button";
-import { useRouter } from "next/router";
-import OTPInput from "react-otp-input";
-import { createAPIEndPoint } from "@/src/config/api";
-import { endPoints } from "@/src/config/endpoints";
-import { useToasts } from "react-toast-notifications";
-import hide from "/public/assets/images/hide.png";
-import eye from "/public/assets/images/eye.png";
+import React, { useEffect, useState } from 'react'
+import styles from '@/styles/auth.module.css'
+import Image from 'next/image'
+import close from '/public/assets/images/circle-xmark.png'
+import Button from '../buttons/Button'
+import { useRouter } from 'next/router'
+import OTPInput from 'react-otp-input'
+import { createAPIEndPoint } from '@/src/config/api'
+import { endPoints } from '@/src/config/endpoints'
+import toast from 'react-hot-toast'
+import hide from '/public/assets/images/hide.png'
+import eye from '/public/assets/images/eye.png'
 
 const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
-  // const { addToast } = useToasts()
-  const router = useRouter();
-  const [OTP, setOTP] = useState("");
-  const [username, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter()
+  const [OTP, setOTP] = useState('')
+  const [username, setUserName] = useState('')
+  const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   //Show Password
   const togglePasswordVisibility = () => {
@@ -41,24 +40,22 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
     };
 
     try {
-      const response = await createAPIEndPoint(endPoints.regiter).create(data);
-      const { jwt, user } = response.data;
-      setUserName("");
-      setEmail("");
-      setPassword("");
-      setFirstName("");
-      setLastName("");
-      localStorage.setItem("Token", jwt);
-      localStorage.setItem("User", JSON.stringify(user));
-      console.log(response);
+      const response = await createAPIEndPoint(endPoints.regiter).create(data)
+      const { jwt, user } = response.data
+      setUserName('')
+      setEmail('')
+      setPassword('')
+      setFirstName('')
+      setLastName('')
+      // localStorage.setItem('Token', jwt)
+      // localStorage.setItem('User', JSON.stringify(user))
+      console.log(response)
       // Toast notification for successfully signup
-      // addToast("You have successful Signup!", {
-      //   appearance: "success",
-      //   autoDismiss: true,
-      // });
-      setMode("login");
+      toast.success('You have successfully signup!')
+      setMode('login')
     } catch (error) {
-      console.log(error);
+      console.log(error, 'signup')
+      toast.error(error?.response?.data?.error?.message)
     }
   };
 
@@ -74,23 +71,15 @@ const Auth = ({ headingText, buttonText, onClose, mode, setMode }) => {
       localStorage.setItem("Token", jwt);
       localStorage.setItem("User", JSON.stringify(user));
       // Toast notification for successful login
-      // addToast("Login successful!", {
-      //   appearance: "success",
-      //   autoDismiss: true,
-      // });
-      router.push("/book-now");
+      toast.success('Login Successfully')
+      router.push('/book-now')
     } catch (error) {
       const errorMessage = error.response
         ? error?.response?.data?.error?.message
         : "An error occurred. Please try again.";
       // Toast notification for login error
-      console.log(errorMessage, "api error messsage");
-      // addToast(errorMessage, {
-      //   appearance: "error",
-      //   autoDismiss: true,
-      // });
-      // alert(errorMessage);
-      console.log(error, "error in login");
+      console.log(error, 'api error messsage')
+      toast.error(errorMessage)
     }
   };
 
