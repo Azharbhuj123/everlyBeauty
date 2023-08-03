@@ -10,4 +10,5 @@ export const endPoints = {
   createSlot: 'slots',
   faqs: 'faqs',
   articles: 'articles',
+  contactUs: 'contact-uses'
 }
