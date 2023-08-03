@@ -6,6 +6,7 @@ import PromoCard from './PromoCard'
 import { useRouter } from 'next/router'
 import StyledButton from '@/src/components/buttons/StyledButton'
 import Auth from '@/src/components/auth/auth'
+import StudentForm from './StudentForm'
 
 const DiscountToggle = () => {
   const router = useRouter()
@@ -13,6 +14,7 @@ const DiscountToggle = () => {
   const [isCheckedTwo, setIsCheckedTwo] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isPromoCardModalOpen, setIsPromoCardModalOpen] = useState(false)
+  const [isStudentCardModalOpen, setIsStudentCardModalOpen] = useState(false)
   const [mode, setMode] = useState('login')
   const [isToken, isSetToken] = useState(null)
 
@@ -20,6 +22,7 @@ const DiscountToggle = () => {
     const authToken = localStorage.getItem('Token')
     isSetToken(authToken)
   }, [])
+  console.log(isToken, 'auth token checking')
 
   const handleSwitchChange = (checked) => {
     setIsChecked(checked)
@@ -31,7 +34,7 @@ const DiscountToggle = () => {
   const handleSwitchChangeTwo = (checkedTwo) => {
     setIsCheckedTwo(checkedTwo)
     if (checkedTwo) {
-      setIsPromoCardModalOpen(true)
+      setIsStudentCardModalOpen(true)
     }
   }
 
@@ -41,11 +44,12 @@ const DiscountToggle = () => {
 
   const handleModalClose = () => {
     setIsModalOpen(false)
-    setMode('login')
+    // setMode('login')
   }
 
   const handlePromoCardModalClose = () => {
     setIsPromoCardModalOpen(false)
+    setIsStudentCardModalOpen(false)
   }
 
   return (
@@ -123,7 +127,7 @@ const DiscountToggle = () => {
                       ? 'Forgot Password'
                       : 'Reset-Password'
                   }
-                  onClose={handleModalClose}
+                  onClick={handleModalClose}
                 />
               </div>
             </div>
@@ -134,6 +138,13 @@ const DiscountToggle = () => {
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
             <PromoCard onClose={handlePromoCardModalClose} />
+          </div>
+        </div>
+      )}
+      {isStudentCardModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <StudentForm onClose={handlePromoCardModalClose} />
           </div>
         </div>
       )}
