@@ -26,7 +26,6 @@ const ContactUsForm = () => {
     const { name, email, phoneNumber, message } = state
     if (name !== '' && email !== '' && phoneNumber !== '' && message !== '') {
       postContact()
-      toast.success('Thanks for contacting us')
     } else {
       toast.error('Kindly fill all the required fields')
     }
@@ -40,8 +39,8 @@ const ContactUsForm = () => {
       console.log(response, 'contact us response')
       if (response.status == 200) {
         setState({ name: '', email: '', phoneNumber: '', message: '' })
+        toast.success('Thanks for contacting us')
       }
-      toast.success('Thanks for contacting us')
     } catch (error) {
       toast.error(error?.response?.data?.error?.message)
       // console.log(error, 'contact us error')
