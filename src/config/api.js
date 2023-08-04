@@ -22,15 +22,7 @@ export const createAPIEndPoint = (endpoint, isPopulated = false) => {
           },
         }
       ),
-    fetchAll: () =>
-      axios.get(
-        isPopulated ? `${url}?populate=*` : url,
-        token !== null && {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      ),
+    fetchAll: () => axios.get(isPopulated ? `${url}?populate=*` : url),
     create: (newRecord) => axios.post(url, newRecord),
     createWithToken: (newRecord) =>
       axios.post(
