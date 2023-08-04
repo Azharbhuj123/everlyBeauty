@@ -232,7 +232,7 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
                 renderInput={(props) => <input {...props} />}
                 shouldAutoFocus={true}
                 inputStyle={{
-                  border: '1px solid transparent',
+                  // border: '1px solid transparent',
                   borderRadius: '8px',
                   width: '45px',
                   height: '45px',
@@ -243,7 +243,7 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
                   fontFamily: 'Gilroy',
                 }}
                 focusStyle={{
-                  border: '1px solid #CFD3DB',
+                  border: 'none',
                   outline: 'none',
                 }}
               />
@@ -261,9 +261,6 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
-              <button type='button' onClick={togglePasswordVisibility}>
-                {showPassword ? 'Hide Password' : 'Show Password'}
-              </button>
             </div>
           </>
         )}
