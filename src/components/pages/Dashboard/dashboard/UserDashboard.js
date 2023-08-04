@@ -3,7 +3,7 @@ import styles from '@/styles/components/dashboard/userDashboard.module.css'
 import Chart from './Chart'
 import Stepper from './VerticalStepper'
 import VerticalStepper from './VerticalStepper'
-import TestimonialForm from './TestimonialForm'
+import TestimonialForm from '../../Home/testimonals/TestimonialForm'
 const UserDashboard = () => {
   return (
     <>

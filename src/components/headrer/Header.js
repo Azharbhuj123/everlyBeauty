@@ -1,47 +1,44 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/components/header.module.css";
-import Image from "next/image";
-import headerLogo from "/public/assets/images/logo.svg";
-import arrow from "/public/assets/images/arrow-up-right.svg";
-import StyledButton from "../buttons/StyledButton";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Auth from "../auth/auth";
-import {
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+'use client'
+import React, { useEffect, useState } from 'react'
+import styles from '@/styles/components/header.module.css'
+import Image from 'next/image'
+import headerLogo from '/public/assets/images/logo.svg'
+import arrow from '/public/assets/images/arrow-up-right.svg'
+import StyledButton from '../buttons/StyledButton'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Auth from '../auth/auth'
+import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 
-const Header = () => {
-  const router = useRouter();
-  const [mode, setMode] = useState("login");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isToken, setIsToken] = useState(null);
-  const [open, setOpen] = useState(false);
+const Header = ({ Token, key }) => {
+  const router = useRouter()
+  const [mode, setMode] = useState('login')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isToken, setIsToken] = useState(null)
+  const [open, setOpen] = useState(false)
 
   const toggleDrawer = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
+    setOpen((prevOpen) => !prevOpen)
+  }
 
   useEffect(() => {
-    const authToken = localStorage.getItem("Token");
-    setIsToken(authToken);
-  }, []);
+    const authToken = localStorage.getItem('Token')
+    if (authToken) {
+      setIsToken(authToken)
+    }
+  }, [Token, key])
 
-  console.log(isToken, "auth token check");
+  console.log(isToken, 'auth token check')
 
   const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleModalClose = () => {
-    setIsModalOpen(false);
-    setMode("login");
-  };
+    setIsModalOpen(false)
+    // setMode("login");
+  }
 
   return (
     <>
@@ -49,45 +46,45 @@ const Header = () => {
         <div className={styles.wrapper}>
           <div className={styles.header}>
             <div className={styles.headerLogo}>
-              <Link href="/">
-                <Image src={headerLogo} alt="" width={100} height={50} />
+              <Link href='/'>
+                <Image src={headerLogo} alt='' width={100} height={50} />
               </Link>
             </div>
             <div className={styles.headerNavbar}>
-              <Link href="/">
+              <Link href='/'>
                 <li
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === "/" ? styles.active : ""
+                    router.pathname === '/' ? styles.active : ''
                   }`}
                 >
                   Home
                 </li>
               </Link>
 
-              <Link href="/blog">
+              <Link href='/blog'>
                 <div
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === "/blog" ? styles.active : ""
+                    router.pathname === '/blog' ? styles.active : ''
                   }`}
                 >
                   Blog
                 </div>
               </Link>
-              <Link href="/contact-us">
+              <Link href='/contact-us'>
                 <div
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === "/contact-us" ? styles.active : ""
+                    router.pathname === '/contact-us' ? styles.active : ''
                   }`}
                 >
                   Contact Us
                 </div>
               </Link>
-              <Link href="/dashboard">
+              <Link href='/dashboard'>
                 <div
                   className={`${styles.headerNavbarLink} ${
-                    router.pathname === "/dashboard" ? styles.active : ""
+                    router.pathname === '/dashboard' ? styles.active : ''
                   }`}
-                  style={{ display: isToken == null ? "none" : "block" }}
+                  style={{ display: isToken == null ? 'none' : 'block' }}
                 >
                   Dashboard
                 </div>
@@ -95,14 +92,14 @@ const Header = () => {
             </div>
             <div className={styles.headerButton}>
               <StyledButton
-                backgroundColor="#fff"
-                color="#000"
-                text="Book Now"
+                backgroundColor='#fff'
+                color='#000'
+                text='Book Now'
                 image={arrow}
                 onClick={() => {
                   isToken === null
                     ? handleModalOpen()
-                    : router.push("/book-now");
+                    : router.push('/book-now')
                 }}
               />
             </div>
@@ -113,61 +110,62 @@ const Header = () => {
                 <MenuIcon />
               </IconButton>
 
-              <Drawer anchor="left" open={open} onClose={toggleDrawer}>
+              <Drawer anchor='left' open={open} onClose={toggleDrawer}>
                 <List>
                   <ListItem button>
                     <ListItemText
                       primary={
                         <Image
                           src={headerLogo}
-                          alt=""
+                          alt=''
                           width={200}
-                          height={"auto"}
+                          height={'auto'}
                         />
                       }
                     />
                   </ListItem>
 
-                  <Link href="/" style={{ textDecoration: "none" }}>
+                  <Link href='/' style={{ textDecoration: 'none' }}>
                     <ListItem button>
                       <ListItemText
                         className={`${styles.headerNavbarLink} ${
-                          router.pathname === "/" ? styles.active : ""
+                          router.pathname === '/' ? styles.active : ''
                         }`}
-                        primary="Home"
+                        primary='Home'
                       />
                     </ListItem>
                   </Link>
 
-                  <Link href="/blog" style={{ textDecoration: "none" }}>
+                  <Link href='/blog' style={{ textDecoration: 'none' }}>
                     <ListItem button>
                       <ListItemText
-                        primary="Blog"
+                        primary='Blog'
                         className={`${styles.headerNavbarLink} ${
-                          router.pathname === "/blog" ? styles.active : ""
-                        }`}
-                      />
-                    </ListItem>
-                  </Link>
-
-                  <Link href="/contact-us" style={{ textDecoration: "none" }}>
-                    <ListItem button>
-                      <ListItemText
-                        primary="Contact Us"
-                        className={`${styles.headerNavbarLink} ${
-                          router.pathname === "/contact-us" ? styles.active : ""
+                          router.pathname === '/blog' ? styles.active : ''
                         }`}
                       />
                     </ListItem>
                   </Link>
 
-                  <Link href="/dashboard" style={{ textDecoration: "none" }}>
+                  <Link href='/contact-us' style={{ textDecoration: 'none' }}>
                     <ListItem button>
                       <ListItemText
-                        primary="Dashboard"
+                        primary='Contact Us'
                         className={`${styles.headerNavbarLink} ${
-                          router.pathname === "/dashboard" ? styles.active : ""
+                          router.pathname === '/contact-us' ? styles.active : ''
                         }`}
+                      />
+                    </ListItem>
+                  </Link>
+
+                  <Link href='/dashboard' style={{ textDecoration: 'none' }}>
+                    <ListItem button>
+                      <ListItemText
+                        primary='Dashboard'
+                        className={`${styles.headerNavbarLink} ${
+                          router.pathname === '/dashboard' ? styles.active : ''
+                        }`}
+                        style={{ display: isToken == null ? 'none' : 'block' }}
                       />
                     </ListItem>
                   </Link>
@@ -175,16 +173,16 @@ const Header = () => {
                   <ListItem button>
                     <ListItemText
                       primary={
-                        <div style={{ width: "11em" }}>
+                        <div style={{ width: '11em' }}>
                           <StyledButton
-                            backgroundColor="#fff"
-                            color="#000"
-                            text="Book Now"
+                            backgroundColor='#fff'
+                            color='#000'
+                            text='Book Now'
                             image={arrow}
                             onClick={() => {
                               isToken === null
                                 ? handleModalOpen()
-                                : router.push("/book-now");
+                                : router.push('/book-now')
                             }}
                           />
                         </div>
@@ -202,24 +200,24 @@ const Header = () => {
                   mode={mode}
                   setMode={setMode}
                   headingText={
-                    mode == "login"
-                      ? "Log in"
-                      : mode == "signup"
-                      ? "Sign Up"
-                      : mode == "forgot-password"
-                      ? "Forgot Password"
-                      : "Reset-Password"
+                    mode == 'login'
+                      ? 'Log in'
+                      : mode == 'signup'
+                      ? 'Sign Up'
+                      : mode == 'forgot-password'
+                      ? 'Forgot Password'
+                      : 'Reset-Password'
                   }
                   buttonText={
-                    mode == "login"
-                      ? "Log in"
-                      : mode == "signup"
-                      ? "Sign Up"
-                      : mode == "forgot-password"
-                      ? "Forgot Password"
-                      : "Reset-Password"
+                    mode == 'login'
+                      ? 'Log in'
+                      : mode == 'signup'
+                      ? 'Sign Up'
+                      : mode == 'forgot-password'
+                      ? 'Forgot Password'
+                      : 'Reset-Password'
                   }
-                  onClose={handleModalClose}
+                  onClick={handleModalClose}
                 />
               </div>
             </div>
@@ -227,7 +225,7 @@ const Header = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -36,3 +36,55 @@
 .promoFormContentButton {
   margin-top: 20px;
 }
+
+/* Student Form */
+.studentFormInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+.studentFormProfile {
+  width: 100%;
+}
+.studentFormProfile h2 {
+  font-size: 20px;
+  font-family: 'Gilroy';
+  margin-bottom: 10px;
+}
+.studentFormProfileImage {
+  background-color: #fff;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 12em;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.studentFormProfileImage img {
+  /* width: 100%; */
+  border-radius: 20px;
+}
+.studentFormInputs {
+  align-items: center;
+}
+.studentFormProfile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.studentFormInputs input {
+  border: none;
+  height: 45px;
+  border-radius: 35px;
+  padding-left: 15px;
+  width: 100%;
+  font-family: 'Gilroy';
+}
+.studentFormButton{
+  width: 100%;
+  margin-top: 20px;
+}
