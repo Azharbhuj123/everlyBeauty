@@ -1,3 +1,4 @@
+import BlogCard from '@/src/components/pages/Blog/blog/BlogCard'
 import Blogs from '@/src/components/pages/Blog/blog/Blogs'
 import React from 'react'
 

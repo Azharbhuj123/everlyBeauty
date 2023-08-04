@@ -39,7 +39,6 @@ const Faq = ({ items }) => {
         </div>
         <div className={styles.accordion}>
           {accordionItems.map((item, index) => (
-            
             <div key={index} className={styles.item}>
               <div
                 className={`${styles.title} ${

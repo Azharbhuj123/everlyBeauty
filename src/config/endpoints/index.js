@@ -1,8 +1,8 @@
 export const endPoints = {
   login: 'auth/local',
-  regiter: 'auth/local/register',
-  forgotPassword: '',
-  resetPassword: '',
+  register: 'auth/local/register',
+  forgotPassword: 'auth/forgot-password', 
+  resetPassword: 'auth/reset-password',   
   loginWithGoogle: 'connect/google',
   loginWithFaceBook: 'connect/facebook',
   services: 'services',
@@ -10,5 +10,5 @@ export const endPoints = {
   createSlot: 'slots',
   faqs: 'faqs',
   articles: 'articles',
-  contactUs: 'contact-uses'
-}
+  contactUs: 'contact-us',
+};
