@@ -41,7 +41,9 @@ const MyCalender = () => {
   };
 
   const getAllSlots = async () => {
-    const response = await createAPIEndPoint(endPoints.userSlot).fetchAll();
+    const response = await createAPIEndPoint(
+      endPoints.userSlot
+    ).fetchAllWithToken();
     // setEvents(response.data.data.map((item) => item.attributes));
     let eventData = response.data.data.map((item) => item.attributes);
     const convertedData = eventData.map((item) => ({

@@ -61,7 +61,6 @@ const TimePickerDialog = ({
 
     let data = {
       // user_id: userIdInString,
-      user_email: user?.email,
       payableAmount: payable,
       services: services,
       start: fomatedStartTime,
