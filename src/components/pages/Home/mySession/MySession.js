@@ -98,12 +98,12 @@ const MySession = () => {
           })}
         </div>
         <div className={styles.bodyServiceContentRightcalc}>
+          <MySessionInvoice heading={"Subtotal"} amount={totalPrice} />
           <MySessionDiscount
             heading={"Discount"}
             discount={discountPercent}
             amount={discount}
           />
-          <MySessionInvoice heading={"Subtotal"} amount={totalPrice} />
           <MySessionInvoice heading={"Total"} amount={roundedTotalAmount} />
         </div>
       </div>

@@ -39,6 +39,7 @@ const ContactUsForm = () => {
       console.log(response, "contact us response");
       if (response.status == 200) {
         setState({ name: "", email: "", phoneNumber: "", message: "" });
+        toast.success("Thanks for contacting us");
       }
     } catch (error) {
       console.log(error.response);
@@ -59,19 +60,24 @@ const ContactUsForm = () => {
               type="text"
               name="name"
               onChange={handleInputChange}
+              value={state.name}
+              required
             />
-            <input placeholder="Last Name" type="text" />
             <input
-              placeholder="Enter Register Email"
+              placeholder="Enter Email"
               name="email"
               type="email"
               onChange={handleInputChange}
+              value={state.email}
+              required
             />
             <input
               placeholder="Phone Number"
               type="phone"
               name="phoneNumber"
               onChange={handleInputChange}
+              value={state.phoneNumber}
+              required
             />
             <textarea
               placeholder="Your Inquiry here..."
@@ -79,7 +85,8 @@ const ContactUsForm = () => {
               name="message"
               maxLength="300"
               onChange={handleInputChange}
-              // onClick={() => alert('sassa')}
+              value={state.message}
+              required
             />
           </div>
           <div className={styles.contactUsFormButton}>

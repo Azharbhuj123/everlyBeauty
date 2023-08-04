@@ -1,18 +1,31 @@
-import axios from "axios";
+import axios from 'axios'
+import { endPoints } from './endpoints'
 
-export const BASE_URL = "http://192.168.0.145:80/api";
+export const BASE_URL = 'http://192.168.0.145:80/api'
 export const createAPIEndPoint = (endpoint, isPopulated = false) => {
   // const BASE_URL = "https://api.everlybeauty.ca/api";
   // const BASE_URL = "https://8246-103-125-71-8.ngrok-free.app/api";
 
   let token =
-    typeof localStorage !== "undefined" && localStorage.getItem("Token");
+    typeof localStorage !== 'undefined' && localStorage.getItem('Token')
 
   const headers = {
     Authorization: `Bearer ${token}`,
-  };
-  let url = BASE_URL + "/" + endpoint + "/";
+  }
+  let url = BASE_URL + '/' + endpoint + '/'
+  // let authUrl = BASE_URL + '/auth/' + endpoint + '/'
+
   return {
+    forgotPassword: (email) =>
+      axios.post(`${BASE_URL}/auth/forgot-password`, { email }),
+
+    resetPassword: (code, password, passwordConfirmation) =>
+      axios.post(`${BASE_URL}/auth/reset-password`, {
+        code,
+        password,
+        passwordConfirmation,
+      }),
+
     fetchAllWithToken: () =>
       axios.get(
         url,
@@ -22,6 +35,7 @@ export const createAPIEndPoint = (endpoint, isPopulated = false) => {
           },
         }
       ),
+
     fetchAll: () => axios.get(isPopulated ? `${url}?populate=*` : url),
     create: (newRecord) => axios.post(url, newRecord),
     createWithToken: (newRecord) =>
@@ -72,5 +86,5 @@ export const createAPIEndPoint = (endpoint, isPopulated = false) => {
           },
         }
       ),
-  };
-};
+  }
+}

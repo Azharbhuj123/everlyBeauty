@@ -10,23 +10,28 @@ import { endPoints } from '@/src/config/endpoints'
 import toast from 'react-hot-toast'
 import hide from '/public/assets/images/hide.png'
 import eye from '/public/assets/images/eye.png'
+import { forgotPassword, resetPassword } from '@/src/config/endpoints'
 
 const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
   const router = useRouter()
-  const [OTP, setOTP] = useState('')
   const [username, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-
+  const [showPasswordTwo, setShowPasswordTwo] = useState(false)
+  const [confirmNewPassword, setConfirmNewPassword] = useState('')
+  const [code, setCode] = useState('')
   //Show Password
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
 
+  const togglePasswordVisibilityTwo = () => {
+    setShowPasswordTwo(!showPasswordTwo)
+  }
   const shouldRenderInput = mode == 'signup'
 
   // register function
@@ -85,23 +90,34 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
   }
 
   const ForgotPassword = async () => {
-    setMode('reset-password')
     try {
-      const response = await createAPIEndPoint(endPoints.forgotPassword).create(
-        {}
-      )
+      const api = createAPIEndPoint(endPoints.forgotPassword) // Create the API instance
+      await api.forgotPassword(email) // Call the forgotPassword function
+      toast.success('Password reset email sent! Please check your inbox.')
+      setMode('reset-password')
     } catch (error) {
       console.log(error, 'error in login')
+      toast.error(
+        'An error occurred while initiating the forgot password process.'
+      )
     }
   }
 
   const ResetPassword = async () => {
     try {
-      const response = await createAPIEndPoint(endPoints.resetPassword).create(
-        {}
+      const api = createAPIEndPoint(endPoints.resetPassword)
+      await createAPIEndPoint().resetPassword(
+        code,
+        newPassword,
+        confirmNewPassword
       )
+      toast.success(
+        'Password successfully reset! You can now log in with your new password.'
+      )
+      setMode('login')
     } catch (error) {
       console.log(error, 'error in login')
+      toast.error('An error occurred while resetting the password.')
     }
   }
 
@@ -224,8 +240,11 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
           <>
             <div style={{ justifyContent: 'center', display: 'flex' }}>
               <OTPInput
-                value={OTP}
-                onChange={(otpValue) => setOTP(otpValue)}
+                value={code}
+                onChange={(e) => {
+                  setCode(e)
+                  console.log(e, 'eeee')
+                }}
                 numInputs={4}
                 isInputNum
                 renderSeparator={<span style={{ width: '15px' }}></span>}
@@ -243,27 +262,83 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
                   fontFamily: 'Gilroy',
                 }}
                 focusStyle={{
-                  border: '1px solid #CFD3DB',
+                  border: 'none',
                   outline: 'none',
                 }}
               />
             </div>
             <div className={styles.authFormInputs}>
-              <input
-                placeholder='New Password'
-                type='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <input
-                placeholder='Confirm New Password'
-                type={showPassword ? 'text' : 'password'}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              <button type='button' onClick={togglePasswordVisibility}>
-                {showPassword ? 'Hide Password' : 'Show Password'}
-              </button>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  position: 'relative',
+                }}
+              >
+                <input
+                  placeholder='New Password'
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  type={showPassword ? 'text' : 'password'}
+                />
+                <div
+                  type='button'
+                  onClick={togglePasswordVisibility}
+                  style={{
+                    border: 'none',
+                    color: 'transparent',
+                    width: '20px',
+                    position: 'absolute',
+                    right: '25px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {showPassword ? (
+                    <Image src={hide} alt='' width={20} height={20} />
+                  ) : (
+                    <Image src={eye} alt='' width={20} height={20} />
+                  )}
+                </div>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  position: 'relative',
+                }}
+              >
+                <input
+                  placeholder='Confirm New Password'
+                  type={showPasswordTwo ? 'text' : 'password'}
+                  value={confirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                />
+                {console.log()}
+                <div
+                  type='button'
+                  onClick={togglePasswordVisibilityTwo}
+                  style={{
+                    border: 'none',
+                    color: 'transparent',
+                    width: '20px',
+                    position: 'absolute',
+                    right: '25px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {showPasswordTwo ? (
+                    <Image src={hide} alt='' width={20} height={20} />
+                  ) : (
+                    <Image src={eye} alt='' width={20} height={20} />
+                  )}
+                </div>
+              </div>
             </div>
           </>
         )}
@@ -290,7 +365,6 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
             <Button text={buttonText} action={ResetPassword}></Button>
           )}
         </div>
-
         {/* <div className={styles.authFormText}>
           <p>Or You Can Join With</p>
         </div>

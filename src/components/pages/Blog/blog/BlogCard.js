@@ -26,9 +26,13 @@ const BlogCard = () => {
 
   return (
     <>
+    
       <div className={styles.blogCards}>
         {artileItems.map((item, index) => {
-          console.log(`${BASE_URL}${item.attributes.image.data.attributes.url}`,"imageUrl ")
+          console.log(
+            `${BASE_URL}${item.attributes.image.data.attributes.url}`,
+            'imageUrl '
+          )
           return (
             <>
               <div key={index} className={styles.blogCard}>
