@@ -1,36 +1,52 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '@/styles/auth.module.css'
 import Button from '../../buttons/Button'
+import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { createAPIEndPoint } from '@/src/config/api'
-import { endPoints } from '@/src/config/endpoints'
 
 const ContactUsForm = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [message, setMessage] = useState('')
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    message: '',
+  })
 
-  const handleFormSubmit = async () => {
-    try {
-      let data = {
-        name,
-        email,
-        phoneNumber,
-        message,
-      }
-      const response = await createAPIEndPoint(endPoints.contactUs).create(data)
-      if (response.status === 200) {
-        setSuccess(true)
-        setName('')
-        setEmail('')
-        setPhoneNumber('')
-        setMessage('')
-      } else {
-        setError('Failed to submit the form.')
-      }
-    } catch (error) {}
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setState((prevProps) => ({
+      ...prevProps,
+      [name]: value,
+    }))
   }
 
+  const handleSubmit = () => {
+    console.log(state, 'state')
+    const { name, email, phoneNumber, message } = state
+    if (name !== '' && email !== '' && phoneNumber !== '' && message !== '') {
+      postContact()
+      toast.success('Thanks for contacting us')
+    } else {
+      toast.error('Kindly fill all the required fields')
+    }
+  }
+
+  const postContact = async () => {
+    try {
+      const response = await createAPIEndPoint('contact-uses').create({
+        data: state,
+      })
+      console.log(response, 'contact us response')
+      if (response.status == 200) {
+        setState({ name: '', email: '', phoneNumber: '', message: '' })
+        window.reload
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.error?.message)
+      // console.log(error, 'contact us error')
+    }
+  }
   return (
     <>
       <div className={styles.contactUsFormContainer}>
@@ -40,33 +56,35 @@ const ContactUsForm = () => {
           </div>
           <div className={styles.contactUsFormInputs}>
             <input
-              placeholder='Enter Name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder='Name'
               type='text'
+              name='name'
+              onChange={handleInputChange}
             />
-
+            <input placeholder='Last Name' type='text' />
             <input
-              placeholder='Enter Email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder='Enter Register Email'
+              name='email'
               type='email'
+              onChange={handleInputChange}
             />
             <input
               placeholder='Phone Number'
               type='phone'
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              name='phoneNumber'
+              onChange={handleInputChange}
             />
             <textarea
               placeholder='Your Inquiry here...'
               type='text'
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              name='message'
+              maxLength='300'
+              onChange={handleInputChange}
+              // onClick={() => alert('sassa')}
             />
           </div>
           <div className={styles.contactUsFormButton}>
-            <Button text='Send' action={() => handleFormSubmit()} />
+            <Button text='Send' action={() => handleSubmit()} />
           </div>
         </div>
       </div>
