@@ -40,15 +40,17 @@ const Footer = () => {
             <ul className={styles.footerTopLeftContact}>
               <li className={styles.footerTopLeftContactphone}>
                 <Image src={phone} width={18} height={18} alt='' />
-                <p>(905)-876-8282</p>
+                <a href='tel:(905)-876-8282'>(905)-876-8282</a>
               </li>
               <li className={styles.footerTopLeftContactphone}>
                 <Image src={email} width={18} height={18} />
-                <p>info@evabeautylhr.ca</p>
+                <a href='mailto:info@evabeautylhr.ca'>info@evabeautylhr.ca</a>
               </li>
               <li className={styles.footerTopLeftContactphone}>
                 <Image src={location} width={18} height={18} alt='' />
-                <p>854 King St. W., Hamilton Ontario, Canada</p>
+                <a href='https://goo.gl/maps/RJhDrjY4wQttkzaX9'>
+                  854 King St. W., Hamilton Ontario, Canada
+                </a>
               </li>
             </ul>
           </div>

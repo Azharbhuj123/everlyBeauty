@@ -65,8 +65,8 @@ const Booking = () => {
               clickable: true,
             }}
             modules={[Pagination]}
-          > */}
-          {/* <SwiperSlide> */}
+          >
+            <SwiperSlide> */}
           <BookTime />
           {/* </SwiperSlide>
             <SwiperSlide>
@@ -74,8 +74,8 @@ const Booking = () => {
             </SwiperSlide>
             <SwiperSlide>
               <BookingRemarks />
-            </SwiperSlide> */}
-          {/* </Swiper> */}
+            </SwiperSlide>
+          </Swiper> */}
           <div className={styles.bookingButtons}>
             <div className={styles.bookingButtonLeft}>
               {!activeSlideIndex === 0 ? (

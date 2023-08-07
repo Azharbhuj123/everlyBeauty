@@ -17,6 +17,10 @@
   width: 200px;
   align-self: flex-end;
   display: flex;
+  height: 20px;
+}
+.bookingButtonRight a {
+  text-decoration: none;
 }
 .bookingButtons {
   display: flex;
@@ -41,13 +45,17 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .bookingButton {
+  .bookingButtons {
     margin-top: 3em;
   }
-}
-@media screen and (max-width: 425px) {
+  .bookingButtonLeft {
+    width: 137px;
+  }
+  .bookingButtonRight {
+    width: 9.5em;
+  }
   .bookingButton {
-    margin-top: 1em;
-    width: 170px;
+    width: 9.5em;
+    margin-top: 2em;
   }
 }

@@ -10,6 +10,8 @@ import { useRouter } from 'next/router'
 import Auth from '../auth/auth'
 import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import Button from '../buttons/Button'
+import logout from '/public/assets/images/logout.svg'
 
 const Header = ({ Token, key }) => {
   const router = useRouter()
@@ -28,7 +30,6 @@ const Header = ({ Token, key }) => {
       setIsToken(authToken)
     }
   }, [Token, key])
-
   console.log(isToken, 'auth token check')
 
   const handleModalOpen = () => {
@@ -38,6 +39,13 @@ const Header = ({ Token, key }) => {
   const handleModalClose = () => {
     setIsModalOpen(false)
     // setMode("login");
+  }
+
+  const handleLogout = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem('Token')
+    setIsToken(null)
+    router.push('/')
   }
 
   return (
@@ -89,6 +97,13 @@ const Header = ({ Token, key }) => {
                   Dashboard
                 </div>
               </Link>
+              {/* {isToken && (
+                <div className={styles.headerNavbarLink} onClick={handleLogout}>
+                  Logout
+                  <Image src={logout} alt='' width={20} height={20} />
+                </div>
+              )}
+            </div> */}
             </div>
             <div className={styles.headerButton}>
               <StyledButton
@@ -169,7 +184,19 @@ const Header = ({ Token, key }) => {
                       />
                     </ListItem>
                   </Link>
-
+                  <ListItem button>
+                    <ListItemText
+                      primary={
+                        <div
+                          className={styles.headerNavbarLink}
+                          onClick={handleLogout}
+                        >
+                          Logout
+                          <Image src={logout} alt='' width={20} height={20} />
+                        </div>
+                      }
+                    />
+                  </ListItem>
                   <ListItem button>
                     <ListItemText
                       primary={
@@ -223,6 +250,11 @@ const Header = ({ Token, key }) => {
             </div>
           )}
         </div>
+        {isToken && (
+          <div className={styles.logoutButton} onClick={handleLogout}>
+            <Button backgroundColor='#000' color='#fff' text='Logout' />
+          </div>
+        )}
       </div>
     </>
   )

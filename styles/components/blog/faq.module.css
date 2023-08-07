@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 825px;
+  height: 900px;
 }
 .faqTitle h1 {
   font-size: 52px;
@@ -20,14 +20,6 @@
   flex-direction: column;
   gap: 20px;
 }
-
-.item {
-  border: none;
-  border-radius: 40px;
-  overflow: hidden;
-  box-shadow: 1px 30px 50px 25px rgba(225, 173, 157, 0.2);
-  width: 100%;
-}
 .active {
   background-color: #dcaa9b;
 }
@@ -35,28 +27,17 @@
   font-size: 20px;
   font-family: 'Gilroy';
 }
-.title {
-  background-color: #fff;
-  padding: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-}
 .open {
   background-color: #dcaa9b;
 }
-.title::after {
-  background-color: antiquewhite;
-}
 .content {
-  padding: 20px;
-  background-color: #dcaa9b;
+  padding: 30px;
   width: 100%;
 }
 .content p {
   font-size: 14px;
   font-family: 'Gilroy';
-  margin-left: 2em;
+  margin-left: 1em;
 }
 @media screen and (max-width: 1100px) {
   .faqTitle h1 {
@@ -67,6 +48,7 @@
 @media screen and (max-width: 768px) {
   .faqContainer {
     margin-top: 2em;
+    height: 850px;
   }
 }
 @media screen and (max-width: 425px) {
@@ -76,5 +58,10 @@
   .faqContainer {
     height: auto;
     margin-bottom: 2em;
+  }
+}
+@media screen and (max-width: 375px) {
+  .faqContainer {
+    height: 1100px;
   }
 }

@@ -38,10 +38,11 @@
   align-items: center;
   gap: 20px;
 }
-.footerTopLeftContactphone p {
+.footerTopLeftContactphone a {
   color: #fff;
   font-family: 'Poppins';
   font-size: 16px;
+  text-decoration: none;
 }
 .footerTopRight {
   width: 50%;

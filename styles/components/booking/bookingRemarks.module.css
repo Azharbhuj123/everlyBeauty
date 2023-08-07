@@ -18,7 +18,7 @@
   align-items: center;
 }
 .bookingRemarkContentImage img {
-  width: 75%;
+  width: 80%;
   height: 100%;
 }
 .bookingRemarkContentThank h1 {
@@ -50,5 +50,24 @@
 @media screen and (max-width: 1100px) {
   .bookingRemarksSection {
     height: 750px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bookingRemarksSection {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  .bookingRemarkContentThank h1 {
+    font-size: 2em;
+  }
+  .bookingRemarkContentImage img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .bookingRemarkContentThank h1 {
+    margin-top: 1em;
   }
 }

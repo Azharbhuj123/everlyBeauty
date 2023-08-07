@@ -55,6 +55,26 @@
     font-size: 14px;
   }
 }
+@media screen and (max-width: 425px) {
+  .bookSessionSection {
+    margin: 3em 0 !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .bookSessionSection {
+    border-radius: 50px;
+    padding: 20px !important;
+  }
+  .bookSessionCards {
+    flex-wrap: wrap;
+  }
+  .bookSessionCard {
+    flex-basis: fit-content;
+  }
+  .bookSessionSection {
+    overflow-y: scroll;
+  }
+}
 @media screen and (max-width: 865px) {
   .bookSessionCard {
     padding: 20px !important;

@@ -1,14 +1,17 @@
-// components/Accordion.js
 import React, { useState, useEffect } from 'react'
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from '@mui/material'
+import { Add, Remove } from '@mui/icons-material'
 import styles from '@/styles/components/blog/faq.module.css'
-import plus from '/public/assets/images/plus.svg'
-import minus from '/public/assets/images/minus.svg'
-import Image from 'next/image'
 import { createAPIEndPoint } from '@/src/config/api'
 import { endPoints } from '@/src/config/endpoints'
 
 const Faq = ({ items }) => {
-  const [accordionItems,setAccordianItems]=useState([])
+  const [accordionItems, setAccordianItems] = useState([])
 
   const getFaqs = async () => {
     try {
@@ -16,14 +19,13 @@ const Faq = ({ items }) => {
       setAccordianItems(response?.data?.data)
       console.log(response?.data?.data, 'respone check')
     } catch (error) {
-      console.log(error,"error")
+      console.log(error, 'error')
     }
   }
 
   useEffect(() => {
     getFaqs()
   }, [])
-
 
   const [activeIndex, setActiveIndex] = useState(null)
 
@@ -39,32 +41,28 @@ const Faq = ({ items }) => {
         </div>
         <div className={styles.accordion}>
           {accordionItems.map((item, index) => (
-            <div key={index} className={styles.item}>
-              <div
+            <Accordion
+              key={index}
+              expanded={activeIndex === index}
+              onChange={() => handleItemClick(index)}
+            >
+              <AccordionSummary
                 className={`${styles.title} ${
                   activeIndex === index ? styles.open : ''
                 }`}
                 onClick={() => handleItemClick(index)}
+                expandIcon={activeIndex === index ? <Remove /> : <Add />}
               >
-                <h3>{item.attributes.question}</h3>
-                {activeIndex === index ? (
-                  <Image src={minus} width={20} height={20} />
-                ) : (
-                  <Image src={plus} width={20} height={20} />
-                )}
-              </div>
-              {activeIndex === index && (
-                <>
-                  <div
-                    className={`${styles.content} ${
-                      activeIndex === index ? styles.open : ''
-                    }`}
-                  >
-                    <p> {item.attributes.answer} </p>
-                  </div>
-                </>
-              )}
-            </div>
+                <Typography>{item.attributes.question}</Typography>
+              </AccordionSummary>
+              <AccordionDetails
+                className={`${styles.content} ${
+                  activeIndex === index ? styles.open : ''
+                }`}
+              >
+                <Typography> {item.attributes.answer} </Typography>
+              </AccordionDetails>
+            </Accordion>
           ))}
         </div>
       </div>

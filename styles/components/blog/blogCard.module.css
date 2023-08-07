@@ -1,3 +1,36 @@
+/* SearchBar */
+.searchBar {
+  display: flex;
+  align-items: center;
+  width: 500px; /* Set the desired width of the search bar */
+  position: relative;
+  margin-bottom: 5em;
+}
+
+.searchInput {
+  padding: 15px 40px 15px 20px; /* Adjust padding to make room for the icon */
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 1px 30px 50px 25px rgba(225, 173, 157, 0.2);
+  width: 100%;
+  font-family: 'Gilroy';
+  font-size: 16px;
+}
+.searchInput::placeholder {
+  color: #999;
+}
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .blogCards {
   display: flex;
   justify-content: space-between;
@@ -6,10 +39,6 @@
   gap: 20px;
 }
 .blogCard {
-  /* flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 30%; */
-  /* margin: 15px; */
   border-radius: 40px;
   background-color: #dcaa9b;
   transform: scale(1);
@@ -47,7 +76,6 @@
   color: #ffff;
   margin-top: 1em;
 }
-
 @media screen and (max-width: 1031px) {
   .blogCards {
     gap: 15px;
@@ -60,6 +88,9 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .searchBar {
+    width: 80%;
+  }
   .blogCards {
     flex-wrap: wrap;
     width: 98%;
@@ -71,7 +102,17 @@
     margin: 15px;
   }
 }
+@media screen and (max-width: 550px) {
+  .blogCard {
+    margin: 15px;
+  }
+}
+
 @media screen and (max-width: 425px) {
+  .searchBar {
+    width: 95% !important;
+    margin-bottom: 3em;
+  }
   .blogCardContent {
     padding: 15px;
   }
@@ -88,13 +129,13 @@
 /* blogs */
 .blogsContainer {
   width: 100%;
-  margin-top: 6em;
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.backgroundimage {
+.backgroundImage {
   background-image: url('/assets/images/blogCover.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -182,7 +223,7 @@
   .blogsContainer {
     margin-top: 2em;
   }
-  .backgroundimage {
+  .backgroundImage {
     height: auto;
   }
   .blogsContent {
