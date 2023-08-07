@@ -39,7 +39,7 @@ const BlogCard = () => {
 
   return (
     <>
-    {/* BlogCover */}
+      {/* BlogCover */}
       <div className={styles.blogsContainer}>
         <div className={styles.backgroundImage}>
           <div className={styles.blogsWrapper}>
@@ -108,7 +108,7 @@ const BlogCard = () => {
         </div>
       </div>
       {/* end */}
-      
+
       <div className={styles.blogsContainer}>
         <div className={styles.blogsContentWrapper}>
           <Faq />

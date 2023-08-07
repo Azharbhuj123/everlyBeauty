@@ -1,34 +1,54 @@
-import React, { useState } from 'react'
-import StyledButton from '../../../buttons/StyledButton'
-import arrow from '/public/assets/images/arrow-up-right-white.svg'
-import styles from '@/styles/components/booking/booking.module.css'
-import Button from '../../../buttons/Button'
+import React from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import BookTime from './BookTime'
 import BookSession from './BookSession'
 import BookingRemarks from './BookingRemarks'
-import { Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
 import Link from 'next/link'
+import { useState, useRef } from 'react'
+import styles from '@/styles/components/booking/booking.module.css'
+import StyledButton from '@/src/components/buttons/StyledButton'
+import Button from '@/src/components/buttons/Button'
+import arrow from '/public/assets/images/arrow-up-right-white.svg'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
-const Booking = () => {
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-
-  const handleSlideChange = (swiper) => {
-    setActiveSlideIndex(swiper.activeIndex)
-  }
+const Booking_ = () => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const sliderRef = useRef(null)
 
   const getButtonText = () => {
-    switch (activeSlideIndex) {
+    switch (currentSlide) {
       case 1:
-        return 'Download Instructions'
+        return 'Continue'
       case 2:
-        return 'Back to Dashboard'
+        return 'Dashboard'
       default:
-        return 'Confirm'
+        return 'Continue'
     }
+  }
+
+  const handleContinueClick = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext() // Move to the next slide
+    }
+  }
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: null,
+    nextArrow: null,
+    beforeChange: (current, next) => {
+      setCurrentSlide(next)
+    },
+    afterChange: (current) => {
+      setCurrentSlide(current)
+    },
   }
 
   return (
@@ -44,7 +64,7 @@ const Booking = () => {
             }}
           >
             <div className={styles.bookingButton}>
-              {activeSlideIndex === 2 ? null : (
+              {currentSlide == 2 ? null : (
                 <StyledButton
                   color='#fff'
                   backgroundColor='#E1AD9D'
@@ -54,57 +74,47 @@ const Booking = () => {
               )}
             </div>
           </Link>
-          {/* <Swiper
-            style={{ width: '100%', height: '850px' }}
-            spaceBetween={50}
-            slidesPerView={1}
-            onSlideChange={handleSlideChange}
-            onSwiper={(swiper) => console.log(swiper)}
-            speed={1500}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Pagination]}
-          >
-            <SwiperSlide> */}
-          <BookTime />
-          {/* </SwiperSlide>
-            <SwiperSlide>
+          <Slider {...settings} ref={sliderRef}>
+            <div>
+              <BookTime />
+            </div>
+            <div>
               <BookSession />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+            <div>
               <BookingRemarks />
-            </SwiperSlide>
-          </Swiper> */}
+            </div>
+          </Slider>
           <div className={styles.bookingButtons}>
             <div className={styles.bookingButtonLeft}>
-              {!activeSlideIndex === 0 ? (
+              {currentSlide == 0 && (
                 <Button
                   color='#000'
                   backgroundColor='#D9D9D6'
                   text='Edit Session'
                 />
-              ) : null}
+              )}
             </div>
-            <Link
-              href='/dashboard'
-              style={{
-                textDecoration: 'none',
-                justifyContent: 'end',
-                display: 'flex',
-              }}
-            >
-              <div className={styles.bookingButtonRight}>
-                {activeSlideIndex === 2 ? (
+            <div className={styles.bookingButtonRight}>
+              {currentSlide == 2 ? (
+                <Link href='/dashboard'>
                   <StyledButton
                     color='#fff'
                     backgroundColor='#E1AD9D'
-                    text={getButtonText()}
+                    text='Dashboard'
                     image={arrow}
                   />
-                ) : null}
-              </div>
-            </Link>
+                </Link>
+              ) : (
+                <StyledButton
+                  color='#fff'
+                  backgroundColor='#E1AD9D'
+                  text={getButtonText()}
+                  onClick={handleContinueClick}
+                  image={arrow}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -112,4 +122,4 @@ const Booking = () => {
   )
 }
 
-export default Booking
+export default Booking_
