@@ -24,12 +24,13 @@
   background-color: #fff;
   border-radius: 80px;
   padding: 40px;
-  height: 41em;
-  overflow-y: scroll;
 }
 .dashboardSectionLeftContent {
   display: flex;
   flex-direction: column;
+  height: 38em;
+  overflow-y: scroll;
+  padding-right: 10px;
 }
 .dashboardSectionLeftContentTitle h1 {
   font-size: 28px;
@@ -132,6 +133,7 @@
     border-radius: 50px;
     padding: 20px;
     height: 38em;
+    padding-right: 10px;
   }
   .dashboardContainer {
     margin-bottom: 4em;
