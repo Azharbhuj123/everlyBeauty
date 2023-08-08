@@ -42,9 +42,11 @@ const Header = ({ Token, key }) => {
   }
 
   const handleLogout = () => {
-    // Remove the token from localStorage
+    // Remove the token and user from localStorage
     localStorage.removeItem('Token')
+    localStorage.removeItem('User')
     setIsToken(null)
+
     router.push('/')
   }
 

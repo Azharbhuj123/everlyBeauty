@@ -108,6 +108,7 @@ const MyCalender = () => {
       setShowValidation(true)
     }
   }
+  
   const handleSelectTime = (time, durationInMinutes) => {
     const endTime = moment(selectedTime).add(totalSlotTime, 'minutes').toDate()
     // setEndTime(endTime);
@@ -117,6 +118,7 @@ const MyCalender = () => {
 
     setShowTimePicker(false)
   }
+
   const minTime = new Date(0, 0, 0, 9, 0, 0) // 9:00 AM
   const maxTime = new Date(0, 0, 0, 18, 0, 0) // 5:00 PM
 

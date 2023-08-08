@@ -17,7 +17,8 @@
   width: 200px;
   align-self: flex-end;
   display: flex;
-  height: 20px;
+  height: 50px;
+  cursor: pointer;
 }
 .bookingButtonRight a {
   text-decoration: none;
