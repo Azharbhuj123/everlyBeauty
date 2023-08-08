@@ -32,7 +32,7 @@ export const createAPIEndPoint = (
 
     fetchAllWithToken: () =>
       axios.get(
-        url,
+        isPopulated ? `${url}?populate=${populateArgument}` : url,
         token !== null && {
           headers: {
             Authorization: `Bearer ${token}`,

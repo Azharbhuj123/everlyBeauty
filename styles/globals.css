@@ -389,3 +389,20 @@ input:checked ~ label {
     font-size: 16px;
   }
 }
+
+/* Mui Table */
+.css-1ygcj2i-MuiTableCell-root {
+  font-family: 'Gilroy';
+  font-size: 1em;
+  font-weight: 700;
+}
+.css-1azl6jz-MuiTableCell-root {
+  font-family: 'Gilroy';
+  font-size: 1em;
+  font-weight: 700;
+}
+.css-1ex1afd-MuiTableCell-root {
+  font-family: 'Gilroy';
+  font-size: 1em;
+}
+/* end */
