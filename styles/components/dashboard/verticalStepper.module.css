@@ -4,12 +4,12 @@
   align-items: center;
 }
 .stepperButton {
-  width: 160px;
+  width: 155px;
   margin-top: -3em;
 }
 @media screen and (max-width: 1180px) {
   .stepperButton {
-    width: 150px;
+    width: 145px;
   }
 }
 @media screen and (max-width: 375px) {

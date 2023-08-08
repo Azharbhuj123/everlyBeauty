@@ -27,12 +27,14 @@ const UserDashboard = () => {
             {/* Right */}
             <div className={styles.dashboardSectionRight}>
               <div className={styles.dashboardSectionRightContent}>
+                <div className={styles.dashboardSectionRightContentChild}>
                 <div className={styles.dashboardSectionRightContentTitle}>
                   <h1>My Session</h1>
                 </div>
                 <div className={styles.dashboardSectionRightContentStepper}>
                   <VerticalStepper />
                 </div>
+              </div>
               </div>
             </div>
           </div>
