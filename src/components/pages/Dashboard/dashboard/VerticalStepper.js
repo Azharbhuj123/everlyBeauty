@@ -1,4 +1,4 @@
-import arrow from '/public/assets/images/arrow-up-right-white.svg'
+import arrow from '/public/assets/images/arrow-up-right-white.svg';
 import React, { useState, useEffect } from 'react';
 import { Stepper, Step, StepLabel, Typography } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
@@ -8,7 +8,6 @@ import styles from '@/styles/components/dashboard/verticalStepper.module.css';
 import { useRouter } from 'next/router';
 import { createAPIEndPoint } from '@/src/config/api';
 import { endPoints } from '@/src/config/endpoints';
-
 
 const VerticalStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -35,7 +34,8 @@ const VerticalStepper = () => {
     label: `Session ${index + 1}`,
     dot: ':',
     date: date,
-    color: index === activeStep ? 'blue' : index < activeStep ? 'green' : 'gray',
+    color:
+      index === activeStep ? 'blue' : index < activeStep ? 'green' : 'gray',
   }));
 
   const handleNext = () => {
@@ -46,17 +46,22 @@ const VerticalStepper = () => {
     setActiveStep((prevStep) => prevStep - 1);
   };
 
-  const isLastStep = activeStep === fetchedDates.length - 1;
+  const isLastStep = activeStep === steps.length - 1;
+
+  const handleBookNow = () => {
+    // Add your logic to handle booking here
+    // For example, you can perform any action or navigate to a new page
+    router.push('/');
+  };
 
   return (
     <div>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map(({ label, date, dot, color }, index) => (
-          <Step key={date} onClick={() => setActiveStep(index)}>
+          <Step key={date}>
             <StepLabel
               StepIconProps={{
                 completed: true,
-                onClick: () => {}, 
               }}
             >
               <Typography>{label}</Typography>
@@ -69,7 +74,9 @@ const VerticalStepper = () => {
                 }}
               >
                 <h2>{dot}</h2>
-                <Typography variant="caption">{fetchedDates[index] || ''}</Typography>
+                <Typography variant="caption">
+                  {fetchedDates[index]}
+                </Typography>
               </div>
             </StepLabel>
           </Step>
@@ -83,16 +90,14 @@ const VerticalStepper = () => {
           justifyContent: 'flex-end',
         }}
       >
-        {isLastStep ? null : (
+        {isLastStep && (
           <div className={styles.stepperButton}>
             <StyledButton
               color="#fff"
               backgroundColor="#E1AD9D"
-              text="Book Now"
+              text={`Book Now for Session ${activeStep + 1}`}
               image={arrow}
-              onClick={() => {
-                router.push('/');
-              }}
+              onClick={handleBookNow}
             />
           </div>
         )}
