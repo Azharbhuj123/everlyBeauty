@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Profile from '/public/assets/images/profile.svg'
 import ReactStars from 'react-stars'
 
-const TestimonialForm = () => {
+const TestimonialForm = ({ onClose }) => {
   const [profileImage, setProfileImage] = useState(null)
 
   const handleProfileImageChange = (e) => {
@@ -20,7 +20,7 @@ const TestimonialForm = () => {
       <div className={styles.testimonialForm}>
         <div className={styles.testimonialFormHeading}>
           <h1>Review</h1>
-          <Image src={close} alt='' width={25} height={25} />
+          <Image src={close} alt='' width={25} height={25} onClick={onClose} />
         </div>
         <div className={styles.testimonialFormSubheading}>
           <h2>Id</h2>
@@ -53,15 +53,15 @@ const TestimonialForm = () => {
             </label>
           </div>
           <div className={styles.testimonialFormRating}>
-          <h2>Rating</h2>
-          <ReactStars
-            count={5}
-            edit={false}
-            value={5}
-            size={40}
-            color2={'#ffd700'}
-          />
-        </div>
+            <h2>Rating</h2>
+            <ReactStars
+              count={5}
+              edit={true}
+              value={5}
+              size={50}
+              color2={'#ffd700'}
+            />
+          </div>
           <div className={styles.testimonialFormComment}>
             <h2>Comment</h2>
             <textarea placeholder='Your Comment here...' type='text' />

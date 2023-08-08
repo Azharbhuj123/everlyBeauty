@@ -23,6 +23,7 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
   const [showPassword, setShowPassword] = useState(false)
   const [showPasswordTwo, setShowPasswordTwo] = useState(false)
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
+  
   const [code, setCode] = useState('')
   //Show Password
   const togglePasswordVisibility = () => {
