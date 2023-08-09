@@ -7,6 +7,7 @@ const StyledButton = ({
   backgroundColor,
   color,
   image,
+  fontWeight,
   onClick = () => {},
 }) => {
   const buttonStyle = {
@@ -23,7 +24,7 @@ const StyledButton = ({
     justifyContent: 'center',
     justifyContent: 'space-between',
     padding: '0px 25px',
-    fontWeight: 600,
+    fontWeight: fontWeight,
     cursor: 'pointer',
     boxShadow: '1px 30px 50px 25px rgba(225, 173, 157, 0.2)',
     transform: 'scale(1)',

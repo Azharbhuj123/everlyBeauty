@@ -67,6 +67,7 @@ const Booking_ = () => {
               {currentSlide == 2 ? null : (
                 <StyledButton
                   color='#fff'
+                  fontWeight= '600'
                   backgroundColor='#E1AD9D'
                   text='Dashboard'
                   image={arrow}
@@ -101,6 +102,7 @@ const Booking_ = () => {
                   <StyledButton
                     color='#fff'
                     backgroundColor='#E1AD9D'
+                    fontWeight= '600'
                     text='Dashboard'
                     image={arrow}
                   />
@@ -112,6 +114,7 @@ const Booking_ = () => {
                   text={getButtonText()}
                   onClick={handleContinueClick}
                   image={arrow}
+                  fontWeight= '600'
                 />
               )}
             </div>

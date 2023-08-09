@@ -69,6 +69,7 @@ const VerticalStepper = ({  fetchedDates }) => {
           color='#fff'
           backgroundColor='#E1AD9D'
           text='Book Now'
+          fontWeight= '600'
           image={arrow}
           onClick={() => router.push('/')}
         />
