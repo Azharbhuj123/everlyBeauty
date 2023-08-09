@@ -12,36 +12,52 @@ const MySession = () => {
   const [discountPercent, setDiscountPercent] = useContext(
     discountPercentContext
   );
+  const [discountAmount, setDiscountAmount] = useState(null);
   const [payable, setPayable] = useContext(payableAmountContext);
   console.log(payable, "pppp");
 
   let totalPrice = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseFloat
-    const price = parseFloat(service.price);
+    const price = parseFloat(service.time * 8);
     return acc + price;
+  }, 0);
+  let totalTime = booking.reduce((acc, service) => {
+    // Convert the price string to a number using parseFloat
+    const time = parseFloat(service.time);
+    return acc + time;
   }, 0);
 
   const getDiscount = (totalPrice) => {
-    let discountPercent = 0;
-    if (totalPrice >= 150 && totalPrice < 300) {
-      discountPercent = 10;
-    } else if (totalPrice >= 300 && totalPrice < 450) {
-      discountPercent = 30;
-    } else if (totalPrice >= 450) {
-      discountPercent = 50;
-    }
-    setDiscountPercent(discountPercent);
-    const discountAmount = (totalPrice / 100) * discountPercent;
-    const roudedDiscountAmount = Math.round(discountAmount);
-    setDiscount(roudedDiscountAmount);
+    var discountAmount = booking.length ? 36.3 * Math.sqrt(totalTime) - 41 : 0;
+    setDiscountAmount(discountAmount);
+    let Discount = totalPrice - discountAmount;
+
+    console.log(Discount, "discount check");
+    // let discountPercent = 0;
+    // if (totalPrice >= 150 && totalPrice < 300) {
+    //   discountPercent = 10;
+    // } else if (totalPrice >= 300 && totalPrice < 450) {
+    //   discountPercent = 30;
+    // } else if (totalPrice >= 450) {
+    //   discountPercent = 50;
+    // }
+    // const percentage = (part / whole) * 100;
+    // setDiscountPercent(discountPercent);
+    // const discountAmount = (totalPrice / 100) * discountPercent;
+
+    const roudedDiscountAmount = Math.ceil(Discount);
+    const percentage = Math.ceil((roudedDiscountAmount / totalAmount) * 100);
+
+    setDiscount(() => roudedDiscountAmount);
+    setDiscountPercent(() => percentage);
   };
 
   useEffect(() => {
     getDiscount(totalPrice);
-  }, [totalPrice]);
+  }, [totalPrice, totalTime]);
 
   const totalAmount = totalPrice - discount;
-  const roundedTotalAmount = Math.round(totalAmount);
+  const roundedTotalAmount = Math.floor(totalAmount);
   setPayable(roundedTotalAmount);
 
   return (
@@ -98,10 +114,13 @@ const MySession = () => {
           })}
         </div>
         <div className={styles.bodyServiceContentRightcalc}>
+          {console.log(discountPercent, "pppppppppp")}
           <MySessionInvoice heading={"Subtotal"} amount={totalPrice} />
           <MySessionDiscount
             heading={"Discount"}
-            discount={discountPercent}
+            discount={
+              typeof discountPercent == "undefined" ? 0 : discountPercent
+            }
             amount={discount}
           />
           <MySessionInvoice heading={"Total"} amount={roundedTotalAmount} />
