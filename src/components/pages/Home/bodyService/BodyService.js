@@ -150,7 +150,7 @@ const BodyService = () => {
             </div>
             <div className={styles.bodyServiceContentRight}>
               <div className={styles.bodyServiceContentRightHeading}>
-                <h1>Click On Checkbox To Select Bodypart</h1>
+                <h1>Click On Button To Select Bodypart</h1>
                 <MySession />
               </div>
             </div>

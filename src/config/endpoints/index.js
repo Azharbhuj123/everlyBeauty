@@ -21,4 +21,5 @@ export const endPoints = {
   faqs: "faqs",
   articles: "articles",
   contactUs: "contact-us",
+  rateReview: 'rate-and-reviews'
 };

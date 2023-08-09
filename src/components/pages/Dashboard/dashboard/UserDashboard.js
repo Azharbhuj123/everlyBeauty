@@ -45,8 +45,9 @@ const UserDashboard = ({ Token, key }) => {
     // Remove the token and user from localStorage
     localStorage.removeItem('Token')
     localStorage.removeItem('User')
-    setIsToken(null)
-    router.push('/')
+    setIsToken(null) 
+    // window.location.reload('/')
+    window.location.href = '/';
   }
 
   return (
@@ -101,7 +102,7 @@ const UserDashboard = ({ Token, key }) => {
                 fontWeight=''
                 image={logout}
                 onClick={() => {
-                  handleLogout
+                  handleLogout(router.push)
                 }}
               />
             </div>
