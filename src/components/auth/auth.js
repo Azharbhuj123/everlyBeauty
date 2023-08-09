@@ -23,7 +23,7 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
   const [showPassword, setShowPassword] = useState(false)
   const [showPasswordTwo, setShowPasswordTwo] = useState(false)
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
-  
+
   const [code, setCode] = useState('')
   //Show Password
   const togglePasswordVisibility = () => {
@@ -80,6 +80,7 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
       // Toast notification for successful login
       toast.success('Login Successfully')
       router.push('/book-now')
+      window.location.reload()
     } catch (error) {
       const errorMessage = error.response
         ? error?.response?.data?.error?.message

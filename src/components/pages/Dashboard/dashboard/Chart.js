@@ -123,26 +123,31 @@ const Chart = ({ fetchedDates }) => {
                   )}
                 </TableCell> */}
                     <TableCell align='right'>
-                      {item.status === 'completed' ? (
-                        <>
-                          {item.isReviewed === true ? (
-                            <span>reviewed</span>
-                          ) : (
-                            <button
-                              style={{
-                                padding: '10px 20px',
-                                color: '#fff',
-                                background: '#000',
-                                border: 'none',
-                                borderRadius: '20px',
-                                cursor: 'pointer',
-                              }}
-                              onClick={handleModalOpen}
-                            >
-                              review
-                            </button>
-                          )}
-                        </>
+                      {item.status === 'completed' && item.isReviewed ? (
+                        <span
+                          style={{
+                            color: '#e1ad9d',
+                            fontFamily: 'Gilroy',
+                            fontWeight: '600',
+                            marginRight: '10px',
+                          }}
+                        >
+                          reviewed
+                        </span>
+                      ) : item.status === 'completed' ? (
+                        <button
+                          style={{
+                            padding: '10px 20px',
+                            color: '#fff',
+                            background: '#000',
+                            border: 'none',
+                            borderRadius: '20px',
+                            cursor: 'pointer',
+                          }}
+                          onClick={handleModalOpen}
+                        >
+                          review
+                        </button>
                       ) : (
                         <button
                           style={{

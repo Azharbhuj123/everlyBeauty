@@ -29,7 +29,16 @@ export const createAPIEndPoint = (
         password,
         passwordConfirmation,
       }),
-
+      createReview: (userName, rating, review, userImage) =>
+      axios.post(
+        url + endPoints.rateReview,
+        { userName, rating, review, userImage },
+        token !== null && {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      ),
     fetchAllWithToken: () =>
       axios.get(
         isPopulated ? `${url}?populate=${populateArgument}` : url,
@@ -53,6 +62,7 @@ export const createAPIEndPoint = (
           },
         }
       ),
+      
     fetchById: (id) =>
       axios.get(
         url + id,

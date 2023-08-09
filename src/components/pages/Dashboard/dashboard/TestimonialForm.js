@@ -5,13 +5,33 @@ import close from '/public/assets/images/circle-xmark.png'
 import Image from 'next/image'
 import Profile from '/public/assets/images/profile.svg'
 import ReactStars from 'react-stars'
+import { createAPIEndPoint } from '@/src/config/api'
+import { endPoints } from '@/src/config/endpoints'
 
 const TestimonialForm = ({ onClose }) => {
   const [profileImage, setProfileImage] = useState(null)
+  const [review, setReview] = useState('')
+  const [rating, setRating] = useState(0)
 
   const handleProfileImageChange = (e) => {
     const file = e.target.files[0]
     setProfileImage(file)
+  }
+
+  const handleSubmit = async () => {
+    try {
+      const response = createAPIEndPoint(endPoints.rateReview)
+      const reviewData = {
+        userName: 'John Doe',
+        rating,
+        review,
+        userImage: profileImage,
+      }
+      await response.createReview(reviewData)
+      onClose()
+    } catch (error) {
+      console.error('Error submitting review:', error)
+    }
   }
 
   return (
@@ -56,18 +76,25 @@ const TestimonialForm = ({ onClose }) => {
             <ReactStars
               count={5}
               edit={true}
-              value={5}
+              // value={5}
               size={45}
               color2={'#ffd700'}
+              value={rating}
+              onChange={(newRating) => setRating(newRating)}
             />
           </div>
           <div className={styles.testimonialFormComment}>
             <h2>Comment</h2>
-            <textarea placeholder='Your Comment here...' type='text' />
+            <textarea
+              placeholder='Your Comment here...'
+              type='text'
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+            />
           </div>
         </div>
         <div className={styles.testimonialFormButton}>
-          <Button text='Submit' />
+          <Button text='Submit' action={handleSubmit} />
         </div>
       </div>
     </>
