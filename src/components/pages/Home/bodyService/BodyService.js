@@ -15,11 +15,11 @@ import StyledButton from "@/src/components/buttons/StyledButton";
 import arrow from "/public/assets/images/arrow-up-right-pink.svg";
 import arrowBlack from "/public/assets/images/arrow-up-right-black.svg";
 
-const BodyService = () => {
+const BodyService = ({ modalOpen = false }) => {
   const [booking, setBooking] = useContext(bookingContext);
-  const [discountPercent, setDiscountPercent] = useContext(
-    discountPercentContext
-  );
+  // const [discountPercent, setDiscountPercent] = useContext(
+  //   discountPercentContext
+  // );
   const [allServices, setAllServices] = useState(services);
   // const getService = async () => {
   //   try {
@@ -131,16 +131,18 @@ const BodyService = () => {
             </div>
             <div className={styles.bodyServiceContentRight}>
               <div className={styles.bodyServiceContentRightHeading}>
-                <h1>Click On Button To Select Bodypart</h1>
+                {modalOpen == false && (
+                  <h1>Click On Button To Select Bodypart</h1>
+                )}
                 <MySession />
               </div>
             </div>
           </div>
           <div className={styles.progressbarContainer}>
             <div className={styles.progressbarSection}>
-              <Progressbar discountPercent={discountPercent} />
+              {/* <Progressbar discountPercent={discountPercent} />
               <DiscountToggle />
-              <DiscountType />
+              <DiscountType /> */}
             </div>
           </div>
         </div>
