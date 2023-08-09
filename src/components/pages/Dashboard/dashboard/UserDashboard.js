@@ -94,6 +94,7 @@ const UserDashboard = ({ Token, key }) => {
               }}
             >
               <StyledButton
+                cursor='pointer'
                 backgroundColor='#000'
                 color='#fff'
                 text='Log out'

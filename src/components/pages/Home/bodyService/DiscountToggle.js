@@ -96,10 +96,11 @@ const DiscountToggle = () => {
           </div>
           <div className={styles.bookNow}>
             <StyledButton
+              cursor='pointer'
               color='#fff'
               backgroundColor='#E1AD9D'
               text='Book Now'
-              fontWeight= '600'
+              fontWeight='600'
               image={arrow}
               onClick={() => {
                 isToken !== null ? router.push('/book-now') : handleModalOpen()

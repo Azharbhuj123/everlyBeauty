@@ -113,6 +113,7 @@ const Header = ({ Token, key }) => {
                 text='Book Now'
                 fontWeight= '600'
                 image={arrow}
+                cursor = 'pointer'
                 onClick={() => {
                   isToken === null
                     ? handleModalOpen()
@@ -209,6 +210,7 @@ const Header = ({ Token, key }) => {
                             text='Book Now'
                             fontWeight= '600'
                             image={arrow}
+                            cursor= 'pointer'
                             onClick={() => {
                               isToken === null
                                 ? handleModalOpen()

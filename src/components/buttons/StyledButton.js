@@ -8,6 +8,7 @@ const StyledButton = ({
   color,
   image,
   fontWeight,
+  cursor,
   onClick = () => {},
 }) => {
   const buttonStyle = {
@@ -25,7 +26,7 @@ const StyledButton = ({
     justifyContent: 'space-between',
     padding: '0px 25px',
     fontWeight: fontWeight,
-    cursor: 'pointer',
+    cursor: cursor,
     boxShadow: '1px 30px 50px 25px rgba(225, 173, 157, 0.2)',
     transform: 'scale(1)',
     transition: 'all .5s ease',
