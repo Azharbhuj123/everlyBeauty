@@ -38,7 +38,7 @@ const ServicesModal = ({ services, onClose }) => {
               justifyContent: 'flex-end',
               width: '100%',
             }}
-            onClick={onClose}
+            // onClick={onClose}
           >
             {/* <h1>Review</h1> */}
             <Image

@@ -13,10 +13,20 @@ import Button from '@/src/components/buttons/Button'
 import arrow from '/public/assets/images/arrow-up-right-white.svg'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import EditSessionModal from './editSessionModal'
 
 const Booking_ = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const sliderRef = useRef(null)
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleModalOpen = () => {
+    setModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setModalOpen(false)
+  }
 
   const getButtonText = () => {
     switch (currentSlide) {
@@ -94,6 +104,7 @@ const Booking_ = () => {
                   color='#000'
                   backgroundColor='#D9D9D6'
                   text='Edit Session'
+                  action={handleModalOpen}
                 />
               )}
             </div>
@@ -124,6 +135,11 @@ const Booking_ = () => {
           </div>
         </div>
       </div>
+      {modalOpen && (
+        <div className={styles.modalOverlay}>
+          <EditSessionModal onClose={handleModalClose} modalOpen={modalOpen}/>
+        </div>
+      )}
     </>
   )
 }

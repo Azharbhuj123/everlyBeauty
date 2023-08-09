@@ -1,26 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
-import styles from "@/styles/components/bodyService/bodyService.module.css";
-import Image from "next/image";
-import female from "/public/assets/images/colada-female.png";
-import { services } from "@/pages/api/utils";
-import Progressbar from "./Progressbar";
-import DiscountToggle from "./DiscountToggle";
-import DiscountType from "./DiscountType";
-import MySession from "../mySession/MySession";
-import { bookingContext } from "@/store/bookingContext";
-import { createAPIEndPoint } from "@/src/config/api";
-import { endPoints } from "@/src/config/endpoints";
-import { discountPercentContext } from "@/store/discountPercentContext";
-import StyledButton from "@/src/components/buttons/StyledButton";
-import arrow from "/public/assets/images/arrow-up-right-pink.svg";
-import arrowBlack from "/public/assets/images/arrow-up-right-black.svg";
+import React, { useContext, useEffect, useState } from 'react'
+import styles from '@/styles/components/bodyService/bodyService.module.css'
+import Image from 'next/image'
+import female from '/public/assets/images/colada-female.png'
+import { services } from '@/pages/api/utils'
+import Progressbar from './Progressbar'
+import DiscountToggle from './DiscountToggle'
+import DiscountType from './DiscountType'
+import MySession from '../mySession/MySession'
+import { bookingContext } from '@/store/bookingContext'
+import { createAPIEndPoint } from '@/src/config/api'
+import { endPoints } from '@/src/config/endpoints'
+import { discountPercentContext } from '@/store/discountPercentContext'
+import StyledButton from '@/src/components/buttons/StyledButton'
+import arrow from '/public/assets/images/arrow-up-right-pink.svg'
+import arrowBlack from '/public/assets/images/arrow-up-right-black.svg'
 
-const BodyService = () => {
-  const [booking, setBooking] = useContext(bookingContext);
-  const [discountPercent, setDiscountPercent] = useContext(
-    discountPercentContext
-  );
-  const [allServices, setAllServices] = useState(services);
+const BodyService = ({ modalOpen = false }) => {
+  const [booking, setBooking] = useContext(bookingContext)
+  // const [discountPercent, setDiscountPercent] = useContext(
+  //   discountPercentContext
+  // );
+  const [allServices, setAllServices] = useState(services)
   // const getService = async () => {
   //   try {
   //     const Response = await createAPIEndPoint(endPoints.services).fetchAll()
@@ -33,25 +33,25 @@ const BodyService = () => {
   // }, [])
 
   const handleCheckBox = (service) => {
-    const existingService = booking.find((item) => item.id === service.id);
-    console.log(existingService, "service");
+    const existingService = booking.find((item) => item.id === service.id)
+    console.log(existingService, 'service')
     if (existingService) {
       // Remove the service from newArray
-      let updatedServices = booking.filter((item) => item.id !== service.id);
-      setBooking(updatedServices);
+      let updatedServices = booking.filter((item) => item.id !== service.id)
+      setBooking(updatedServices)
     } else {
       // Push the service into newArray
-      setBooking([...booking, service]);
+      setBooking([...booking, service])
     }
-  };
-  useEffect(() => {}, []);
-  const bookinSet = new Set(booking.map((item) => JSON.stringify(item)));
+  }
+  useEffect(() => {}, [])
+  const bookinSet = new Set(booking.map((item) => JSON.stringify(item)))
 
-  const midIndex = Math.ceil(allServices.length / 2);
-  const firstColumnLabels = allServices.slice(0, midIndex);
-  const secondColumnLabels = allServices.slice(midIndex);
+  const midIndex = Math.ceil(allServices.length / 2)
+  const firstColumnLabels = allServices.slice(0, midIndex)
+  const secondColumnLabels = allServices.slice(midIndex)
 
-  console.log(firstColumnLabels, "labels");
+  console.log(firstColumnLabels, 'labels')
   return (
     <>
       <div className={styles.bodyServiceContainer}>
@@ -81,19 +81,19 @@ const BodyService = () => {
                       // </label>
                       <div className={styles.bodyServiceButtons}>
                         <StyledButton
-                          cursor="pointer"
+                          cursor='pointer'
                           text={item.name}
                           image={arrow}
-                          backgroundColor={item.isChecked ? "#fff" : "#ccccc"}
-                          color="#dcaa9d"
-                          fontWeight="600"
+                          backgroundColor={item.isChecked ? '#fff' : '#ccccc'}
+                          color='#dcaa9d'
+                          fontWeight='600'
                           onClick={() => {
-                            setBooking([...booking, item]);
-                            handleCheckBox(item);
+                            setBooking([...booking, item])
+                            handleCheckBox(item)
                           }}
                         />
                       </div>
-                    );
+                    )
                   })}
                 </div>
                 {/* Second column of checkboxes */}
@@ -117,21 +117,21 @@ const BodyService = () => {
                     // </label>
                     <div className={styles.bodyServiceButtons}>
                       <StyledButton
-                        cursor="pointer"
+                        cursor='pointer'
                         text={item.name}
                         image={arrow}
-                        backgroundColor="#fff"
-                        color="#dcaa9d"
-                        fontWeight="600"
+                        backgroundColor='#fff'
+                        color='#dcaa9d'
+                        fontWeight='600'
                       />
                       {item.isChecked === true && (
                         <StyledButton
-                          cursor="not-allowed"
+                          cursor='not-allowed'
                           text={item.name}
                           image={arrowBlack}
-                          backgroundColor="#ccc"
-                          color="#000"
-                          fontWeight="600"
+                          backgroundColor='#ccc'
+                          color='#000'
+                          fontWeight='600'
                         />
                       )}
                     </div>
@@ -144,22 +144,24 @@ const BodyService = () => {
             </div>
             <div className={styles.bodyServiceContentRight}>
               <div className={styles.bodyServiceContentRightHeading}>
-                <h1>Click On Button To Select Bodypart</h1>
+                {modalOpen == false && (
+                  <h1>Click On Button To Select Bodypart</h1>
+                )}
                 <MySession />
               </div>
             </div>
           </div>
           <div className={styles.progressbarContainer}>
             <div className={styles.progressbarSection}>
-              <Progressbar discountPercent={discountPercent} />
+              {/* <Progressbar discountPercent={discountPercent} />
               <DiscountToggle />
-              <DiscountType />
+              <DiscountType /> */}
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BodyService;
+export default BodyService
