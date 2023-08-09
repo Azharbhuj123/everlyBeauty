@@ -42,6 +42,7 @@
 .dashboardSectionLeftContentGraph {
   display: flex;
   align-items: center;
+  padding: 1px 0px 1px 1px;
 }
 .dashboardSectionLeftContentGraphTitle h2 {
   font-size: 24px;

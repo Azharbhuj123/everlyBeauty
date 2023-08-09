@@ -51,17 +51,18 @@
     height: 850px;
   }
 }
+@media screen and (max-width: 525px) {
+  .faqContainer {
+    height: 933px;
+  }
+}
 @media screen and (max-width: 425px) {
   .faqTitle h1 {
     font-size: 2em;
   }
   .faqContainer {
-    height: auto;
+    /* height: auto; */
+    height: 933px;
     margin-bottom: 2em;
-  }
-}
-@media screen and (max-width: 375px) {
-  .faqContainer {
-    height: 1100px;
   }
 }

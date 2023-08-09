@@ -50,7 +50,7 @@ const ServicesModal = ({ services, onClose }) => {
             />
           </div>
           <Typography variant='h5' id='services-modal-title'>
-            Services Details
+            Services
           </Typography>
           <ol
             style={{
