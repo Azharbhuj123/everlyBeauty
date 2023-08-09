@@ -8,31 +8,33 @@
   width: min(600px, 90%);
   background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
   border-radius: 10%;
-  padding: 30px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.testimonialForm img{
+cursor: pointer;
+}
 .testimonialFormHeading {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
 }
 .testimonialFormHeading h1 {
   font-family: 'Gilroy';
-  font-size: 32px;
+  font-size: 1.75em;
   text-align: center;
 }
 .testimonialFormInputs {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 20px;
   width: 95%;
 }
 .testimonialFormProfile h2 {
-  font-size: 20px;
+  font-size: 1.2em;
   font-family: 'Gilroy';
   margin-bottom: 10px;
 }
@@ -73,7 +75,7 @@
   align-items: center;
 }
 .testimonialFormComment h2 {
-  font-size: 22px;
+  font-size: 1.2em;
   font-family: 'Gilroy';
   margin-bottom: 10px;
 }
@@ -83,9 +85,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 1em;
 }
 .testimonialFormRating h2 {
-  font-size: 22px;
+  font-size: 1.2em;
   font-family: 'Gilroy';
 }
 .testimonialFormSubheading {
@@ -99,7 +102,7 @@
 }
 .testimonialFormInputs textarea {
   border: none;
-  height: 100px;
+  height: 90px;
   border-radius: 22px;
   padding: 15px;
   width: 100%;
@@ -114,6 +117,21 @@
   outline: none;
 }
 .testimonialFormButton {
-  margin-top: 2em;
+  margin-top: 1em;
   width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .testimonialForm {
+  padding: 20px;
+  }
+  .testimonialFormProfileImage {
+  width: 8em;
+  height: 7.5em;
+  }
+  @media screen and (max-width: 768px) {
+    .react-stars {
+      font-size: 16px; /* Adjust this to your desired size for smaller screens */
+    }
+  }
 }

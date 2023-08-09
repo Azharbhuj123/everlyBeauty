@@ -1,59 +1,59 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/components/bodyService/discountToggle.module.css";
-import Switch from "react-switch";
-import arrow from "/public/assets/images/arrow-up-right-white.svg";
-import PromoCard from "./PromoCard";
-import { useRouter } from "next/router";
-import StyledButton from "@/src/components/buttons/StyledButton";
-import Auth from "@/src/components/auth/auth";
-import StudentForm from "./StudentForm";
+import React, { useEffect, useState } from 'react'
+import styles from '@/styles/components/bodyService/discountToggle.module.css'
+import Switch from 'react-switch'
+import arrow from '/public/assets/images/arrow-up-right-white.svg'
+import PromoCard from './PromoCard'
+import { useRouter } from 'next/router'
+import StyledButton from '@/src/components/buttons/StyledButton'
+import Auth from '@/src/components/auth/auth'
+import StudentForm from './StudentForm'
 
 const DiscountToggle = () => {
-  const router = useRouter();
-  const [isChecked, setIsChecked] = useState(false);
-  const [isCheckedTwo, setIsCheckedTwo] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isPromoCardModalOpen, setIsPromoCardModalOpen] = useState(false);
-  const [isStudentCardModalOpen, setIsStudentCardModalOpen] = useState(false);
-  const [mode, setMode] = useState("login");
-  const [isToken, isSetToken] = useState(null);
+  const router = useRouter()
+  const [isChecked, setIsChecked] = useState(false)
+  const [isCheckedTwo, setIsCheckedTwo] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isPromoCardModalOpen, setIsPromoCardModalOpen] = useState(false)
+  const [isStudentCardModalOpen, setIsStudentCardModalOpen] = useState(false)
+  const [mode, setMode] = useState('login')
+  const [isToken, isSetToken] = useState(null)
 
   useEffect(() => {
-    const authToken = localStorage.getItem("Token");
-    isSetToken(authToken);
-  }, []);
-  console.log(isToken, "auth token checking");
+    const authToken = localStorage.getItem('Token')
+    isSetToken(authToken)
+  }, [])
+  console.log(isToken, 'auth token checking')
 
   const handleSwitchChange = (checked) => {
-    setIsChecked(checked);
+    setIsChecked(checked)
     if (checked) {
-      setIsPromoCardModalOpen(true);
+      setIsPromoCardModalOpen(true)
     }
-  };
+  }
   const handleChecked = () => {
-    setIsChecked(true);
-  };
+    setIsChecked(true)
+  }
 
   const handleSwitchChangeTwo = (checkedTwo) => {
-    setIsCheckedTwo(checkedTwo);
+    setIsCheckedTwo(checkedTwo)
     if (checkedTwo) {
-      setIsStudentCardModalOpen(true);
+      setIsStudentCardModalOpen(true)
     }
-  };
+  }
 
   const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleModalClose = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false)
     // setMode('login')
-  };
+  }
 
   const handlePromoCardModalClose = () => {
-    setIsPromoCardModalOpen(false);
-    setIsStudentCardModalOpen(false);
-  };
+    setIsPromoCardModalOpen(false)
+    setIsStudentCardModalOpen(false)
+  }
 
   return (
     <>
@@ -64,8 +64,8 @@ const DiscountToggle = () => {
               <Switch
                 onChange={handleSwitchChange}
                 checked={isChecked}
-                onColor="#E1AD9D"
-                offColor="#ccc"
+                onColor='#E1AD9D'
+                offColor='#ccc'
                 checkedIcon={false}
                 uncheckedIcon={false}
                 height={24}
@@ -81,8 +81,8 @@ const DiscountToggle = () => {
               <Switch
                 onChange={handleSwitchChangeTwo}
                 checked={isCheckedTwo}
-                onColor="#E1AD9D"
-                offColor="#ccc"
+                onColor='#E1AD9D'
+                offColor='#ccc'
                 checkedIcon={false}
                 uncheckedIcon={false}
                 height={24}
@@ -96,12 +96,14 @@ const DiscountToggle = () => {
           </div>
           <div className={styles.bookNow}>
             <StyledButton
-              color="#fff"
-              backgroundColor="#E1AD9D"
-              text="Book Now"
+              cursor='pointer'
+              color='#fff'
+              backgroundColor='#E1AD9D'
+              text='Book Now'
+              fontWeight='600'
               image={arrow}
               onClick={() => {
-                isToken !== null ? router.push("/book-now") : handleModalOpen();
+                isToken !== null ? router.push('/book-now') : handleModalOpen()
               }}
             />
           </div>
@@ -113,22 +115,22 @@ const DiscountToggle = () => {
                   mode={mode}
                   setMode={setMode}
                   headingText={
-                    mode == "login"
-                      ? "Log in"
-                      : mode == "signup"
-                      ? "Sign Up"
-                      : mode == "forgot-password"
-                      ? "Forgot Password"
-                      : "Reset-Password"
+                    mode == 'login'
+                      ? 'Log in'
+                      : mode == 'signup'
+                      ? 'Sign Up'
+                      : mode == 'forgot-password'
+                      ? 'Forgot Password'
+                      : 'Reset-Password'
                   }
                   buttonText={
-                    mode == "login"
-                      ? "Log in"
-                      : mode == "signup"
-                      ? "Sign Up"
-                      : mode == "forgot-password"
-                      ? "Forgot Password"
-                      : "Reset-Password"
+                    mode == 'login'
+                      ? 'Log in'
+                      : mode == 'signup'
+                      ? 'Sign Up'
+                      : mode == 'forgot-password'
+                      ? 'Forgot Password'
+                      : 'Reset-Password'
                   }
                   onClick={handleModalClose}
                 />
@@ -155,7 +157,7 @@ const DiscountToggle = () => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default DiscountToggle;
+export default DiscountToggle

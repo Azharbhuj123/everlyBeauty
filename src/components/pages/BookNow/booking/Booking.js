@@ -66,7 +66,9 @@ const Booking_ = () => {
             <div className={styles.bookingButton}>
               {currentSlide == 2 ? null : (
                 <StyledButton
+                  cursor='pointer'
                   color='#fff'
+                  fontWeight='600'
                   backgroundColor='#E1AD9D'
                   text='Dashboard'
                   image={arrow}
@@ -101,8 +103,10 @@ const Booking_ = () => {
                   <StyledButton
                     color='#fff'
                     backgroundColor='#E1AD9D'
+                    fontWeight='600'
                     text='Dashboard'
                     image={arrow}
+                    cursor='pointer'
                   />
                 </Link>
               ) : (
@@ -112,6 +116,8 @@ const Booking_ = () => {
                   text={getButtonText()}
                   onClick={handleContinueClick}
                   image={arrow}
+                  fontWeight='600'
+                  cursor='pointer'
                 />
               )}
             </div>

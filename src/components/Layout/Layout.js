@@ -13,8 +13,6 @@ const Layout = ({children}) => {
       let value= Math.random()
       setTokenState(value)
     }
-  
-
   },[myToken])
   return (
     <>

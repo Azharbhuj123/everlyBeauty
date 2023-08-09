@@ -7,20 +7,15 @@ import { endPoints } from '@/src/config/endpoints'
 import styles from '@/styles/components/dashboard/verticalStepper.module.css'
 import StyledButton from '@/src/components/buttons/StyledButton'
 
-const VerticalStepper = ({  fetchedDates }) => {
+const VerticalStepper = ({ fetchedDates }) => {
   const [activeStep, setActiveStep] = useState(0)
-  
+
   const router = useRouter()
-
-  
- 
-
-  
 
   return (
     <div>
       <Stepper orientation='vertical'>
-        {fetchedDates.map((item,index) => (
+        {fetchedDates.map((item, index) => (
           <Step key={index}>
             <StepLabel
               StepIconProps={{
@@ -66,9 +61,11 @@ const VerticalStepper = ({  fetchedDates }) => {
 
       <div className={styles.stepperButton}>
         <StyledButton
+          cursor='pointer'
           color='#fff'
           backgroundColor='#E1AD9D'
           text='Book Now'
+          fontWeight='600'
           image={arrow}
           onClick={() => router.push('/')}
         />

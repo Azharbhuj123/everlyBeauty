@@ -11,7 +11,7 @@ import Auth from '../auth/auth'
 import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import Button from '../buttons/Button'
-import logout from '/public/assets/images/logout.svg'
+import logout from '/public/assets/images/logoutGray.svg'
 
 const Header = ({ Token, key }) => {
   const router = useRouter()
@@ -46,7 +46,6 @@ const Header = ({ Token, key }) => {
     localStorage.removeItem('Token')
     localStorage.removeItem('User')
     setIsToken(null)
-
     router.push('/')
   }
 
@@ -112,7 +111,9 @@ const Header = ({ Token, key }) => {
                 backgroundColor='#fff'
                 color='#000'
                 text='Book Now'
+                fontWeight= '600'
                 image={arrow}
+                cursor = 'pointer'
                 onClick={() => {
                   isToken === null
                     ? handleModalOpen()
@@ -207,7 +208,9 @@ const Header = ({ Token, key }) => {
                             backgroundColor='#fff'
                             color='#000'
                             text='Book Now'
+                            fontWeight= '600'
                             image={arrow}
+                            cursor= 'pointer'
                             onClick={() => {
                               isToken === null
                                 ? handleModalOpen()
@@ -252,11 +255,11 @@ const Header = ({ Token, key }) => {
             </div>
           )}
         </div>
-        {isToken && (
+        {/* {isToken && (
           <div className={styles.logoutButton} onClick={handleLogout}>
             <Button backgroundColor='#000' color='#fff' text='Logout' />
           </div>
-        )}
+        )} */}
       </div>
     </>
   )

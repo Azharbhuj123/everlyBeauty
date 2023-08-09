@@ -11,7 +11,6 @@ const TestimonialForm = ({ onClose }) => {
 
   const handleProfileImageChange = (e) => {
     const file = e.target.files[0]
-    // You can do additional checks here if needed, e.g., file type validation.
     setProfileImage(file)
   }
 
@@ -19,13 +18,13 @@ const TestimonialForm = ({ onClose }) => {
     <>
       <div className={styles.testimonialForm}>
         <div className={styles.testimonialFormHeading}>
-          <h1>Review</h1>
+          {/* <h1>Review</h1> */}
           <Image src={close} alt='' width={25} height={25} onClick={onClose} />
         </div>
-        <div className={styles.testimonialFormSubheading}>
+        {/* <div className={styles.testimonialFormSubheading}>
           <h2>Id</h2>
           <p>22 June 2023</p>
-        </div>
+        </div> */}
         <div className={styles.testimonialFormInputs}>
           <div class={styles.testimonialFormProfile}>
             <h2>Profile Photo</h2>
@@ -58,7 +57,7 @@ const TestimonialForm = ({ onClose }) => {
               count={5}
               edit={true}
               value={5}
-              size={50}
+              size={45}
               color2={'#ffd700'}
             />
           </div>

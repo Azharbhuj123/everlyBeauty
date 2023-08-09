@@ -19,14 +19,15 @@ const Banner = () => {
                     diam nonumy eirmod tempor invidunt ut labore et
                   </p>
                 </div>
-                <div className={styles.bannerContentLeftButton}>
+                {/* <div className={styles.bannerContentLeftButton}>
                   <StyledButton
                     backgroundColor='#DCAA9B'
                     color='#fff'
                     text='Consultation'
                     image={arrow}
+                    fontWeight= '600'
                   />
-                </div>
+                </div> */}
               </div>
             </div>
             <div className={styles.bannerContentRight}>

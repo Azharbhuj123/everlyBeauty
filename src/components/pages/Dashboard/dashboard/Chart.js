@@ -8,8 +8,9 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Button from '@/src/components/buttons/Button'
 import moment from 'moment'
-import TestimonialForm from '../../Home/testimonals/TestimonialForm'
+import TestimonialForm from './TestimonialForm'
 import styles from '@/styles/components/bodyService/discountToggle.module.css'
+import ServicesModal from './ServicesModal'
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein }
@@ -25,6 +26,8 @@ const rows = [
 
 const Chart = ({ fetchedDates }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isServicesModalOpen, setIsServicesModalOpen] = useState(false)
+  const [selectedServices, setSelectedServices] = useState([])
 
   const handleModalOpen = () => {
     setIsModalOpen(true)
@@ -33,6 +36,16 @@ const Chart = ({ fetchedDates }) => {
   const handleModalClose = () => {
     setIsModalOpen(false)
   }
+
+  const handleServicesModalOpen = (services) => {
+    setSelectedServices(services)
+    setIsServicesModalOpen(true)
+  }
+
+  const handleServicesModalClose = () => {
+    setIsServicesModalOpen(false)
+  }
+  console.log(fetchedDates, 'dataaa')
 
   return (
     <>
@@ -43,39 +56,127 @@ const Chart = ({ fetchedDates }) => {
               <TableCell>Sessions</TableCell>
               <TableCell align='right'>Time Duration</TableCell>
               <TableCell align='right'>Services</TableCell>
-
+              <TableCell align='right'>Price</TableCell>
               <TableCell align='right'>Status</TableCell>
               <TableCell align='right'>Review</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {fetchedDates.map((item, index) => (
-              <TableRow
-                key={index}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component='th' scope='row'>
-                  {index + 1}
-                </TableCell>
-                <TableCell align='right'>
-                  {moment(item.start, 'HH:mm:ss').format('h:mm A')}-
-                  {moment(item.end, 'HH:mm:ss').format('h:mm A')}
-                </TableCell>
-                <TableCell align='right'>{item.services.length}</TableCell>
-                <TableCell align='right'>{item.status}</TableCell>
-                <TableCell align='right'>
-                  <Button text={'review'} action={handleModalOpen} />
-                </TableCell>
-              </TableRow>
-            ))}
+            {fetchedDates.map((item, index) => {
+              return (
+                <>
+                  {console.log(item.isReviewed, 'reviewed')}
+                  <TableRow
+                    key={index}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell component='th' scope='row'>
+                      Session {index + 1}
+                    </TableCell>
+                    <TableCell align='right'>
+                      {moment(item.start, 'HH:mm:ss').format('h:mm A')}-
+                      {moment(item.end, 'HH:mm:ss').format('h:mm A')}
+                    </TableCell>
+                    <TableCell align='right'>
+                      <button
+                        style={{
+                          border: 'none',
+                          background: 'transparent',
+                          cursor: 'pointer',
+                        }}
+                        onClick={() => handleServicesModalOpen(item.services)}
+                      >
+                        {item.services.length}
+                      </button>
+                    </TableCell>
+                    <TableCell align='right'>${item.payableAmount}</TableCell>
+                    <TableCell align='right'>{item.status}</TableCell>
+                    {/* <TableCell align='right'>
+                  {item.status === 'completed' ? (
+                    <button
+                      style={{
+                        padding: '10px 20px',
+                        color: '#fff',
+                        background: '#000',
+                        border: 'none',
+                        borderRadius: '20px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={handleModalOpen}
+                    >
+                      review
+                    </button>
+                  ) : (
+                    <button
+                      style={{
+                        padding: '10px 20px',
+                        color: '#fff',
+                        background: '#ccc',
+                        border: 'none',
+                        borderRadius: '20px',
+                        cursor: 'not-allowed',
+                      }}
+                      disabled
+                    >
+                      review
+                    </button>
+                  )}
+                </TableCell> */}
+                    <TableCell align='right'>
+                      {item.status === 'completed' ? (
+                        <>
+                          {item.isReviewed === true ? (
+                            <span>reviewed</span>
+                          ) : (
+                            <button
+                              style={{
+                                padding: '10px 20px',
+                                color: '#fff',
+                                background: '#000',
+                                border: 'none',
+                                borderRadius: '20px',
+                                cursor: 'pointer',
+                              }}
+                              onClick={handleModalOpen}
+                            >
+                              review
+                            </button>
+                          )}
+                        </>
+                      ) : (
+                        <button
+                          style={{
+                            padding: '10px 20px',
+                            color: '#fff',
+                            background: '#ccc',
+                            border: 'none',
+                            borderRadius: '20px',
+                            cursor: 'not-allowed',
+                          }}
+                          disabled
+                        >
+                          review
+                        </button>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                </>
+              )
+            })}
           </TableBody>
         </Table>
       </TableContainer>
       {isModalOpen && (
         <div className={styles.modalOverlay}>
-          {/* <div className={styles.modalContent}> */}
           <TestimonialForm onClose={handleModalClose} />
-          {/* </div> */}
+        </div>
+      )}
+      {isServicesModalOpen && (
+        <div className={styles.modalOverlay}>
+          <ServicesModal
+            services={selectedServices}
+            onClose={handleServicesModalClose}
+          />
         </div>
       )}
     </>

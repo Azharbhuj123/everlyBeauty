@@ -406,3 +406,12 @@ input:checked ~ label {
   font-size: 1em;
 }
 /* end */
+
+
+/* servicesModal */
+.css-ag7rrr-MuiTypography-root {
+font-family: "Gilroy";
+font-weight: 700;
+}
+
+/* end */
