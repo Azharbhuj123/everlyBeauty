@@ -62,23 +62,6 @@ const BodyService = () => {
                 <div className={styles.bodyServiceColumn}>
                   {firstColumnLabels.map((item, index) => {
                     return (
-                      // <label key={item.id} className={styles.bodyServicelabels}>
-                      //   <input
-                      //     type="checkbox"
-                      //     checked={booking.some(
-                      //       (element) =>
-                      //         item.id === element.id &&
-                      //         item.name === element.name &&
-                      //         item.price === element.price &&
-                      //         item.time === element.time
-                      //     )}
-                      //     // onClick={() => setBooking([...booking, item])}
-                      //     onChange={() => {
-                      //       handleCheckBox(item);
-                      //     }}
-                      //   />
-                      //   {item.name}
-                      // </label>
                       <div className={styles.bodyServiceButtons}>
                         <StyledButton
                           cursor="pointer"
@@ -120,20 +103,24 @@ const BodyService = () => {
                         cursor="pointer"
                         text={item.name}
                         image={arrow}
-                        backgroundColor="#fff"
+                        backgroundColor={
+                          booking.some(
+                            (element) =>
+                              item.id === element.id &&
+                              item.name === element.name &&
+                              item.price === element.price &&
+                              item.time === element.time
+                          )
+                            ? "#fff"
+                            : "#ccccc"
+                        }
                         color="#dcaa9d"
                         fontWeight="600"
+                        onClick={() => {
+                          setBooking([...booking, item]);
+                          handleCheckBox(item);
+                        }}
                       />
-                      {item.isChecked === true && (
-                        <StyledButton
-                          cursor="not-allowed"
-                          text={item.name}
-                          image={arrowBlack}
-                          backgroundColor="#ccc"
-                          color="#000"
-                          fontWeight="600"
-                        />
-                      )}
                     </div>
                   ))}
                 </div>
