@@ -1,17 +1,17 @@
-import React from "react";
-import ReactStars from "react-stars";
-import styles from "@/styles/components/testimonials/testimonials.module.css";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import { testimonalsCrdData } from "@/pages/api/utils";
+import React from 'react'
+import ReactStars from 'react-stars'
+import styles from '@/styles/components/testimonials/testimonials.module.css'
+import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay } from 'swiper/modules'
+import { testimonalsCrdData } from '@/pages/api/utils'
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import SwiperCore from "swiper";
+import 'swiper/css'
+import 'swiper/css/pagination'
+import SwiperCore from 'swiper'
 
 const Testimonals = () => {
-  SwiperCore.use([Autoplay]);
+  SwiperCore.use([Autoplay])
   return (
     <>
       <div className={styles.testimonialsContainer}>
@@ -21,7 +21,7 @@ const Testimonals = () => {
           </div>
           <div className={styles.testimonialsCards}>
             <Swiper
-              style={{ width: "100%", height: "400px" }}
+              style={{ width: '100%', height: '400px' }}
               spaceBetween={30}
               slidesPerView={3}
               loop={true}
@@ -30,7 +30,7 @@ const Testimonals = () => {
                 disableOnInteraction: false,
               }}
               speed={1000}
-              onSlideChange={() => console.log("slide change")}
+              onSlideChange={() => console.log('slide change')}
               onSwiper={(swiper) => console.log(swiper)}
               pagination={{
                 clickable: true,
@@ -68,14 +68,14 @@ const Testimonals = () => {
                           edit={false}
                           value={5}
                           size={24}
-                          color2={"#ffd700"}
+                          color2={'#ffd700'}
                         />
                         <div className={styles.testimonialsCardAvatar}>
                           <Image
                             src={item.avatar}
                             width={100}
                             height={100}
-                            alt=""
+                            alt=''
                           />
                         </div>
                         <div className={styles.testimonialsCardContent}>
@@ -85,14 +85,14 @@ const Testimonals = () => {
                       </div>
                     </SwiperSlide>
                   </>
-                );
+                )
               })}
             </Swiper>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Testimonals;
+export default Testimonals

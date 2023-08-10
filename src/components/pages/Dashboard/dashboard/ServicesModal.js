@@ -2,7 +2,6 @@ import React from 'react'
 import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
 import close from '/public/assets/images/circle-xmark.png'
 import Image from 'next/image'
 
@@ -63,9 +62,6 @@ const ServicesModal = ({ services, onClose }) => {
               <li key={index}>{service}</li>
             ))}
           </ol>
-          {/* <Button variant='contained' color='primary' onClick={onClose}>
-            Close
-          </Button> */}
         </Paper>
       </div>
     </Modal>

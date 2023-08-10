@@ -91,37 +91,7 @@ const Chart = ({ fetchedDates }) => {
                     </TableCell>
                     <TableCell align='right'>${item.payableAmount}</TableCell>
                     <TableCell align='right'>{item.status}</TableCell>
-                    {/* <TableCell align='right'>
-                  {item.status === 'completed' ? (
-                    <button
-                      style={{
-                        padding: '10px 20px',
-                        color: '#fff',
-                        background: '#000',
-                        border: 'none',
-                        borderRadius: '20px',
-                        cursor: 'pointer',
-                      }}
-                      onClick={handleModalOpen}
-                    >
-                      review
-                    </button>
-                  ) : (
-                    <button
-                      style={{
-                        padding: '10px 20px',
-                        color: '#fff',
-                        background: '#ccc',
-                        border: 'none',
-                        borderRadius: '20px',
-                        cursor: 'not-allowed',
-                      }}
-                      disabled
-                    >
-                      review
-                    </button>
-                  )}
-                </TableCell> */}
+
                     <TableCell align='right'>
                       {item.status === 'completed' && item.isReviewed ? (
                         <span
@@ -177,12 +147,12 @@ const Chart = ({ fetchedDates }) => {
         </div>
       )}
       {isServicesModalOpen && (
-        <div className={styles.modalOverlay}>
-          <ServicesModal
-            services={selectedServices}
-            onClose={handleServicesModalClose}
-          />
-        </div>
+        // <div className={styles.modalOverlay}>
+        <ServicesModal
+          services={selectedServices}
+          onClose={handleServicesModalClose}
+        />
+        // </div>
       )}
     </>
   )
