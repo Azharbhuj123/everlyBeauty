@@ -14,10 +14,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 12em 1em 0 1em;
-}
-.modalBodyServiceContent{
   margin: 1em 1em 0 1em;
+}
+.modalBodyServiceContent {
+  margin: 0em 1em 0 1em;
 }
 .bodyServiceContentLeft {
   /* width: 50%; */
@@ -59,7 +59,7 @@
   font-weight: 700;
   font-family: 'Gilroy';
   letter-spacing: 1px;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 .bodyServiceContentRightHeading h3 {
   font-size: 28px;
@@ -67,7 +67,9 @@
   font-family: 'Gilroy';
   letter-spacing: 1px;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
+
 .bodyServiceContentRightHeading p {
   font-size: 16;
   font-family: 'Poppins';
@@ -148,9 +150,12 @@
   .bodyServiceContentRightHeading h1 {
     font-size: 2.5em;
   }
-  .bodyServiceContent {
-    margin: 8em 1em 0em 1em;
+  .bodyServiceButtons {
+    width: 11em;
   }
+  /* .bodyServiceContent {
+    margin: 8em 1em 0em 1em;
+  } */
 }
 @media screen and (max-width: 425px) {
   .bodyServiceColumn {

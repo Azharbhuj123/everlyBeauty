@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BodyService from '../../Home/bodyService/BodyService'
 import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import close from '/public/assets/images/circle-xmark.png'
 import Image from 'next/image'
+import styles from '@/styles/components/booking/booking.module.css'
 
-const EditSessionModal = (onClose, modalOpen) => {
+const EditSessionModal = ({ onClose, modalOpen }) => {
   return (
     <>
       <Modal
@@ -28,31 +29,34 @@ const EditSessionModal = (onClose, modalOpen) => {
             style={{
               padding: '20px',
               width: '90%',
-              maxWidth: '2000px',
+              maxWidth: '1200px',
               borderRadius: '30px',
               backgroundImage: 'linear-gradient(to bottom, #ffe4dc, #e1ad9d)',
             }}
           >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                width: '100%',
-              }}
-              onClick={onClose}
-            >
-              {/* <h1>Review</h1> */}
-              <Image
-                src={close}
-                alt=''
-                width={25}
-                height={25}
-                // onClick={onClose}
-              />
+            <div className={styles.editSessionModalContent}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  width: '100%',
+                  paddingRight: '10px',
+                }}
+                onClick={onClose}
+              >
+                {/* <h1>Review</h1> */}
+                <Image
+                  src={close}
+                  alt=''
+                  width={25}
+                  height={25}
+                  // onClick={onClose}
+                />
+              </div>
+              <Typography variant='h5' id='services-modal-title'>
+                <BodyService modalOpen={modalOpen} />
+              </Typography>
             </div>
-            <Typography variant='h5' id='services-modal-title'>
-              <BodyService modalOpen={modalOpen} />
-            </Typography>
           </Paper>
         </div>
       </Modal>
