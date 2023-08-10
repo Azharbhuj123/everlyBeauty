@@ -7,6 +7,7 @@ import Profile from '/public/assets/images/profile.svg'
 import ReactStars from 'react-stars'
 import { createAPIEndPoint } from '@/src/config/api'
 import { endPoints } from '@/src/config/endpoints'
+import { toast } from 'react-hot-toast'
 
 const TestimonialForm = ({ onClose }) => {
   const [profileImage, setProfileImage] = useState(null)
@@ -18,18 +19,26 @@ const TestimonialForm = ({ onClose }) => {
     setProfileImage(file)
   }
 
+  const userString = localStorage.getItem('User')
+  const user = JSON.parse(userString)
+  const username = user && user.username ? user.username : ''
+
+  console.log(username, 'user name')
   const handleSubmit = async () => {
     try {
       const response = createAPIEndPoint(endPoints.rateReview)
       const reviewData = {
-        userName: 'John Doe',
+        userName: username,
         rating,
         review,
         userImage: profileImage,
       }
-      await response.createReview(reviewData)
+      onClose()
+      toast.success('Thanks for your review')
+      await response.createWithToken({ data: reviewData })
       onClose()
     } catch (error) {
+      toast.error(error.message)
       console.error('Error submitting review:', error)
     }
   }

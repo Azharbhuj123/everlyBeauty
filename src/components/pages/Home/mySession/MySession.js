@@ -5,6 +5,7 @@ import MySessionInvoice from './MySessionInvoice'
 import MySessionDiscount from './MySessionDiscount'
 import { discountPercentContext } from '@/store/discountPercentContext'
 import { payableAmountContext } from '@/store/payableAmountContext'
+import StudentDiscount from './StudentDiscount'
 
 const MySession = () => {
   const [booking] = useContext(bookingContext)
@@ -68,61 +69,88 @@ const MySession = () => {
         </p>
       </div>
 
-      {/* Recipt */}
-      <div>
-        <div className={styles.bodyServiceContentRightTable}>
-          {booking?.map((item, index) => {
-            return (
-              <>
-                <div
-                  key={index}
-                  className={styles.bodyServiceContentRightTableRow}
-                >
-                  <div className={styles.bodyServiceContentRightTableService}>
-                    <div
-                      className={styles.bodyServiceContentRightTableDescription}
-                    >
-                      <p>{item.name}</p>
-                    </div>
-                  </div>
+      <div className={styles.bodyServiceContentRightTable}>
+        <div className={styles.bodyServiceContentRightTableRow}>
+          <div className={styles.bodyServiceContentRightTableService}>
+            <div className={styles.bodyServiceContentRightTableDescription}>
+              <p>Consultation Time</p>
+            </div>
+          </div>
+          <div className={styles.bodyServiceContentRightTableServiceDetail}>
+            <div
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                textAlign: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <p style={{ color: '#000' }}>30min</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Recipt */}
+        {booking?.map((item, index) => {
+          return (
+            <>
+              <div
+                key={index}
+                className={styles.bodyServiceContentRightTableRow}
+              >
+                <div className={styles.bodyServiceContentRightTableService}>
                   <div
-                    className={styles.bodyServiceContentRightTableServiceDetail}
+                    className={styles.bodyServiceContentRightTableDescription}
                   >
-                    <div
-                      className={styles.bodyServiceContentRightTableDescription}
-                    >
-                      <p>{`${item.time}${' min'}`}</p>
-                    </div>
-                    <p
-                      className={
-                        styles.bodyServiceContentRightTableDescriptionLine
-                      }
-                    >
-                      |
-                    </p>
-                    <div
-                      className={styles.bodyServiceContentRightTableDescription}
-                    >
-                      <p>${item.price}</p>
-                    </div>
+                    <p>{item.name}</p>
                   </div>
                 </div>
-              </>
-            )
-          })}
-        </div>
-        <div className={styles.bodyServiceContentRightcalc}>
-          {console.log(discountPercent, 'pppppppppp')}
-          <MySessionInvoice heading={'Subtotal'} amount={totalPrice} />
-          <MySessionDiscount
-            heading={'Discount'}
-            discount={
-              typeof discountPercent == 'undefined' ? 0 : discountPercent
-            }
-            amount={discount}
-          />
-          <MySessionInvoice heading={'Total'} amount={roundedTotalAmount} />
-        </div>
+                <div
+                  className={styles.bodyServiceContentRightTableServiceDetail}
+                >
+                  <div
+                    className={styles.bodyServiceContentRightTableDescription}
+                  >
+                    <p>{`${item.time}${' min'}`}</p>
+                  </div>
+                  <p
+                    className={
+                      styles.bodyServiceContentRightTableDescriptionLine
+                    }
+                  >
+                    |
+                  </p>
+                  <div
+                    className={styles.bodyServiceContentRightTableDescription}
+                  >
+                    <p>${item.price}</p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )
+        })}
+      </div>
+      <div className={styles.bodyServiceContentRightcalc}>
+        {console.log(discountPercent, 'pppppppppp')}
+        <MySessionInvoice heading={'Subtotal'} amount={totalPrice} />
+        <MySessionDiscount
+          heading={'Discount'}
+          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
+          amount={discount}
+        />
+        <StudentDiscount
+          heading={'Student Discount'}
+          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
+          amount={discount}
+        />
+        <StudentDiscount
+          heading={'Promo Discount'}
+          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
+          amount={discount}
+        />
+        <MySessionInvoice heading={'Total'} amount={roundedTotalAmount} />
       </div>
     </>
   )
