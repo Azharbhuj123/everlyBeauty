@@ -18,9 +18,7 @@ import { bookingContext } from "@/store/bookingContext";
 import { payableAmountContext } from "@/store/payableAmountContext";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
-// import TimePicker from "react-time-picker";
-// import "react-time-picker/dist/TimePicker.css";
-// import { TimePicker } from "react-ios-time-picker";
+import Booking_ from "../booking/Booking";
 const TimePickerDialog = ({
   open,
   onClose,
@@ -36,6 +34,7 @@ const TimePickerDialog = ({
   const [booking, setBooking] = useContext(bookingContext);
   const [payable, setPayable] = useContext(payableAmountContext);
   const services = booking.map((item) => item.name);
+  console.log(booking, "booking");
 
   const [user, setUser] = useState(null);
 
@@ -60,20 +59,13 @@ const TimePickerDialog = ({
     let userIdInString = userId.toString();
 
     let data = {
-      // user_id: userIdInString,
       payableAmount: payable,
       services: services,
       start: fomatedStartTime,
       end: fomatedSEndTime,
       date: date,
+      details: booking,
     };
-
-    let slotData = {
-      startTime: fomatedStartTime,
-      endTime: fomatedSEndTime,
-      date: date,
-    };
-
     if (selectedTime) {
       onSelectTime(selectedTime);
     }
@@ -83,28 +75,16 @@ const TimePickerDialog = ({
       ).createWithToken({ data: data });
       console.log(response, "response check");
     } catch (error) {
-      console.log(error.response.data.error.message, "error check");
+      // console.log(error.response.data.error.message, "error check");
+      alert(error.response.data.error.message);
     }
-    // Create slot
-    try {
-      const response = await createAPIEndPoint(
-        endPoints.createSlot
-      ).createWithToken({ data: slotData });
-      console.log(response, "response check in slot creation");
-    } catch (error) {}
+
     onClose();
   };
 
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
-        {/* <TimePicker
-          onChange={(time) => {
-            // Do something with the selected time from the Time Picker
-            console.log("Selected Time:", time);
-          }}
-          value={new Date(start)}
-        /> */}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <TimePicker
             label="Time"
@@ -118,16 +98,7 @@ const TimePickerDialog = ({
             }}
           />
         </LocalizationProvider>
-        {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <TimePicker
-            label="Select Time"
-            value={selectedTime}
-            onChange={handleTimeChange}
-            ampm={false}
-            format="HH:mm"
-            minutesStep={15}
-          />
-        </MuiPickersUtilsProvider> */}
+
         <div
           style={{
             padding: 20,
@@ -136,10 +107,6 @@ const TimePickerDialog = ({
             fontFamily: "Poppins",
           }}
         >
-          {/* <h3>
-            Are you sure. you want to set the visit at the selected time slot?
-          </h3> */}
-
           <div
             style={{
               display: "flex",
