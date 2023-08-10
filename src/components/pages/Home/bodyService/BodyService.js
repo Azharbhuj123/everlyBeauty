@@ -67,7 +67,17 @@ const BodyService = ({ modalOpen = false }) => {
                           cursor="pointer"
                           text={item.name}
                           image={arrow}
-                          backgroundColor={item.isChecked ? "#fff" : "#ccccc"}
+                          backgroundColor={
+                            booking.some(
+                              (element) =>
+                                item.id === element.id &&
+                                item.name === element.name &&
+                                item.price === element.price &&
+                                item.time === element.time
+                            )
+                              ? "#cccc"
+                              : "#fff"
+                          }
                           color="#dcaa9d"
                           fontWeight="600"
                           onClick={() => {
@@ -111,8 +121,8 @@ const BodyService = ({ modalOpen = false }) => {
                               item.price === element.price &&
                               item.time === element.time
                           )
-                            ? "#fff"
-                            : "#ccccc"
+                            ? "#cccc"
+                            : "#fff"
                         }
                         color="#dcaa9d"
                         fontWeight="600"
