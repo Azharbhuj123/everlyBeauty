@@ -67,11 +67,13 @@ const BodyService = ({ modalOpen = false }) => {
                   {firstColumnLabels.map((item, index) => {
                     return (
                       <div className={styles.bodyServiceButtons}>
+                        {console.log(item.isChecked, 'cheking')}
+                        {console.log(firstColumnLabels, 'list buttons')}
                         <StyledButton
                           cursor="pointer"
                           text={item.name}
                           image={arrow}
-                          backgroundColor={item.isChecked ? "#fff" : "#ccccc"}
+                          backgroundColor={item.isChecked ? "#fff" : "#cccc"}
                           color="#dcaa9d"
                           fontWeight="600"
                           onClick={() => {
