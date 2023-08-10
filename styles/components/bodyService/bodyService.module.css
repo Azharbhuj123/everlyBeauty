@@ -16,6 +16,9 @@
   align-items: center;
   margin: 12em 1em 0 1em;
 }
+.modalBodyServiceContent{
+  margin: 1em 1em 0 1em;
+}
 .bodyServiceContentLeft {
   /* width: 50%; */
   width: 20em;

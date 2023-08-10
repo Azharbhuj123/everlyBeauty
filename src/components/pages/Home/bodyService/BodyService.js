@@ -56,7 +56,11 @@ const BodyService = ({ modalOpen = false }) => {
     <>
       <div className={styles.bodyServiceContainer}>
         <div className={styles.bodyServiceWrapper}>
-          <div className={styles.bodyServiceContent}>
+          <div
+            className={` ${
+              modalOpen === false && styles.modalBodyServiceContent
+            } ${styles.bodyServiceContent }`}
+          >
             <div className={styles.bodyServiceContentLeft}>
               <div className={styles.bodyServicecheckboxes}>
                 <div className={styles.bodyServiceColumn}>
@@ -142,7 +146,11 @@ const BodyService = ({ modalOpen = false }) => {
                 <Image src={female} width={400} height={'auto'} alt='' />
               </div> */}
             </div>
-            <div className={styles.bodyServiceContentRight}>
+            <div
+              className={`${styles.bodyServiceContentRight} ${
+                modalOpen == false && styles.modalbodyServiceContentRight
+              }`}
+            >
               <div className={styles.bodyServiceContentRightHeading}>
                 {modalOpen == false && (
                   <h1>Click On Button To Select Bodypart</h1>

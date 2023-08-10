@@ -136,9 +136,9 @@ const Booking_ = () => {
         </div>
       </div>
       {modalOpen && (
-        <div className={styles.modalOverlay}>
-          <EditSessionModal onClose={handleModalClose} modalOpen={modalOpen}/>
-        </div>
+        // <div className={styles.modalOverlay}>
+        <EditSessionModal onClose={handleModalClose} modalOpen={modalOpen} />
+        // </div>
       )}
     </>
   )

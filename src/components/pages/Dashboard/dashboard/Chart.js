@@ -177,12 +177,12 @@ const Chart = ({ fetchedDates }) => {
         </div>
       )}
       {isServicesModalOpen && (
-        <div className={styles.modalOverlay}>
-          <ServicesModal
-            services={selectedServices}
-            onClose={handleServicesModalClose}
-          />
-        </div>
+        // <div className={styles.modalOverlay}>
+        <ServicesModal
+          services={selectedServices}
+          onClose={handleServicesModalClose}
+        />
+        // </div>
       )}
     </>
   )
