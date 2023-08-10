@@ -37,13 +37,13 @@ export default function Home() {
         details.forEach((element) => {
           setBooking(element);
         });
-        // setBooking(details);
       }
       console.log(details, "ddddd");
     } catch (error) {
       console.log(error, "error");
     }
   };
+
   useEffect(() => {
     getUserData();
   }, []);
