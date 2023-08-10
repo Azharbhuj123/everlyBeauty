@@ -27,12 +27,7 @@ const MySession = () => {
     return acc + time;
   }, 0);
 
-  const getDiscount = (totalPrice) => {
-    var discountAmount = booking.length ? 36.3 * Math.sqrt(totalTime) - 41 : 0;
-    setDiscountAmount(discountAmount);
-    let Discount = totalPrice - discountAmount;
-
-    console.log(Discount, "discount check");
+  const getDiscount = (totalPrice, totalTime) => {
     // let discountPercent = 0;
     // if (totalPrice >= 150 && totalPrice < 300) {
     //   discountPercent = 10;
@@ -44,16 +39,19 @@ const MySession = () => {
     // const percentage = (part / whole) * 100;
     // setDiscountPercent(discountPercent);
     // const discountAmount = (totalPrice / 100) * discountPercent;
-
+    let discountAmount = booking.length ? 36.3 * Math.sqrt(totalTime) - 41 : 0;
+    console.log(discountAmount, "discount amount");
+    setDiscountAmount(discountAmount);
+    let Discount = totalPrice - discountAmount;
     const roudedDiscountAmount = Math.ceil(Discount);
-    const percentage = Math.ceil((roudedDiscountAmount / totalAmount) * 100);
+    const percentage = Math.round((roudedDiscountAmount / totalPrice) * 100);
 
     setDiscount(() => roudedDiscountAmount);
-    setDiscountPercent(() => percentage);
+    setDiscountPercent(percentage);
   };
 
   useEffect(() => {
-    getDiscount(totalPrice);
+    getDiscount(totalPrice, totalTime);
   }, [totalPrice, totalTime]);
 
   const totalAmount = totalPrice - discount;
