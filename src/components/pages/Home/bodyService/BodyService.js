@@ -56,12 +56,7 @@ const BodyService = ({ modalOpen = false }) => {
     <>
       <div className={styles.bodyServiceContainer}>
         <div className={styles.bodyServiceWrapper}>
-          <div
-            // className={` ${
-            //   modalOpen === true? styles.modalBodyServiceContent
-            // }: ${styles.bodyServiceContent }`}
-            className={styles.bodyServiceContent}
-          >
+          <div className={styles.bodyServiceContent}>
             <div className={styles.bodyServiceContentLeft}>
               <div className={styles.bodyServicecheckboxes}>
                 <div className={styles.bodyServiceColumn}>
@@ -71,7 +66,17 @@ const BodyService = ({ modalOpen = false }) => {
                         <StyledButton
                           cursor='pointer'
                           text={item.name}
-                          image={arrow}
+                          image={
+                            booking.some(
+                              (element) =>
+                                item.id === element.id &&
+                                item.name === element.name &&
+                                item.price === element.price &&
+                                item.time === element.time
+                            )
+                              ? arrowBlack
+                              : arrow
+                          }
                           backgroundColor={
                             booking.some(
                               (element) =>
@@ -83,7 +88,17 @@ const BodyService = ({ modalOpen = false }) => {
                               ? '#cccc'
                               : '#fff'
                           }
-                          color='#dcaa9d'
+                          color={
+                            booking.some(
+                              (element) =>
+                                item.id === element.id &&
+                                item.name === element.name &&
+                                item.price === element.price &&
+                                item.time === element.time
+                            )
+                              ? '#000'
+                              : '#dcaa9d'
+                          }
                           fontWeight='600'
                           onClick={() => {
                             setBooking([...booking, item])
@@ -117,7 +132,17 @@ const BodyService = ({ modalOpen = false }) => {
                       <StyledButton
                         cursor='pointer'
                         text={item.name}
-                        image={arrow}
+                        image={
+                          booking.some(
+                            (element) =>
+                              item.id === element.id &&
+                              item.name === element.name &&
+                              item.price === element.price &&
+                              item.time === element.time
+                          )
+                            ? arrowBlack
+                            : arrow
+                        }
                         backgroundColor={
                           booking.some(
                             (element) =>
@@ -129,7 +154,17 @@ const BodyService = ({ modalOpen = false }) => {
                             ? '#cccc'
                             : '#fff'
                         }
-                        color='#dcaa9d'
+                        color={
+                          booking.some(
+                            (element) =>
+                              item.id === element.id &&
+                              item.name === element.name &&
+                              item.price === element.price &&
+                              item.time === element.time
+                          )
+                            ? '#000'
+                            : '#dcaa9d'
+                        }
                         fontWeight='600'
                         onClick={() => {
                           setBooking([...booking, item])
