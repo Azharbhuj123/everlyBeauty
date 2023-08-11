@@ -1,32 +1,35 @@
-import React, { useContext, useState, useEffect } from 'react'
-import styles from '@/styles/components/bodyService/bodyService.module.css'
-import { bookingContext } from '@/store/bookingContext'
-import MySessionInvoice from './MySessionInvoice'
-import MySessionDiscount from './MySessionDiscount'
-import { discountPercentContext } from '@/store/discountPercentContext'
-import { payableAmountContext } from '@/store/payableAmountContext'
-import StudentDiscount from './StudentDiscount'
+import React, { useContext, useState, useEffect } from "react";
+import styles from "@/styles/components/bodyService/bodyService.module.css";
+import { bookingContext } from "@/store/bookingContext";
+import MySessionInvoice from "./MySessionInvoice";
+import MySessionDiscount from "./MySessionDiscount";
+import { discountPercentContext } from "@/store/discountPercentContext";
+import { payableAmountContext } from "@/store/payableAmountContext";
+import StudentDiscount from "./StudentDiscount";
+import { consultationContext } from "@/store/consultationContext";
 
 const MySession = () => {
-  const [booking] = useContext(bookingContext)
-  const [discount, setDiscount] = useState(0)
+  const [booking] = useContext(bookingContext);
+  const [discount, setDiscount] = useState(0);
   const [discountPercent, setDiscountPercent] = useContext(
     discountPercentContext
-  )
-  const [discountAmount, setDiscountAmount] = useState(null)
-  const [payable, setPayable] = useContext(payableAmountContext)
-  console.log(payable, 'pppp')
+  );
+  const [discountAmount, setDiscountAmount] = useState(null);
+  const [payable, setPayable] = useContext(payableAmountContext);
+  const [consultation, setConsultation] = useContext(consultationContext);
+
+  console.log(consultation, "consultation");
 
   let totalPrice = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseFloat
-    const price = parseFloat(service.time * 8)
-    return acc + price
-  }, 0)
+    const price = parseFloat(service.time * 8);
+    return acc + price;
+  }, 0);
   let totalTime = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseFloat
-    const time = parseFloat(service.time)
-    return acc + time
-  }, 0)
+    const time = parseFloat(service.time);
+    return acc + time;
+  }, 0);
 
   const getDiscount = (totalPrice, totalTime) => {
     // let discountPercent = 0;
@@ -40,24 +43,24 @@ const MySession = () => {
     // const percentage = (part / whole) * 100;
     // setDiscountPercent(discountPercent);
     // const discountAmount = (totalPrice / 100) * discountPercent;
-    let discountAmount = booking.length ? 36.3 * Math.sqrt(totalTime) - 41 : 0
-    console.log(discountAmount, 'discount amount')
-    setDiscountAmount(discountAmount)
-    let Discount = totalPrice - discountAmount
-    const roudedDiscountAmount = Math.ceil(Discount)
-    const percentage = Math.round((roudedDiscountAmount / totalPrice) * 100)
+    let discountAmount = booking.length ? 36.3 * Math.sqrt(totalTime) - 41 : 0;
+    console.log(discountAmount, "discount amount");
+    setDiscountAmount(discountAmount);
+    let Discount = totalPrice - discountAmount;
+    const roudedDiscountAmount = Math.ceil(Discount);
+    const percentage = Math.round((roudedDiscountAmount / totalPrice) * 100);
 
-    setDiscount(() => roudedDiscountAmount)
-    setDiscountPercent(percentage)
-  }
+    setDiscount(() => roudedDiscountAmount);
+    setDiscountPercent(percentage);
+  };
 
   useEffect(() => {
-    getDiscount(totalPrice, totalTime)
-  }, [totalPrice, totalTime])
+    getDiscount(totalPrice, totalTime);
+  }, [totalPrice, totalTime]);
 
-  const totalAmount = totalPrice - discount
-  const roundedTotalAmount = Math.floor(totalAmount)
-  setPayable(roundedTotalAmount)
+  const totalAmount = totalPrice - discount;
+  const roundedTotalAmount = Math.floor(totalAmount);
+  setPayable(roundedTotalAmount);
 
   return (
     <>
@@ -70,26 +73,28 @@ const MySession = () => {
       </div>
 
       <div className={styles.bodyServiceContentRightTable}>
-        <div className={styles.bodyServiceContentRightTableRow}>
-          <div className={styles.bodyServiceContentRightTableService}>
-            <div className={styles.bodyServiceContentRightTableDescription}>
-              <p>Consultation Time</p>
+        {consultation && (
+          <div className={styles.bodyServiceContentRightTableRow}>
+            <div className={styles.bodyServiceContentRightTableService}>
+              <div className={styles.bodyServiceContentRightTableDescription}>
+                <p>Consultation Time</p>
+              </div>
+            </div>
+            <div className={styles.bodyServiceContentRightTableServiceDetail}>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  alignItems: "center",
+                }}
+              >
+                <p style={{ color: "#000" }}>30min</p>
+              </div>
             </div>
           </div>
-          <div className={styles.bodyServiceContentRightTableServiceDetail}>
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                textAlign: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <p style={{ color: '#000' }}>30min</p>
-            </div>
-          </div>
-        </div>
+        )}
 
         {/* Recipt */}
         {booking?.map((item, index) => {
@@ -112,7 +117,7 @@ const MySession = () => {
                   <div
                     className={styles.bodyServiceContentRightTableDescription}
                   >
-                    <p>{`${item.time}${' min'}`}</p>
+                    <p>{`${item.time}${" min"}`}</p>
                   </div>
                   <p
                     className={
@@ -129,31 +134,35 @@ const MySession = () => {
                 </div>
               </div>
             </>
-          )
+          );
         })}
       </div>
       <div className={styles.bodyServiceContentRightcalc}>
-        {console.log(discountPercent, 'pppppppppp')}
-        <MySessionInvoice heading={'Subtotal'} amount={totalPrice} />
+        <MySessionInvoice heading={"Subtotal"} amount={totalPrice} />
         <MySessionDiscount
-          heading={'Discount'}
-          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
+          heading={"Discount"}
+          discount={isNaN(discountPercent) ? 0 : discountPercent}
           amount={discount}
         />
-        <StudentDiscount
-          heading={'Student Discount'}
-          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
-          amount={discount}
-        />
-        <StudentDiscount
-          heading={'Promo Discount'}
-          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
-          amount={discount}
-        />
-        <MySessionInvoice heading={'Total'} amount={roundedTotalAmount} />
+        {
+          <StudentDiscount
+            heading={"Student Discount"}
+            discount={isNaN(discountPercent) ? 0 : discountPercent}
+            amount={discount}
+          />
+        }
+        {
+          <StudentDiscount
+            heading={"Promo Discount"}
+            discount={isNaN(discountPercent) ? 0 : discountPercent}
+            amount={discount}
+          />
+        }
+
+        <MySessionInvoice heading={"Total"} amount={roundedTotalAmount} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default MySession
+export default MySession;

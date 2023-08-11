@@ -27,6 +27,7 @@ const TimePickerDialog = ({
   end,
   date,
   setStartedTime,
+  getAllSlots,
 }) => {
   const router = useRouter();
   const [selectedTime, setSelectedTime] = useState(dayjs());
@@ -74,6 +75,7 @@ const TimePickerDialog = ({
         endPoints.userSlot
       ).createWithToken({ data: data });
       console.log(response, "response check");
+      getAllSlots();
     } catch (error) {
       // console.log(error.response.data.error.message, "error check");
       alert(error.response.data.error.message);

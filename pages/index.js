@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { Inter } from "next/font/google";
 // import styles from '@/styles/Home.module.css'
@@ -7,9 +7,10 @@ import Banner from "@/src/components/pages/Home/bannerSeection/bannerSection";
 import Testimonals from "@/src/components/pages/Home/testimonals/Testimonals";
 import PromiseSection from "@/src/components/pages/Home/promise/PromiseSection";
 import BodyService from "@/src/components/pages/Home/bodyService/BodyService";
-import { useContext } from "react";
 import { bookingContext } from "@/store/bookingContext";
+import { consultationContext } from "@/store/consultationContext";
 import { discountPercentContext } from "@/store/discountPercentContext";
+import { userContext } from "@/store/userContext";
 import Progressbar from "@/src/components/pages/Home/bodyService/Progressbar";
 import DiscountToggle from "@/src/components/pages/Home/bodyService/DiscountToggle";
 import DiscountType from "@/src/components/pages/Home/bodyService/DiscountType";
@@ -24,6 +25,8 @@ export default function Home() {
     discountPercentContext
   );
   const [booking, setBooking] = useContext(bookingContext);
+  const [consultation, setConsultation] = useContext(consultationContext);
+  const [user, setUser] = useContext(userContext);
   const getUserData = async () => {
     try {
       const response = await createAPIEndPoint(
@@ -33,10 +36,14 @@ export default function Home() {
       console.log(response.data.user_slots, "response");
 
       const details = response.data.user_slots.map((item) => item.details);
+      setUser(response.data);
       if (details.length) {
         details.forEach((element) => {
           setBooking(element);
         });
+        setConsultation(false);
+      } else {
+        setConsultation(true);
       }
       console.log(details, "ddddd");
     } catch (error) {

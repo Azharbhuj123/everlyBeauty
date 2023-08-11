@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "@/styles/components/booking/bookingRemarks.module.css";
 import Image from "next/image";
+import moment from "moment";
 import spa from "/public/assets/images/spa.svg";
-
+import { slotTimeContext } from "@/store/slotTimeContext";
 const BookingRemarks = () => {
+  const [slotTime, setSlotTime] = useContext(slotTimeContext);
+  const [fomattedSlot, setFormattedSlot] = useState();
+  let formattedSlot = moment(slotTime, "YY-MM-DDTHH:mm:ss").format(
+    "dddd, MMM Do, YYYY, h:mm A"
+  );
   return (
     <>
       <div className={styles.bookingRemarksSection}>
@@ -18,7 +24,7 @@ const BookingRemarks = () => {
             </p>
           </div>
           <div className={styles.bookingRemarkContentRegards}>
-            <p>See You On Wednesday, Dec 7Th, 2023, At 10:00 Am.</p>
+            <p>See You On you slot date and time</p>
           </div>
         </div>
       </div>

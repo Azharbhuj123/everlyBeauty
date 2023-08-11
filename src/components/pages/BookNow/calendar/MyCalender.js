@@ -4,8 +4,10 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import TimePickerDialog from "./TimePickerDialog";
 import { bookingContext } from "@/store/bookingContext";
+import { consultationContext } from "@/store/consultationContext";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
+import { slotTimeContext } from "@/store/slotTimeContext";
 import ValidationPopUps from "./ValidationPopUps";
 
 const localizer = momentLocalizer(moment);
@@ -20,7 +22,8 @@ const MyCalender = () => {
   const [date, setDate] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState({});
   const [booking] = useContext(bookingContext);
-
+  const [consultation] = useContext(consultationContext);
+  const [slotTime, setSlotTime] = useContext(slotTimeContext);
   // get The total slot time
 
   let totalSlotTime = booking.reduce((acc, service) => {
@@ -76,8 +79,9 @@ const MyCalender = () => {
     console.log(slotInfo, "slotInfo");
     if (booking.length) {
       setSelectedTime(slotInfo?.start);
+      setSlotTime(slotInfo?.start);
       const selectedEndTime = moment(slotInfo?.start)
-        .add(totalSlotTime, "minutes")
+        .add(consultation ? totalSlotTime + 30 : totalSlotTime, "minutes")
         .toDate();
       setEndTime(selectedEndTime);
       const dateKey = moment(slotInfo?.start).format("YYYY-MM-DD");
@@ -114,7 +118,7 @@ const MyCalender = () => {
     // setEndTime(endTime);
     const dateKey = moment(selectedTime).format("YYYY-MM-DD");
 
-    setEvents([...events, { start: selectedTime, end: endTime }]);
+    // setEvents([...events, { start: selectedTime, end: endTime }]);
 
     setShowTimePicker(false);
   };
@@ -126,6 +130,7 @@ const MyCalender = () => {
   console.log(selectedTime, "startTime check");
   // Add one day to the current date to get the next day for booking
   const nextBookingDate = currentDate.add(1, "day").toDate();
+  let currentMonth = new Date().getMonth();
 
   return (
     <>
@@ -139,6 +144,11 @@ const MyCalender = () => {
         selectable
         onSelectSlot={(e) => {
           handleSelectSlot(e);
+        }}
+        onNavigate={(e) => {
+          if (e == currentMonth + 2) {
+            alert("this is not allowed for selection");
+          }
         }}
         popup={true}
         min={minTime}
@@ -157,6 +167,7 @@ const MyCalender = () => {
         onClose={() => setShowTimePicker(false)}
         setStartedTime={setSelectedTime}
         onSelectTime={handleSelectTime}
+        getAllSlots={getAllSlots}
       />
       <ValidationPopUps
         ValidationText={ValidationText}
