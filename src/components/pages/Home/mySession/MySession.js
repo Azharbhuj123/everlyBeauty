@@ -64,8 +64,8 @@ const MySession = () => {
       <div className={styles.bodyServiceContentRightHeading}>
         <h3>My Session</h3>
         <p>
-          Click on button to know more details about servises, Lorem ipsum dolor
-          sit amet.
+          Click on buttons to know more details about servises, Lorem ipsum
+          dolor sit amet.
         </p>
       </div>
 
@@ -86,7 +86,15 @@ const MySession = () => {
                 alignItems: 'center',
               }}
             >
-              <p style={{ color: '#000' }}>30min</p>
+              <p
+                style={{
+                  color: '#000',
+                  fontFamily: 'Gilroy',
+                  fontSize: '18px',
+                }}
+              >
+                30min
+              </p>
             </div>
           </div>
         </div>

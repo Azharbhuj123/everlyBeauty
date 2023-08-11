@@ -14,7 +14,7 @@ const BookingRemarks = () => {
           <div className={styles.bookingRemarkContentThank}>
             <h1>Thank You For Your Trust.</h1>
             <p>
-              We will do our best to make you leave satisfied with our service.{" "}
+              We will do our best to make you leave satisfied with our service.
             </p>
           </div>
           <div className={styles.bookingRemarkContentRegards}>

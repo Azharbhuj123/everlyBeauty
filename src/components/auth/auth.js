@@ -57,11 +57,51 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
       // localStorage.setItem('User', JSON.stringify(user))
       console.log(response)
       // Toast notification for successfully signup
-      toast.success('You have successfully signup!')
+      toast.success('You have successfully signup!', {
+        duration: 3000,
+        position: 'top-right',
+
+        // Change colors of success/error/loading icon
+        iconTheme: {
+          // primary: '#0a0',
+          // secondary: '#fff',
+        },
+        // styling
+        style: {
+          padding: '5px 10px',
+          color: '#713200',
+          // minWidth: '300px'
+        },
+        // Aria
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      })
       setMode('login')
     } catch (error) {
       console.log(error, 'signup')
-      toast.error(error?.response?.data?.error?.message)
+      toast.error(error?.response?.data?.error?.message, {
+        duration: 3000,
+        position: 'top-right',
+
+        // Change colors of success/error/loading icon
+        iconTheme: {
+          // primary: '#0a0',
+          // secondary: '#fff',
+        },
+        // styling
+        style: {
+          padding: '5px 10px',
+          color: '#713200',
+          // minWidth: '300px'
+        },
+        // Aria
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      })
     }
   }
 
@@ -78,7 +118,26 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
       localStorage.setItem('User', JSON.stringify(user))
       handleModalClose()
       // Toast notification for successful login
-      toast.success('Login Successfully')
+      toast.success('Login Successfully', {
+        duration: 3000,
+        position: 'top-right',
+
+        // Change colors of success/error/loading icon
+        iconTheme: {
+          // primary: '#0a0',
+          // secondary: '#fff',
+        },
+        // styling
+        style: {
+          padding: '5px 10px',
+          color: '#713200',
+        },
+        // Aria
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      })
       router.push('/book-now')
       window.location.reload()
     } catch (error) {
@@ -114,8 +173,29 @@ const Auth = ({ headingText, buttonText, onClick, mode, setMode }) => {
         confirmNewPassword
       )
       toast.success(
-        'Password successfully reset! You can now log in with your new password.'
+        'Password successfully reset! You can now log in with your new password.',
+        {
+          duration: 3000,
+          position: 'top-right',
+          // Change colors of success/error/loading icon
+          iconTheme: {
+            // primary: '#0a0',
+            // secondary: '#fff',
+          },
+          // styling
+          style: {
+            padding: '5px 10px',
+            color: '#713200',
+            // minWidth: '300px'
+          },
+          // Aria
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+        }
       )
+
       setMode('login')
     } catch (error) {
       console.log(error, 'error in login')
