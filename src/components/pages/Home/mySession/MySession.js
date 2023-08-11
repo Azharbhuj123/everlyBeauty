@@ -7,6 +7,8 @@ import { discountPercentContext } from "@/store/discountPercentContext";
 import { payableAmountContext } from "@/store/payableAmountContext";
 import StudentDiscount from "./StudentDiscount";
 import { consultationContext } from "@/store/consultationContext";
+import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
+import { StudentDiscountContext } from "@/store/studentDiscountContext";
 
 const MySession = () => {
   const [booking] = useContext(bookingContext);
@@ -17,6 +19,12 @@ const MySession = () => {
   const [discountAmount, setDiscountAmount] = useState(null);
   const [payable, setPayable] = useContext(payableAmountContext);
   const [consultation, setConsultation] = useContext(consultationContext);
+  const [studentDiscount, setStudentDiscount] = useContext(
+    StudentDiscountContext
+  );
+  const [promoCodeDiscount, setpromoCodeDiscount] = useContext(
+    promoCodeDiscountContext
+  );
 
   console.log(consultation, "consultation");
 
@@ -144,20 +152,20 @@ const MySession = () => {
           discount={isNaN(discountPercent) ? 0 : discountPercent}
           amount={discount}
         />
-        {
+        {/* {
           <StudentDiscount
             heading={"Student Discount"}
             discount={isNaN(discountPercent) ? 0 : discountPercent}
             amount={discount}
           />
         }
-        {
+        {promoCodeDiscount && (
           <StudentDiscount
             heading={"Promo Discount"}
             discount={isNaN(discountPercent) ? 0 : discountPercent}
             amount={discount}
           />
-        }
+        )} */}
 
         <MySessionInvoice heading={"Total"} amount={roundedTotalAmount} />
       </div>
