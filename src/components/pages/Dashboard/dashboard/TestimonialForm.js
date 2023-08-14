@@ -29,7 +29,7 @@ const TestimonialForm = ({ onClose }) => {
       const response = createAPIEndPoint(endPoints.rateReview)
       const reviewData = {
         userName: username,
-        rating,
+        rating: parseInt(rating),
         review,
         userImage: profileImage,
       }

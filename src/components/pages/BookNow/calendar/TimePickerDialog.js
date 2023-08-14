@@ -28,6 +28,7 @@ const TimePickerDialog = ({
   end,
   date,
   setStartedTime,
+  getAllSlots,
 }) => {
   const router = useRouter()
   const [selectedTime, setSelectedTime] = useState(dayjs())
@@ -74,8 +75,9 @@ const TimePickerDialog = ({
       const response = await createAPIEndPoint(
         endPoints.userSlot
       ).createWithToken({ data: data })
-      // console.log(response, "response check");
-      toast.success('Congratulations, Your slot has been booked,', {
+      console.log(response, 'response check')
+      getAllSlots()
+      toast.success('Congratulations, Your slot has been booked.', {
         duration: 3000,
         position: 'top-right',
         // Change colors of success/error/loading icon

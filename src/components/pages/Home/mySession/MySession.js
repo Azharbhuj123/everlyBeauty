@@ -6,6 +6,7 @@ import MySessionDiscount from './MySessionDiscount'
 import { discountPercentContext } from '@/store/discountPercentContext'
 import { payableAmountContext } from '@/store/payableAmountContext'
 import StudentDiscount from './StudentDiscount'
+import { consultationContext } from '@/store/consultationContext'
 
 const MySession = () => {
   const [booking] = useContext(bookingContext)
@@ -15,7 +16,9 @@ const MySession = () => {
   )
   const [discountAmount, setDiscountAmount] = useState(null)
   const [payable, setPayable] = useContext(payableAmountContext)
-  console.log(payable, 'pppp')
+  const [consultation, setConsultation] = useContext(consultationContext)
+
+  console.log(consultation, 'consultation')
 
   let totalPrice = booking.reduce((acc, service) => {
     // Convert the price string to a number using parseFloat
@@ -70,34 +73,36 @@ const MySession = () => {
       </div>
 
       <div className={styles.bodyServiceContentRightTable}>
-        <div className={styles.bodyServiceContentRightTableRow}>
-          <div className={styles.bodyServiceContentRightTableService}>
-            <div className={styles.bodyServiceContentRightTableDescription}>
-              <p>Consultation Time</p>
+        {consultation && (
+          <div className={styles.bodyServiceContentRightTableRow}>
+            <div className={styles.bodyServiceContentRightTableService}>
+              <div className={styles.bodyServiceContentRightTableDescription}>
+                <p>Consultation Time</p>
+              </div>
             </div>
-          </div>
-          <div className={styles.bodyServiceContentRightTableServiceDetail}>
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                textAlign: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <p
+            <div className={styles.bodyServiceContentRightTableServiceDetail}>
+              <div
                 style={{
-                  color: '#000',
-                  fontFamily: 'Gilroy',
-                  fontSize: '18px',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  alignItems: 'center',
                 }}
               >
-                30min
-              </p>
+                <p
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Gilroy',
+                    fontSize: '16px',
+                  }}
+                >
+                  30min
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Recipt */}
         {booking?.map((item, index) => {
@@ -141,23 +146,27 @@ const MySession = () => {
         })}
       </div>
       <div className={styles.bodyServiceContentRightcalc}>
-        {console.log(discountPercent, 'pppppppppp')}
         <MySessionInvoice heading={'Subtotal'} amount={totalPrice} />
         <MySessionDiscount
           heading={'Discount'}
-          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
+          discount={isNaN(discountPercent) ? 0 : discountPercent}
           amount={discount}
         />
-        <StudentDiscount
-          heading={'Student Discount'}
-          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
-          amount={discount}
-        />
-        <StudentDiscount
-          heading={'Promo Discount'}
-          discount={typeof discountPercent == 'undefined' ? 0 : discountPercent}
-          amount={discount}
-        />
+        {
+          <StudentDiscount
+            heading={'Student Discount'}
+            discount={isNaN(discountPercent) ? "0%" : `${discountPercent}%`}
+            amount={discount}
+          />
+        }
+        {
+          <StudentDiscount
+            heading={'Promo Discount'}
+            discount={isNaN(discountPercent) ? '0%' : `${discountPercent}%`}
+            amount={discount}
+          />
+        }
+
         <MySessionInvoice heading={'Total'} amount={roundedTotalAmount} />
       </div>
     </>

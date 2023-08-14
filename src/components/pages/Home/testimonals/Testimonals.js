@@ -91,10 +91,10 @@ const Testimonals = () => {
                     <SwiperSlide>
                       <div className={styles.testimonialsCard}>
                         <ReactStars
-                          count={5}
+                          count={item.rating}
                           edit={false}
                           value={item.attributes.rating}
-                          size={item.rating}
+                          size={28}
                           color2={'#ffd700'}
                         />
                         <div className={styles.testimonialsCardAvatar}>
