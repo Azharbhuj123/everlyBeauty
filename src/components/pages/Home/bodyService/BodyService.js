@@ -14,9 +14,13 @@ import { discountPercentContext } from '@/store/discountPercentContext'
 import StyledButton from '@/src/components/buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-pink.svg'
 import arrowBlack from '/public/assets/images/arrow-up-right-black.svg'
+import Auth from '@/src/components/auth/auth'
 
 const BodyService = ({ modalOpen = false }) => {
   const [booking, setBooking] = useContext(bookingContext)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isToken, isSetToken] = useState(null)
+  const [mode, setMode] = useState('login')
   // const [discountPercent, setDiscountPercent] = useContext(
   //   discountPercentContext
   // );
@@ -31,6 +35,21 @@ const BodyService = ({ modalOpen = false }) => {
   // useEffect(() => {
   //   getService()
   // }, [])
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('Token')
+    isSetToken(authToken)
+  }, [])
+  console.log(isToken, 'auth token checking')
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+    // setMode('login')
+  }
 
   const handleCheckBox = (service) => {
     const existingService = booking.find((item) => item.id === service.id)
@@ -101,8 +120,13 @@ const BodyService = ({ modalOpen = false }) => {
                           }
                           fontWeight='600'
                           onClick={() => {
-                            setBooking([...booking, item])
-                            handleCheckBox(item)
+                            {
+                              setBooking([...booking, item])
+                              handleCheckBox(item)
+                            }
+                            {
+                              isToken !== null ? null : handleModalOpen()
+                            }
                           }}
                         />
                       </div>
@@ -167,8 +191,13 @@ const BodyService = ({ modalOpen = false }) => {
                         }
                         fontWeight='600'
                         onClick={() => {
-                          setBooking([...booking, item])
-                          handleCheckBox(item)
+                          {
+                            setBooking([...booking, item])
+                            handleCheckBox(item)
+                          }
+                          {
+                            isToken !== null ? null : handleModalOpen()
+                          }
                         }}
                       />
                     </div>
@@ -197,6 +226,35 @@ const BodyService = ({ modalOpen = false }) => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <Auth
+              mode={mode}
+              setMode={setMode}
+              headingText={
+                mode == 'login'
+                  ? 'Log in'
+                  : mode == 'signup'
+                  ? 'Sign Up'
+                  : mode == 'forgot-password'
+                  ? 'Forgot Password'
+                  : 'Reset-Password'
+              }
+              buttonText={
+                mode == 'login'
+                  ? 'Log in'
+                  : mode == 'signup'
+                  ? 'Sign Up'
+                  : mode == 'forgot-password'
+                  ? 'Forgot Password'
+                  : 'Reset-Password'
+              }
+              onClick={handleModalClose}
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }

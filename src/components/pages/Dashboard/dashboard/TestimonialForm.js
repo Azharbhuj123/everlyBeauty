@@ -29,16 +29,54 @@ const TestimonialForm = ({ onClose }) => {
       const response = createAPIEndPoint(endPoints.rateReview)
       const reviewData = {
         userName: username,
-        rating,
+        rating: parseInt(rating),
         review,
         userImage: profileImage,
       }
       onClose()
-      toast.success('Thanks for your review')
+      toast.success('Thanks for your review', {
+        duration: 3000,
+        position: 'top-right',
+        // Change colors of success/error/loading icon
+        iconTheme: {
+          // primary: '#0a0',
+          // secondary: '#fff',
+        },
+        // styling
+        style: {
+          padding: '5px 10px',
+          color: '#713200',
+          // minWidth: '300px'
+        },
+        // Aria
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      })
       await response.createWithToken({ data: reviewData })
       onClose()
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message, {
+        duration: 3000,
+        position: 'top-right',
+        // Change colors of success/error/loading icon
+        iconTheme: {
+          // primary: '#0a0',
+          // secondary: '#fff',
+        },
+        // styling
+        style: {
+          padding: '5px 10px',
+          color: '#713200',
+          // minWidth: '300px'
+        },
+        // Aria
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      })
       console.error('Error submitting review:', error)
     }
   }

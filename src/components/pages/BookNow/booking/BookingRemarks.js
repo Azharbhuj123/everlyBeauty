@@ -15,12 +15,12 @@ const BookingRemarks = () => {
       <div className={styles.bookingRemarksSection}>
         <div className={styles.bookingRemarkContent}>
           <div className={styles.bookingRemarkContentImage}>
-            <Image src={spa} width={400} height={250} alt="" />
+            <Image src={spa} width={400} height={250} alt="" loading="lazy"/>
           </div>
           <div className={styles.bookingRemarkContentThank}>
             <h1>Thank You For Your Trust.</h1>
             <p>
-              We will do our best to make you leave satisfied with our service.{" "}
+              We will do our best to make you leave satisfied with our service.
             </p>
           </div>
           <div className={styles.bookingRemarkContentRegards}>

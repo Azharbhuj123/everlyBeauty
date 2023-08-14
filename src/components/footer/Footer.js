@@ -6,12 +6,12 @@ import facebook from '/public/assets/images/facebook.svg'
 import twitter from '/public/assets/images/twitter.svg'
 import instagram from '/public/assets/images/instagram.svg'
 import tiktok from '/public/assets/images/tiktok.svg'
-import { Facebook, Facebook_f } from '../SVG/index'
 import logo from '/public/assets/images/logo-white.svg'
 import phone from '/public/assets/images/phone.svg'
 import email from '/public/assets/images/envelope.svg'
 import location from '/public/assets/images/locattion.svg'
 import Link from 'next/link'
+
 const Footer = () => {
   const [isHovered, setIsHovered] = useState('')
   const handleIconHover = (value) => {

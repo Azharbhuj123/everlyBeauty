@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactStars from 'react-stars'
 import styles from '@/styles/components/testimonials/testimonials.module.css'
 import Image from 'next/image'
@@ -9,8 +9,30 @@ import { testimonalsCrdData } from '@/pages/api/utils'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import SwiperCore from 'swiper'
+import { BASE_URL, createAPIEndPoint } from '@/src/config/api'
+import { endPoints } from '@/src/config/endpoints'
+import avatar from '/public/assets/images/avatar1.svg'
 
 const Testimonals = () => {
+  const [reviews, setReviews] = useState([])
+
+  const fetchReviews = async () => {
+    try {
+      const response = await createAPIEndPoint(
+        endPoints.rateReview,
+        true
+      ).fetchAll()
+      setReviews(response.data.data)
+      console.log(response.data.data, 'reviews')
+    } catch (error) {
+      console.error('Error fetching reviews:', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchReviews()
+  }, [])
+
   SwiperCore.use([Autoplay])
   return (
     <>
@@ -58,29 +80,36 @@ const Testimonals = () => {
                 },
               }}
             >
-              {testimonalsCrdData.map((item, index) => {
+              {reviews.map((item, index) => {
+                console.log(reviews, 'review check')
                 return (
                   <>
+                    {/* {console.log(
+                      {`${BASE_URL}${item.attributes?.userImage?.data?.attributes?.url}`},
+                      'image'
+                    )} */}
                     <SwiperSlide>
                       <div className={styles.testimonialsCard}>
                         <ReactStars
-                          count={5}
+                          count={item.rating}
                           edit={false}
-                          value={5}
-                          size={24}
+                          value={item.attributes.rating}
+                          size={28}
                           color2={'#ffd700'}
                         />
                         <div className={styles.testimonialsCardAvatar}>
                           <Image
-                            src={item.avatar}
+                            src={avatar}
+                            //                             {`${BASE_URL}${item.attributes?.userImage?.data?.attributes?.url}
+                            // `}
                             width={100}
                             height={100}
                             alt=''
                           />
                         </div>
                         <div className={styles.testimonialsCardContent}>
-                          <h4>{item.name}</h4>
-                          <p>{item.review}</p>
+                          <h4>{item.attributes.userName}</h4>
+                          <p>{item.attributes.review}</p>
                         </div>
                       </div>
                     </SwiperSlide>

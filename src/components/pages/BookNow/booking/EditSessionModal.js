@@ -29,7 +29,7 @@ const EditSessionModal = ({ onClose, modalOpen }) => {
             style={{
               padding: '20px',
               width: '90%',
-              maxWidth: '1200px',
+              maxWidth: '900px',
               borderRadius: '30px',
               backgroundImage: 'linear-gradient(to bottom, #ffe4dc, #e1ad9d)',
             }}
