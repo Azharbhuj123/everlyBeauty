@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "@/styles/components/bodyService/PromoCard.module.css";
 import Image from "next/image";
 import close from "/public/assets/images/circle-xmark.png";
 import Button from "@/src/components/buttons/Button";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
+import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
 
 const PromoCard = ({ onClose, handleChecked }) => {
-  const [promoCode, setPromoCode] = useState("teste05570b");
+  const [promoCode, setPromoCode] = useState("");
   const handlePromoCardClose = () => {
     onClose();
   };
@@ -28,8 +29,13 @@ const PromoCard = ({ onClose, handleChecked }) => {
         (obj) => obj.attributes.promoCode === promoCode
       );
       if (discountVerified) {
-        // let data = { isUsed: true, ...discountVerified };
-        createAPIEndPoint().update(data);
+        let data = {
+          isUsed: true,
+          isReferred: true,
+          ...discountVerified.attributes,
+        };
+        console.log(data, "data");
+        // createAPIEndPoint(endPoints.discounts).update(data);
       }
     } catch (error) {
       console.log(error, "error in discounts");
