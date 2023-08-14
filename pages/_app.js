@@ -21,40 +21,36 @@ export default function App({ Component, pageProps }) {
   const [consultation, setConsultation] = useState(false);
   const [user, setUser] = useState([]);
   const [slotTime, setSlotTime] = useState(null);
-  const [promoCodeDiscountContext, setpromoCodeDiscountContext] =
-    useState(false);
-  const [StudentDiscountContext, setStudentDiscountContext] = useState(false);
+  const [promoCode, setpromoCode] = useState(false);
+  const [StudentDiscount, setStudent] = useState(false);
   return (
     <Layout>
       <Toaster position="top-right" reverseOrder={false} />
-      <StudentDiscountContext.Provider
-        value={[StudentDiscountContext, setStudentDiscountContext]}
-      ></StudentDiscountContext.Provider>
-      <promoCodeDiscountContext.Provider
-        value={[promoCodeDiscountContext, setpromoCodeDiscountContext]}
-      >
-        <slotTimeContext.Provider value={[slotTime, setSlotTime]}>
-          <userContext.Provider value={[user, setUser]}>
-            <consultationContext.Provider
-              value={[consultation, setConsultation]}
-            >
-              <payableAmountContext.Provider value={[payable, setPayable]}>
-                <discountPercentContext.Provider
-                  value={[discountPercent, setDiscountPercent]}
-                >
-                  <bookingContext.Provider value={[booking, setBooking]}>
-                    <LocalizationProvider
-                      dateAdapter={AdapterDateFns}
-                    ></LocalizationProvider>
-                    <Component {...pageProps} />
-                    <LocalizationProvider />
-                  </bookingContext.Provider>
-                </discountPercentContext.Provider>
-              </payableAmountContext.Provider>
-            </consultationContext.Provider>
-          </userContext.Provider>
-        </slotTimeContext.Provider>
-      </promoCodeDiscountContext.Provider>
+      <StudentDiscountContext.Provider value={[StudentDiscount, setStudent]}>
+        <promoCodeDiscountContext.Provider value={[promoCode, setpromoCode]}>
+          <slotTimeContext.Provider value={[slotTime, setSlotTime]}>
+            <userContext.Provider value={[user, setUser]}>
+              <consultationContext.Provider
+                value={[consultation, setConsultation]}
+              >
+                <payableAmountContext.Provider value={[payable, setPayable]}>
+                  <discountPercentContext.Provider
+                    value={[discountPercent, setDiscountPercent]}
+                  >
+                    <bookingContext.Provider value={[booking, setBooking]}>
+                      <LocalizationProvider
+                        dateAdapter={AdapterDateFns}
+                      ></LocalizationProvider>
+                      <Component {...pageProps} />
+                      <LocalizationProvider />
+                    </bookingContext.Provider>
+                  </discountPercentContext.Provider>
+                </payableAmountContext.Provider>
+              </consultationContext.Provider>
+            </userContext.Provider>
+          </slotTimeContext.Provider>
+        </promoCodeDiscountContext.Provider>
+      </StudentDiscountContext.Provider>
     </Layout>
   );
 }
