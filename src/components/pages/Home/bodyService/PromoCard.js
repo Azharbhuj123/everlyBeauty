@@ -6,15 +6,21 @@ import Button from "@/src/components/buttons/Button";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
 import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
+import { StudentDiscountContext } from "@/store/studentDiscountContext";
+import { Close } from "@mui/icons-material";
 
 const PromoCard = ({ onClose, handleChecked }) => {
-  const [promoCode, setPromoCode] = useState("");
+  const [promoCodeText, setPromoCodeText] = useState("");
+  const [promoCode, setpromoCode] = useContext(promoCodeDiscountContext);
+  const [StudentDiscount, setStudentDiscount] = useContext(
+    StudentDiscountContext
+  );
   const handlePromoCardClose = () => {
     onClose();
   };
-  useEffect(() => {
-    getDiscount();
-  }, []);
+  // useEffect(() => {
+  //   getDiscount();
+  // }, []);
 
   const getDiscount = async () => {
     try {
@@ -22,12 +28,13 @@ const PromoCard = ({ onClose, handleChecked }) => {
         endPoints.discounts,
         true
       ).fetchAllWithToken();
-      console.log(data, "discount");
+
       const unUsedCodes = data.data.filter((item) => !item.attributes.isUsed);
       console.log(unUsedCodes, "unUsed");
       const discountVerified = unUsedCodes.find(
-        (obj) => obj.attributes.promoCode === promoCode
+        (obj) => obj.attributes.promoCode === promoCodeText
       );
+
       if (discountVerified) {
         let data = {
           isUsed: true,
@@ -35,10 +42,16 @@ const PromoCard = ({ onClose, handleChecked }) => {
           ...discountVerified.attributes,
         };
         console.log(data, "data");
-        // createAPIEndPoint(endPoints.discounts).update(data);
+        await createAPIEndPoint(endPoints.discounts).delete(
+          discountVerified?.id
+        );
+        setpromoCode(true);
+        setStudentDiscount(false);
+        onClose();
       }
     } catch (error) {
       console.log(error, "error in discounts");
+      onClose();
     }
   };
 
@@ -59,8 +72,10 @@ const PromoCard = ({ onClose, handleChecked }) => {
           </div>
           <div className={styles.promoFormContentInput}>
             <input
-              value={promoCode}
-              onChange={(e) => setPromoCode(e.target.value)}
+              value={promoCodeText}
+              onChange={(e) => {
+                setPromoCodeText(e.target.value);
+              }}
               placeholder="Enter Promo Code"
               type="text"
             />
@@ -68,8 +83,10 @@ const PromoCard = ({ onClose, handleChecked }) => {
           <div className={styles.promoFormContentButton}>
             <Button
               text="Submit"
-              onClick={() => {
-                action();
+              action={() => {
+                promoCodeText.length > 6
+                  ? getDiscount()
+                  : alert("ENTER VALID PROMO CODE");
               }}
             />
           </div>

@@ -163,15 +163,15 @@ const MySession = () => {
         {studentDiscount && promoCodeDiscount == false && (
           <StudentDiscount
             heading={"Student Discount"}
-            discount={isNaN(discountPercent) ? "0%" : `${discountPercent}%`}
+            discount={isNaN(10) ? "0%" : `${(totalPrice % 100) * 10}%`}
             amount={discount}
           />
         )}
         {promoCodeDiscount && studentDiscount == false && (
           <StudentDiscount
             heading={"Promo Discount"}
-            discount={isNaN(discountPercent) ? "0%" : `${discountPercent}%`}
-            amount={discount}
+            discount={"10%"}
+            amount={(discount * 100) / 10}
           />
         )}
 

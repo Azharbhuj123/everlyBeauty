@@ -22,11 +22,13 @@ export default function App({ Component, pageProps }) {
   const [user, setUser] = useState([]);
   const [slotTime, setSlotTime] = useState(null);
   const [promoCode, setpromoCode] = useState(false);
-  const [StudentDiscount, setStudent] = useState(false);
+  const [StudentDiscount, setStudentDiscount] = useState(false);
   return (
     <Layout>
       <Toaster position="top-right" reverseOrder={false} />
-      <StudentDiscountContext.Provider value={[StudentDiscount, setStudent]}>
+      <StudentDiscountContext.Provider
+        value={[StudentDiscount, setStudentDiscount]}
+      >
         <promoCodeDiscountContext.Provider value={[promoCode, setpromoCode]}>
           <slotTimeContext.Provider value={[slotTime, setSlotTime]}>
             <userContext.Provider value={[user, setUser]}>

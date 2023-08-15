@@ -1,22 +1,23 @@
-import axios from 'axios'
-import { endPoints } from './endpoints'
+import axios from "axios";
+import { endPoints } from "./endpoints";
 
-export const BASE_URL = 'http://192.168.0.145:80/api'
+export const BASE_URL = "http://192.168.0.145:80/api";
 export const createAPIEndPoint = (
   endpoint,
   isPopulated = false,
-  populateArgument = '*'
+  populateArgument = "*",
+  id = null
 ) => {
   // const BASE_URL = "https://api.everlybeauty.ca/api";
   // const BASE_URL = "https://8246-103-125-71-8.ngrok-free.app/api";
 
   let token =
-    typeof localStorage !== 'undefined' && localStorage.getItem('Token')
+    typeof localStorage !== "undefined" && localStorage.getItem("Token");
 
   const headers = {
     Authorization: `Bearer ${token}`,
-  }
-  let url = BASE_URL + '/' + endpoint + '/'
+  };
+  let url = BASE_URL + "/" + endpoint + "/";
   // let authUrl = BASE_URL + '/auth/' + endpoint + '/'
 
   return {
@@ -83,7 +84,7 @@ export const createAPIEndPoint = (
         }
       ),
     update: (id, updatedRecord) =>
-      axios.patch(
+      axios.put(
         url + id,
         updatedRecord,
         token !== null && {
@@ -92,5 +93,5 @@ export const createAPIEndPoint = (
           },
         }
       ),
-  }
-}
+  };
+};
