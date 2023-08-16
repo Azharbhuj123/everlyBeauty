@@ -8,6 +8,7 @@ import { endPoints } from "@/src/config/endpoints";
 import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
 import { StudentDiscountContext } from "@/store/studentDiscountContext";
 import { Close } from "@mui/icons-material";
+import toast from "react-hot-toast";
 
 const PromoCard = ({ onClose, handleChecked }) => {
   const [promoCodeText, setPromoCodeText] = useState("");
@@ -86,7 +87,7 @@ const PromoCard = ({ onClose, handleChecked }) => {
               action={() => {
                 promoCodeText.length > 6
                   ? getDiscount()
-                  : alert("ENTER VALID PROMO CODE");
+                  : toast.error("Enter a valid promo code");
               }}
             />
           </div>

@@ -68,7 +68,11 @@ const MySession = () => {
 
   const totalAmount = totalPrice - discount;
   const roundedTotalAmount = Math.floor(totalAmount);
-  setPayable(roundedTotalAmount);
+  setPayable(
+    promoCodeDiscount || studentDiscount
+      ? roundedTotalAmount - (totalPrice * 10) / 100
+      : roundedTotalAmount
+  );
 
   return (
     <>

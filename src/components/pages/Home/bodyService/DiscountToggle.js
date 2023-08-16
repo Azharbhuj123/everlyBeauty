@@ -12,6 +12,7 @@ import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
 import { StudentDiscountContext } from "@/store/studentDiscountContext";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
+import toast from "react-hot-toast";
 const DiscountToggle = () => {
   const router = useRouter();
   const [user, setUser] = useContext(userContext);
@@ -37,7 +38,11 @@ const DiscountToggle = () => {
   const handleSwitchChange = (checked) => {
     setIsChecked(checked);
     if (checked) {
-      setIsPromoCardModalOpen(true);
+      if (studentDiscount == false) {
+        setIsPromoCardModalOpen(true);
+      } else {
+        toast.error("You can avail  only one discount at a time");
+      }
     }
   };
   const handleChecked = () => {
@@ -45,30 +50,35 @@ const DiscountToggle = () => {
   };
 
   const handleSwitchChangeTwo = async () => {
-    // setIsCheckedTwo(checkedTwo);
-    if (user.studentCodeUsed < 2) {
-      let data = {
-        ...user,
-        studentCodeUsed: Number(user.studentCodeUsed) + 1,
-      };
-      console.log(data, "dddd");
-      try {
-        await createAPIEndPoint(endPoints.updateMyData).update(user.id, {
-          data: data,
-        });
-        // await console.log(response);
-        setIsCheckedTwo(true);
-        setpromoCode(false);
-        setStudentDiscount(true);
-      } catch (error) {
-        console.log(error);
-        setStudentDiscount(false);
-      }
+    if (promoCode == false) {
+      if (user.studentCodeUsed < 2) {
+        let data = {
+          ...user,
+          studentCodeUsed: Number(user.studentCodeUsed) + 1,
+        };
+        console.log(data, "dddd");
+        try {
+          await createAPIEndPoint(endPoints.updateMyData).update(user.id, {
+            data: data,
+          });
+          // await console.log(response);
+          setIsCheckedTwo(true);
+          setpromoCode(false);
+          setStudentDiscount(true);
+        } catch (error) {
+          console.log(error);
+          setStudentDiscount(false);
+        }
 
-      // setIsStudentCardModalOpen(true);
+        // setIsStudentCardModalOpen(true);
+      } else {
+        toast.error("you already availed student discount maximum times");
+      }
     } else {
-      alert("you already availed student discount");
+      toast.error("You could avail only one discount at a time");
     }
+
+    // setIsCheckedTwo(checkedTwo);
   };
 
   const handleModalOpen = () => {
