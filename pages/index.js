@@ -34,6 +34,7 @@ export default function Home() {
         true
       ).fetchAllWithToken();
       console.log(response.data.user_slots, "response");
+      setUser(response.data);
 
       const details = response.data.user_slots.map((item) => item.details);
       setUser(response.data);

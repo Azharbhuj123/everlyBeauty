@@ -9,6 +9,7 @@ export const endPoints = {
   userSlot: "user-slots",
   contactUs: "contact-uses",
   myData: "users/me",
+  updateMyData: "users",
   discounts: "discounts",
   login: "auth/local",
   register: "auth/local/register",
@@ -21,5 +22,5 @@ export const endPoints = {
   faqs: "faqs",
   articles: "articles",
   contactUs: "contact-us",
-  rateReview: 'rate-and-reviews'
+  rateReview: "rate-and-reviews",
 };
