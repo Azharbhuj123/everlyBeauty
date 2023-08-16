@@ -5,7 +5,7 @@ import arrow from '/public/assets/images/arrow-up-right-white.svg'
 import PromoCard from './PromoCard'
 import { useRouter } from 'next/router'
 import StyledButton from '@/src/components/buttons/StyledButton'
-import Auth from '@/src/components/auth/auth'
+import Auth from '@/src/auth/auth'
 import StudentForm from './StudentForm'
 
 const DiscountToggle = () => {
