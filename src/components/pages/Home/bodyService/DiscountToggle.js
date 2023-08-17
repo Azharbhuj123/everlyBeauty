@@ -5,7 +5,7 @@ import arrow from "/public/assets/images/arrow-up-right-white.svg";
 import PromoCard from "./PromoCard";
 import { useRouter } from "next/router";
 import StyledButton from "@/src/components/buttons/StyledButton";
-import Auth from "@/src/components/auth/auth";
+// import Auth from "@/src/components/auth/auth";
 import StudentForm from "./StudentForm";
 import { userContext } from "@/store/userContext";
 import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
@@ -151,7 +151,7 @@ const DiscountToggle = () => {
           {isModalOpen && (
             <div className={styles.modalOverlay}>
               <div className={styles.modalContent}>
-                <Auth
+                {/* <Auth
                   mode={mode}
                   setMode={setMode}
                   headingText={
@@ -173,7 +173,7 @@ const DiscountToggle = () => {
                       : "Reset-Password"
                   }
                   onClick={handleModalClose}
-                />
+                /> */}
               </div>
             </div>
           )}
