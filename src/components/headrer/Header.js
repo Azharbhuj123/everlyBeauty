@@ -8,10 +8,19 @@ import StyledButton from '../buttons/StyledButton'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Auth from '../../auth/auth'
-import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material'
+import {
+  Avatar,
+  Badge,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import Button from '../buttons/Button'
 import logout from '/public/assets/images/logoutGray.svg'
+import userImage from '/public/assets/images/userImage.svg'
 
 const Header = ({ Token, key }) => {
   const router = useRouter()
@@ -95,7 +104,12 @@ const Header = ({ Token, key }) => {
                   }`}
                   style={{ display: isToken == null ? 'none' : 'block' }}
                 >
-                  Dashboard
+                  <div className={styles.dot}></div>
+                  {isToken && (
+                    <div style={{ position: 'relative' }}>
+                      <Avatar src={userImage} />
+                    </div>
+                  )}
                 </div>
               </Link>
               {/* {isToken && (
@@ -111,9 +125,9 @@ const Header = ({ Token, key }) => {
                 backgroundColor='#fff'
                 color='#000'
                 text='Book Now'
-                fontWeight= '600'
+                fontWeight='600'
                 image={arrow}
-                cursor = 'pointer'
+                cursor='pointer'
                 onClick={() => {
                   isToken === null
                     ? handleModalOpen()
@@ -125,6 +139,16 @@ const Header = ({ Token, key }) => {
             {/* Drawer */}
             <div className={styles.headerDrawer}>
               <IconButton onClick={toggleDrawer}>
+              <Link href='/dashboard' style={{ textDecoration: 'none' }}>
+                <div style={{ marginRight: '10px' }}>
+                  <div className={styles.dot}></div>
+                  {isToken && (
+                    <div style={{ position: 'relative' }}>
+                      <Avatar src={userImage} />
+                    </div>
+                  )}
+                </div>
+              </Link>
                 <MenuIcon />
               </IconButton>
 
@@ -176,7 +200,7 @@ const Header = ({ Token, key }) => {
                     </ListItem>
                   </Link>
 
-                  <Link href='/dashboard' style={{ textDecoration: 'none' }}>
+                  {/* <Link href='/dashboard' style={{ textDecoration: 'none' }}>
                     <ListItem button>
                       <ListItemText
                         primary='Dashboard'
@@ -186,7 +210,15 @@ const Header = ({ Token, key }) => {
                         style={{ display: isToken == null ? 'none' : 'block' }}
                       />
                     </ListItem>
-                  </Link>
+                    <div style={{ marginLeft: '20px' }}>
+                      <div className={styles.dot}></div>
+                      {isToken && (
+                        <div style={{ position: 'relative' }}>
+                          <Avatar src={userImage} />
+                        </div>
+                      )}
+                    </div>
+                  </Link> */}
                   <ListItem button>
                     <ListItemText
                       primary={
@@ -208,9 +240,9 @@ const Header = ({ Token, key }) => {
                             backgroundColor='#fff'
                             color='#000'
                             text='Book Now'
-                            fontWeight= '600'
+                            fontWeight='600'
                             image={arrow}
-                            cursor= 'pointer'
+                            cursor='pointer'
                             onClick={() => {
                               isToken === null
                                 ? handleModalOpen()
