@@ -67,7 +67,7 @@ const VerticalStepper = ({ fetchedDates }) => {
           text='Book Now'
           fontWeight='600'
           image={arrow}
-          onClick={() => router.push('/')}
+          onClick={() => router.push('/book-now')}
         />
       </div>
     </div>

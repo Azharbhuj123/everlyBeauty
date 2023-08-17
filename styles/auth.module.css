@@ -82,15 +82,18 @@
 /* Contact-Us Form */
 .contactUsFormContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   margin: 6em 0;
+  margin-left: 3em;
 }
 .contactUsForm {
   width: min(600px, 90%);
-  background-image: linear-gradient(to bottom, #ffe4dc, #e1ad9d);
+  /* background-image: linear-gradient(to bottom, #ffe4dc, 
+  #e1ad9d); */
+  border: 5px solid #ffe4dc;
   border-radius: 10%;
-  padding: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,6 +138,38 @@
 .contactUsFormButton {
   margin-top: 2em;
   width: 200px;
+}
+.blogsContainer {
+  width: 100%;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.backgroundImage {
+  background-image: url('/assets/images/blogCover.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 25em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  .blogsContainer {
+    margin-top: 2em;
+  }
+  .backgroundImage {
+    height: auto;
+  }
+}
+@media screen and (max-width: 425px) {
+  .blogsContainer {
+    margin-top: 1em;
+  }
 }
 @media screen and (max-width: 425px) {
   .contactUsFormInputs {

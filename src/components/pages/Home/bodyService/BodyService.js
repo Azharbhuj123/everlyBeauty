@@ -14,7 +14,7 @@ import { discountPercentContext } from '@/store/discountPercentContext'
 import StyledButton from '@/src/components/buttons/StyledButton'
 import arrow from '/public/assets/images/arrow-up-right-pink.svg'
 import arrowBlack from '/public/assets/images/arrow-up-right-black.svg'
-import Auth from '@/src/components/auth/auth'
+import Auth from '@/src/auth/auth'
 
 const BodyService = ({ modalOpen = false }) => {
   const [booking, setBooking] = useContext(bookingContext)

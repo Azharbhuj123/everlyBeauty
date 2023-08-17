@@ -105,53 +105,72 @@ const ContactUsForm = () => {
     }
   }
   return (
-    <>
-      <div className={styles.contactUsFormContainer}>
-        <div className={styles.contactUsForm}>
-          <div className={styles.contactUsFormHeading}>
-            <h1>Contact Us</h1>
-          </div>
-          <div className={styles.contactUsFormInputs}>
-            <input
-              placeholder='Name'
-              type='text'
-              name='name'
-              onChange={handleInputChange}
-              value={state.name}
-              required
-            />
-            <input
-              placeholder='Enter Email'
-              name='email'
-              type='email'
-              onChange={handleInputChange}
-              value={state.email}
-              required
-            />
-            <input
-              placeholder='Phone Number'
-              type='phone'
-              name='phoneNumber'
-              onChange={handleInputChange}
-              value={state.phoneNumber}
-              required
-            />
-            <textarea
-              placeholder='Your Inquiry here...'
-              type='text'
-              name='message'
-              maxLength='300'
-              onChange={handleInputChange}
-              value={state.message}
-              required
-            />
-          </div>
-          <div className={styles.contactUsFormButton}>
-            <Button text='Send' action={() => handleSubmit()} />
+    <div className={styles.backgroundImage}
+    style={{height:"700px",marginTop:"20px"}}
+    >
+      <div
+     
+        className={styles.contactUsFormContainer}
+        style={{ flex: 1, flexDirection: 'row' }}
+      >
+        <div style={{ flex: 0.3 }}>
+          <div
+            className={styles.contactUsForm}
+            style={{ backgroundColor:"white",padding:"35px"}}
+          >
+            <div className={styles.contactUsFormHeading}>
+              <h1>Contact Us</h1>
+            </div>
+            <div className={styles.contactUsFormInputs}
+            style={{borderBlockColor:"pink"}}
+            >
+              <input
+               style={{backgroundColor:"#ffe3db",borderWidth:"2px solid"}}
+                placeholder='Name'
+                type='text'
+                name='name'
+                onChange={handleInputChange}
+                value={state.name}
+                required
+              />
+              <input
+               style={{backgroundColor:"#ffe3db",borderWidth:"2px solid"}}
+               
+                placeholder='Enter Email'
+                name='email'
+                type='email'
+                onChange={handleInputChange}
+                value={state.email}
+                required
+              />
+              <input
+               style={{backgroundColor:"#ffe3db"}}
+                placeholder='Phone Number'
+                type='phone'
+                name='phoneNumber'
+                onChange={handleInputChange}
+                value={state.phoneNumber}
+                required
+              />
+              <textarea
+               style={{backgroundColor:"#ffe3db",borderWidth:"2px solid"}}
+                placeholder='Your Inquiry here...'
+                type='text'
+                name='message'
+                maxLength='300'
+                onChange={handleInputChange}
+                value={state.message}
+                required
+              />
+            </div>
+            <div className={styles.contactUsFormButton}>
+              <Button text='Send' action={() => handleSubmit()} />
+            </div>
           </div>
         </div>
+      
       </div>
-    </>
+    </div>
   )
 }
 

@@ -30,6 +30,7 @@
   justify-content: flex-end;
   font-weight: 600;
   cursor: pointer;
+  align-items: center;
 }
 .headerNavbar a {
   text-decoration: none;
@@ -83,7 +84,15 @@
 .headerDrawer {
   display: none;
 }
+.dot{
+  position: absolute;
+  z-index: 9;
+  background-color: #7CFC00;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 
+}
 @media screen and (max-width: 1440px) {
   .wrapper {
     width: 60em;
@@ -96,6 +105,7 @@
     width: 7em;
   }
 }
+
 @media screen and (max-width: 1048px) {
   .headerLogo {
     width: 12em;
