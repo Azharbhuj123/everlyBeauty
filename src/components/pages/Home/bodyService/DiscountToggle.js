@@ -28,6 +28,7 @@ const DiscountToggle = () => {
   const [studentDiscount, setStudentDiscount] = useContext(
     StudentDiscountContext
   );
+  const [studentCodeUsed, setStudentCodeUsed] = useState(null);
 
   useEffect(() => {
     const authToken = localStorage.getItem("Token");
@@ -50,34 +51,33 @@ const DiscountToggle = () => {
   };
 
   const handleSwitchChangeTwo = async () => {
-    if (promoCode == false) {
-      if (user.studentCodeUsed < 2) {
-        let data = {
+    try {
+      const { data } = await createAPIEndPoint(
+        endPoints.myData
+      ).fetchAllWithToken();
+      console.log(data, "000000");
+      setStudentCodeUsed(() => data.studentCodeUsed);
+      if (studentCodeUsed < 2) {
+        setStudentCodeUsed((prev) => prev + 1);
+        const UpdatedData = {
           ...user,
-          studentCodeUsed: Number(user.studentCodeUsed) + 1,
+          studentCodeUsed: studentCodeUsed,
         };
-        console.log(data, "dddd");
-        try {
-          await createAPIEndPoint(endPoints.updateMyData).update(user.id, {
-            data: data,
-          });
-          // await console.log(response);
-          setIsCheckedTwo(true);
-          setpromoCode(false);
-          setStudentDiscount(true);
-        } catch (error) {
-          console.log(error);
-          setStudentDiscount(false);
-        }
-
-        // setIsStudentCardModalOpen(true);
+        console.log(UpdatedData, "77777");
+        const userUpdated = await createAPIEndPoint(
+          endPoints.updateMyData
+        ).update(user.id, {
+          data: UpdatedData,
+        });
+        console.log(userUpdated, "uuuuuu");
+        setIsCheckedTwo(true);
+        setStudentDiscount(true);
       } else {
-        toast.error("you already availed student discount maximum times");
+        toast.error("You have already availed student discount twice");
       }
-    } else {
-      toast.error("You could avail only one discount at a time");
+    } catch (err) {
+      console.log(err);
     }
-
     // setIsCheckedTwo(checkedTwo);
   };
 

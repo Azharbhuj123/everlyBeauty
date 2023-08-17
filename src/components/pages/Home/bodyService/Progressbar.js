@@ -21,8 +21,8 @@ const Progressbar = ({ discountPercent }) => {
   useEffect(() => {
     let progressValue =
       promoCodeDiscount || studentDiscount
-        ? discountPercent + 10
-        : discountPercent;
+        ? (discountPercent + 10) * 2
+        : discountPercent * 2;
     if (progressValue > 100) {
       progressValue = 100; // Ensure progressValue does not exceed 100%
     }
