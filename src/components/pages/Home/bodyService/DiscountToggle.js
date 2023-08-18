@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 const DiscountToggle = () => {
   const router = useRouter();
   const [user, setUser] = useContext(userContext);
-  console.log(user, "user check");
+
   const [isChecked, setIsChecked] = useState(false);
   const [isCheckedTwo, setIsCheckedTwo] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,17 +37,22 @@ const DiscountToggle = () => {
   console.log(isToken, "auth token checking");
 
   const handleSwitchChange = (checked) => {
-    setIsChecked(checked);
-    if (checked) {
-      if (studentDiscount == false) {
-        setIsPromoCardModalOpen(true);
-      } else {
-        toast.error("You can avail  only one discount at a time");
-      }
-    }
+    setIsPromoCardModalOpen(true);
+    // if (studentDiscount == false) {
+    //   setIsPromoCardModalOpen(true);
+    // } else {
+    //   toast.error("You can avail  only one discount at a time");
+    // }
   };
   const handleChecked = () => {
     setIsChecked(true);
+  };
+  const UpdateDiscounts = async (id, UpdatedData) => {
+    console.log(UpdatedData, "in function");
+    const userUpdated = await createAPIEndPoint(endPoints.updateMyData).update(
+      id,
+      UpdatedData
+    );
   };
 
   const handleSwitchChangeTwo = async () => {
@@ -55,21 +60,21 @@ const DiscountToggle = () => {
       const { data } = await createAPIEndPoint(
         endPoints.myData
       ).fetchAllWithToken();
-      console.log(data, "000000");
-      setStudentCodeUsed(() => data.studentCodeUsed);
-      if (studentCodeUsed < 2) {
-        setStudentCodeUsed((prev) => prev + 1);
+      console.log(data, "data");
+      if (data.studentCodeUsed < 2) {
+        let UpdatedCount = data.studentCodeUsed + 1;
         const UpdatedData = {
-          ...user,
-          studentCodeUsed: studentCodeUsed,
+          ...data,
+          studentCodeUsed: UpdatedCount,
+          isStudent: true,
+          firstName: "",
+          lastName: "",
         };
-        console.log(UpdatedData, "77777");
-        const userUpdated = await createAPIEndPoint(
-          endPoints.updateMyData
-        ).update(user.id, {
-          data: UpdatedData,
-        });
-        console.log(userUpdated, "uuuuuu");
+
+        console.log(UpdatedData, "UpdatedData");
+
+        UpdateDiscounts(user.id, UpdatedData);
+
         setIsCheckedTwo(true);
         setStudentDiscount(true);
       } else {
@@ -185,6 +190,8 @@ const DiscountToggle = () => {
             <PromoCard
               onClose={handlePromoCardModalClose}
               handleChecked={handleChecked}
+              Checked={() => setIsChecked(true)}
+              unChecked={() => setIsChecked(false)}
             />
           </div>
         </div>

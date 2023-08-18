@@ -17,6 +17,7 @@ import DiscountType from "@/src/components/pages/Home/bodyService/DiscountType";
 import styles from "@/styles/components/bodyService/bodyService.module.css";
 import { createAPIEndPoint } from "@/src/config/api";
 import { endPoints } from "@/src/config/endpoints";
+import { referralDiscount } from "@/store/referralDiscount";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function Home() {
   const [booking, setBooking] = useContext(bookingContext);
   const [consultation, setConsultation] = useContext(consultationContext);
   const [user, setUser] = useContext(userContext);
+  const [referral, setReferral] = useContext(referralDiscount);
   const getUserData = async () => {
     try {
       const response = await createAPIEndPoint(
@@ -38,6 +40,10 @@ export default function Home() {
 
       const details = response.data.user_slots.map((item) => item.details);
       setUser(response.data);
+      console.log(response.data.isReferred, "userddddd");
+      if (response.data.isReferred) {
+        setReferral(true);
+      }
       if (details.length) {
         details.forEach((element) => {
           setBooking(element);
