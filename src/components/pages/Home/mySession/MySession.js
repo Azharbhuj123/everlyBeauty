@@ -9,6 +9,7 @@ import StudentDiscount from "./StudentDiscount";
 import { consultationContext } from "@/store/consultationContext";
 import { promoCodeDiscountContext } from "@/store/promoDiscountContext";
 import { StudentDiscountContext } from "@/store/studentDiscountContext";
+import { referralDiscount } from "@/store/referralDiscount";
 
 const MySession = () => {
   const [booking] = useContext(bookingContext);
@@ -25,6 +26,8 @@ const MySession = () => {
   const [promoCodeDiscount, setpromoCodeDiscount] = useContext(
     promoCodeDiscountContext
   );
+  const [referral, setReferral] = useContext(referralDiscount);
+  console.log(referral, "rrr");
 
   console.log(consultation, "consultation");
 
@@ -64,13 +67,41 @@ const MySession = () => {
 
   useEffect(() => {
     getDiscount(totalPrice, totalTime);
-  }, [totalPrice, totalTime]);
+  }, [
+    totalPrice,
+    totalTime,
+    studentDiscount,
+    promoCodeDiscount,
+    referralDiscount,
+  ]);
 
+  // const totalAmount = totalPrice - discount;
+  // const roundedTotalAmount = Math.floor(totalAmount);
+  // setPayable(
+  //   promoCodeDiscount
+  //     ? roundedTotalAmount - (totalPrice * 10) / 100
+  //     : studentDiscount
+  //     ? roundedTotalAmount - (totalPrice * 10) / 100
+  //     : promoCodeDiscount && studentDiscount
+  //     ? roundedTotalAmount - (totalPrice * 20) / 100
+  //     : roundedTotalAmount
+  // );
   const totalAmount = totalPrice - discount;
   const roundedTotalAmount = Math.floor(totalAmount);
+  console.log(roundedTotalAmount, "rounded");
   setPayable(
-    promoCodeDiscount || studentDiscount
+    promoCodeDiscount && studentDiscount && referral
+      ? roundedTotalAmount - (totalPrice * 20) / 100 - 50
+      : referral && promoCodeDiscount
+      ? roundedTotalAmount - (totalPrice * 10) / 100 - 50
+      : referral && studentDiscount
+      ? roundedTotalAmount - (totalPrice * 10) / 100 - 50
+      : studentDiscount && promoCodeDiscount
+      ? roundedTotalAmount - (totalPrice * 20) / 100
+      : studentDiscount || promoCodeDiscount
       ? roundedTotalAmount - (totalPrice * 10) / 100
+      : referral
+      ? roundedTotalAmount - 50
       : roundedTotalAmount
   );
 
@@ -164,14 +195,14 @@ const MySession = () => {
           discount={isNaN(discountPercent) ? 0 : discountPercent}
           amount={discount}
         />
-        {studentDiscount && promoCodeDiscount == false && (
+        {studentDiscount && (
           <StudentDiscount
             heading={"Student Discount"}
             discount={"10%"}
             amount={`${(totalPrice * 10) / 100}`}
           />
         )}
-        {promoCodeDiscount && studentDiscount == false && (
+        {promoCodeDiscount && (
           <StudentDiscount
             heading={"Promo Discount"}
             discount={"10%"}
@@ -179,14 +210,15 @@ const MySession = () => {
           />
         )}
 
-        <MySessionInvoice
-          heading={"Total"}
-          amount={
-            promoCodeDiscount || studentDiscount
-              ? roundedTotalAmount - (totalPrice * 10) / 100
-              : roundedTotalAmount
-          }
-        />
+        {referral && (
+          <StudentDiscount
+            heading={"Referral discount"}
+            // discount={"10%"}
+            amount={`50`}
+          />
+        )}
+
+        <MySessionInvoice heading={"Total"} amount={payable} />
       </div>
     </>
   );

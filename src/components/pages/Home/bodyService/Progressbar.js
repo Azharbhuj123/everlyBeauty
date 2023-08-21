@@ -20,7 +20,11 @@ const Progressbar = ({ discountPercent }) => {
 
   useEffect(() => {
     let progressValue =
-      promoCodeDiscount || studentDiscount
+      promoCodeDiscount && studentDiscount
+        ? (discountPercent + 20) * 2
+        : promoCodeDiscount
+        ? (discountPercent + 10) * 2
+        : studentDiscount
         ? (discountPercent + 10) * 2
         : discountPercent * 2;
     if (progressValue > 100) {
@@ -28,7 +32,7 @@ const Progressbar = ({ discountPercent }) => {
     }
     setValue(progressValue);
   }, [discountPercent, studentDiscount, promoCodeDiscount]);
-
+  console.log(value, "value");
   return (
     <>
       <Toast ref={toast}></Toast>
@@ -36,7 +40,9 @@ const Progressbar = ({ discountPercent }) => {
         value={value}
         displayValueTemplate={() =>
           `${
-            promoCodeDiscount || studentDiscount
+            promoCodeDiscount && studentDiscount
+              ? discountPercent + 20
+              : promoCodeDiscount || studentDiscount
               ? discountPercent + 10
               : discountPercent
           }%`

@@ -60,9 +60,10 @@ const DiscountToggle = () => {
       const { data } = await createAPIEndPoint(
         endPoints.myData
       ).fetchAllWithToken();
-      console.log(data, "data");
+
       if (data.studentCodeUsed < 2) {
         let UpdatedCount = data.studentCodeUsed + 1;
+
         const UpdatedData = {
           ...data,
           studentCodeUsed: UpdatedCount,
@@ -70,9 +71,6 @@ const DiscountToggle = () => {
           firstName: "",
           lastName: "",
         };
-
-        console.log(UpdatedData, "UpdatedData");
-
         UpdateDiscounts(user.id, UpdatedData);
 
         setIsCheckedTwo(true);
