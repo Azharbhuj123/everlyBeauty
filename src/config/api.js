@@ -7,7 +7,7 @@ export const createAPIEndPoint = (
   populateArgument = "*",
   id = null
 ) => {
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = "https://api.everlybeauty.ca/api";
 
   let token =
     typeof localStorage !== "undefined" && localStorage.getItem("Token");
