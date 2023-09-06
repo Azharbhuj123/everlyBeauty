@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import ReactStars from 'react-stars'
-import styles from '@/styles/components/testimonials/testimonials.module.css'
-import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Autoplay } from 'swiper/modules'
-import { testimonalsCrdData } from '@/pages/api/utils'
+import React, { useEffect, useState } from "react";
+import ReactStars from "react-stars";
+import styles from "@/styles/components/testimonials/testimonials.module.css";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import { testimonalsCrdData } from "@/pages/api/utils";
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import SwiperCore from 'swiper'
-import { BASE_URL, createAPIEndPoint } from '@/src/config/api'
-import { endPoints } from '@/src/config/endpoints'
-import avatar from '/public/assets/images/avatar1.svg'
+import "swiper/css";
+import "swiper/css/pagination";
+import SwiperCore from "swiper";
+import { BASE_URL, createAPIEndPoint } from "@/src/config/api";
+import { endPoints } from "@/src/config/endpoints";
+import avatar from "/public/assets/images/avatar1.svg";
 
 const Testimonals = () => {
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
 
   const fetchReviews = async () => {
     try {
       const response = await createAPIEndPoint(
         endPoints.rateReview,
         true
-      ).fetchAll()
-      setReviews(response.data.data)
-      console.log(response.data.data, 'reviews')
+      ).fetchAll();
+      setReviews(response.data.data);
+      console.log(response.data.data, "reviews");
     } catch (error) {
-      console.error('Error fetching reviews:', error)
+      console.error("Error fetching reviews:", error);
+      console.error("Error fetching reviews:", error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchReviews()
-  }, [])
+    fetchReviews();
+  }, []);
 
-  SwiperCore.use([Autoplay])
+  SwiperCore.use([Autoplay]);
   return (
     <>
       <div className={styles.testimonialsContainer}>
@@ -43,7 +44,7 @@ const Testimonals = () => {
           </div>
           <div className={styles.testimonialsCards}>
             <Swiper
-              style={{ width: '100%', height: '400px' }}
+              style={{ width: "100%", height: "400px" }}
               spaceBetween={30}
               slidesPerView={3}
               loop={true}
@@ -52,7 +53,7 @@ const Testimonals = () => {
                 disableOnInteraction: false,
               }}
               speed={1000}
-              onSlideChange={() => console.log('slide change')}
+              onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               pagination={{
                 clickable: true,
@@ -81,7 +82,7 @@ const Testimonals = () => {
               }}
             >
               {reviews.map((item, index) => {
-                console.log(reviews, 'review check')
+                console.log(reviews, "review check");
                 return (
                   <>
                     {/* {console.log(
@@ -95,7 +96,7 @@ const Testimonals = () => {
                           edit={false}
                           value={item.attributes.rating}
                           size={28}
-                          color2={'#ffd700'}
+                          color2={"#ffd700"}
                         />
                         <div className={styles.testimonialsCardAvatar}>
                           <Image
@@ -104,7 +105,7 @@ const Testimonals = () => {
                             // `}
                             width={100}
                             height={100}
-                            alt=''
+                            alt=""
                           />
                         </div>
                         <div className={styles.testimonialsCardContent}>
@@ -114,14 +115,14 @@ const Testimonals = () => {
                       </div>
                     </SwiperSlide>
                   </>
-                )
+                );
               })}
             </Swiper>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Testimonals
+export default Testimonals;
