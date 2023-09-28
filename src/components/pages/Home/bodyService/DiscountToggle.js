@@ -133,7 +133,7 @@ const DiscountToggle = () => {
                 handleDiameter={24}
               />
               <span className={styles.discountToggleLeftText}>
-                10% Student Discount
+                $50 Discount Once
               </span>
             </div>
           </div>

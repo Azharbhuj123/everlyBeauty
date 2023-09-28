@@ -4,6 +4,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ["api.everlybeauty.ca"],
+  },
 };
 
 module.exports = nextConfig;

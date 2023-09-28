@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import styles from '@/styles/components/blog/blogCard.module.css'
-import Image from 'next/image'
-import { createAPIEndPoint } from '@/src/config/api'
-import { endPoints } from '@/src/config/endpoints'
-import Search from '/public/assets/images/search.svg'
-import Faq from './Faq'
-import Link from 'next/link'
+import React, { useEffect, useState } from "react";
+import styles from "@/styles/components/blog/blogCard.module.css";
+import Image from "next/image";
+import { createAPIEndPoint } from "@/src/config/api";
+import { endPoints } from "@/src/config/endpoints";
+import Search from "/public/assets/images/search.svg";
+import Faq from "./Faq";
+import Link from "next/link";
 
 const BlogCard = () => {
-  const BASE_URL = 'https://api.everlybeauty.ca/api'
-  const [artileItems, setArticelItems] = useState([])
-  const [searchQuery, setSearchQuery] = useState('')
-  const [filteredArticles, setFilteredArticles] = useState([])
+  const BASE_URL = "https://api.everlybeauty.ca/api";
+  const [artileItems, setArticelItems] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredArticles, setFilteredArticles] = useState([]);
 
   const getArticle = async () => {
     try {
       const response = await createAPIEndPoint(
         endPoints.articles,
         true
-      ).fetchAll()
-      setArticelItems(response?.data.data)
-      console.log(response?.data, 'blogs card')
+      ).fetchAll();
+      setArticelItems(response?.data.data);
+      console.log(response?.data, "blogs card");
     } catch (error) {
-      console.log(error, 'error')
+      console.log(error, "error");
     }
-  }
+  };
 
   useEffect(() => {
-    getArticle()
-  }, [])
+    getArticle();
+  }, []);
 
   useEffect(() => {
     const filtered = artileItems.filter((item) =>
       item.attributes.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    setFilteredArticles(filtered)
-  }, [searchQuery, artileItems])
+    );
+    setFilteredArticles(filtered);
+  }, [searchQuery, artileItems]);
 
   return (
     <>
@@ -46,9 +46,9 @@ const BlogCard = () => {
             <div className={styles.blogsContent}>
               <h1>Blog</h1>
               <h3>
-                <Link href='/'> Home |</Link>{' '}
+                <Link href="/"> Home |</Link>{" "}
                 <span>
-                  <Link href='/blog'>Blog</Link>
+                  <Link href="/blog">Blog</Link>
                 </span>
               </h3>
             </div>
@@ -62,15 +62,15 @@ const BlogCard = () => {
         <div className={styles.blogsContentWrapper}>
           <div className={styles.searchBar}>
             <input
-              type='text'
+              type="text"
               className={styles.searchInput}
-              placeholder='Type your question here …'
+              placeholder="Type your question here …"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
 
             <button className={styles.searchIcon}>
-              <Image src={Search} alt='Search' width={20} height={20} />
+              <Image src={Search} alt="Search" width={20} height={20} />
             </button>
           </div>
         </div>
@@ -83,15 +83,15 @@ const BlogCard = () => {
           <div className={styles.blogCards}>
             {filteredArticles.map((item, index) => {
               console.log(
-                `${BASE_URL}${item.attributes.image.data.attributes.url}`,
-                'imageUrl '
-              )
+                `${BASE_URL}${item.attributes?.image.data?.attributes?.url}`,
+                "imageUrl "
+              );
               return (
                 <>
                   <div key={index} className={styles.blogCard}>
                     <div className={styles.blogCardImage}>
                       <Image
-                        src={`${BASE_URL}${item.attributes.image.data.attributes.url}`}
+                        src={`${BASE_URL}${item?.attributes?.image?.data?.attributes?.url}`}
                         width={200}
                         height={100}
                       />
@@ -102,7 +102,7 @@ const BlogCard = () => {
                     </div>
                   </div>
                 </>
-              )
+              );
             })}
           </div>
         </div>
@@ -115,7 +115,7 @@ const BlogCard = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BlogCard
+export default BlogCard;
